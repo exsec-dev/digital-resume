@@ -106,6 +106,7 @@ export const Header = () => {
           className="fixed-panel"
           direction="vertical"
           style={{ lineHeight: layout === "vertical" ? 0 : "unset" }}
+          size={6}
         >
           {layout === "vertical" ? (
             <Button
@@ -114,19 +115,24 @@ export const Header = () => {
               shape="circle"
               icon={
                 collapsed ? (
-                  <MenuRounded style={{ fill: "var(--icon-color)" }} />
+                  <MenuRounded
+                    style={{
+                      fontSize: layout === "vertical" ? "22px" : "20px",
+                    }}
+                  />
                 ) : (
-                  <MenuOpenRounded style={{ fill: "var(--icon-color)" }} />
+                  <MenuOpenRounded
+                    style={{
+                      fontSize: layout === "vertical" ? "22px" : "20px",
+                    }}
+                  />
                 )
               }
               onClick={() => setCollapsed(!collapsed)}
+              style={{ padding: layout === "vertical" ? "20px" : "unset" }}
             />
           ) : null}
-          <Space
-            size={6}
-            direction={layout}
-            style={{ overflow: "hidden", borderRadius: "80px" }}
-          >
+          <Space className="button-container" size={6} direction={layout}>
             {layout === "horizontal" ? (
               <Anchor
                 className="navigation"
@@ -136,15 +142,13 @@ export const Header = () => {
               />
             ) : null}
             <Space
+              className="features"
               ref={menuRef}
               size={6}
               direction={layout}
               style={{
                 lineHeight: layout === "vertical" ? 0 : "unset",
-                position: "relative",
                 bottom: collapsed && layout === "vertical" ? "200px" : 0,
-                transition: "bottom 0.3s",
-                marginTop: "1px",
               }}
             >
               <Tooltip
@@ -155,9 +159,14 @@ export const Header = () => {
                   type="primary"
                   shape="circle"
                   icon={
-                    <DownloadRounded style={{ fill: "var(--icon-color)" }} />
+                    <DownloadRounded
+                      style={{
+                        fontSize: layout === "vertical" ? "22px" : "20px",
+                      }}
+                    />
                   }
                   onClick={downloadFile}
+                  style={{ padding: layout === "vertical" ? "20px" : "unset" }}
                 />
               </Tooltip>
               <Tooltip
@@ -168,11 +177,16 @@ export const Header = () => {
                   type="primary"
                   shape="circle"
                   icon={
-                    <ContrastRounded style={{ fill: "var(--icon-color)" }} />
+                    <ContrastRounded
+                      style={{
+                        fontSize: layout === "vertical" ? "22px" : "20px",
+                      }}
+                    />
                   }
                   onClick={() =>
                     setScheme(scheme === "light" ? "dark" : "light")
                   }
+                  style={{ padding: layout === "vertical" ? "20px" : "unset" }}
                 />
               </Tooltip>
               <Tooltip
@@ -182,10 +196,15 @@ export const Header = () => {
                 <Button
                   type="primary"
                   shape="circle"
-                  style={{ fontWeight: 300, bottom: "2px" }}
+                  style={{
+                    fontWeight: 300,
+                    padding: layout === "vertical" ? "20px" : "unset",
+                    position: "relative",
+                    bottom: layout === "vertical" ? "0" : "2px",
+                  }}
                 >
                   <Typography.Text
-                    style={{ fontWeight: 350, color: "var(--bg-color)" }}
+                    style={{ fontWeight: 350, color: "var(--icon-color)" }}
                   >
                     EN
                   </Typography.Text>

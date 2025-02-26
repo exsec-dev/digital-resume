@@ -1,6 +1,6 @@
 import React from "react";
 import { Layout, Flex, Space, Typography, Button } from "antd";
-import { ArrowOutwardRounded, Telegram } from "@mui/icons-material";
+import { ArrowOutwardRounded, Telegram, GitHub } from "@mui/icons-material";
 
 export const Contacts = () => {
   return (
@@ -16,7 +16,7 @@ export const Contacts = () => {
             level={1}
             style={{ fontWeight: 650, fontSize: "52px" }}
           >
-            Contact Me!
+            Get in Touch
           </Typography.Title>
           <Space data-nosnippet>
             <Button
@@ -67,6 +67,24 @@ export const Contacts = () => {
                 backgroundColor: "var(--primary-color)",
               }}
             />
+            <Button
+              type="primary"
+              href="https://github.com/exsec-dev"
+              target="_blank"
+              icon={
+                <GitHub
+                  style={{
+                    fontSize: "20px",
+                    color: "var(--bg-color)",
+                  }}
+                />
+              }
+              style={{
+                padding: "24px",
+                borderRadius: "48px",
+                backgroundColor: "var(--primary-color)",
+              }}
+            />
           </Space>
         </Space>
         <Flex
@@ -76,10 +94,10 @@ export const Contacts = () => {
           data-nosnippet
         >
           <Typography.Text style={{ fontSize: "12px" }}>
-            Last Updated: 25.02.2025
+            Last Updated: {process.env.REACT_APP_BUILD_DATE}
           </Typography.Text>
           <Typography.Text style={{ fontSize: "12px" }}>
-            2025 © — Made by Exsec
+            Made by Exsec
           </Typography.Text>
         </Flex>
       </Flex>

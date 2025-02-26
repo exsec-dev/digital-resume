@@ -9,7 +9,7 @@ const certificatesData = [
   "Защита проектной работы в рамках «Астра-Стипендия» 2023г., 2024г",
   "ALSE-1602 «Базовое администрирование ОС Astra Linux Special Edition»",
   "Курс «Практики системной инженерии», УрФУ",
-  "English Language Test – CERF level B2",
+  "English Language Test – CEFR level B2",
 ];
 
 export const Certificates = () => {

@@ -10,6 +10,17 @@
     position: fixed;
     z-index: 1;
     right: 28px;
+
+    .button-container {
+      overflow: hidden;
+      border-radius: 80px;
+
+      .features {
+        position: relative;
+        transition: bottom 0.3s;
+        margin-top: 1px;
+      }
+    }
   }
 
   button {
@@ -30,6 +41,7 @@
 
     svg {
       font-size: 20px;
+      fill: var(--icon-color);
     }
   }
 }
