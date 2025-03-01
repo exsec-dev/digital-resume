@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useTranslation } from "react-i18next";
 import { Layout, Anchor, Flex, Space, Tooltip, Button, Typography } from "antd";
 import { Logo } from "components";
 import {
@@ -19,25 +20,9 @@ const variables = {
   "--light-grey": ["#4e4e4e", "#dbdbdb"],
 };
 
-const parts = [
-  {
-    key: "home",
-    href: "#home",
-    title: "Home",
-  },
-  {
-    key: "projects",
-    href: "#projects",
-    title: "Projects",
-  },
-  {
-    key: "about",
-    href: "#about",
-    title: "About",
-  },
-];
-
 export const Header = () => {
+  const { t, i18n } = useTranslation();
+
   const [scheme, setScheme] = useState<string>(
     localStorage.getItem("scheme") || "light",
   );
@@ -93,6 +78,32 @@ export const Header = () => {
     document.body.removeChild(link);
   };
 
+  const changeLanguage = () => {
+    if (i18n.language === "ru") {
+      i18n.changeLanguage("en");
+    } else {
+      i18n.changeLanguage("ru");
+    }
+  };
+
+  const parts = [
+    {
+      key: "home",
+      href: "#home",
+      title: t("header.menu.home"),
+    },
+    {
+      key: "projects",
+      href: "#projects",
+      title: t("header.menu.projects"),
+    },
+    {
+      key: "about",
+      href: "#about",
+      title: t("header.menu.about"),
+    },
+  ];
+
   return (
     <Layout.Header className="header">
       <Flex
@@ -105,7 +116,10 @@ export const Header = () => {
         <Space
           className="fixed-panel"
           direction="vertical"
-          style={{ lineHeight: layout === "vertical" ? 0 : "unset" }}
+          style={{
+            lineHeight: layout === "vertical" ? 0 : "unset",
+            top: layout === "vertical" ? "22px" : undefined,
+          }}
           size={6}
         >
           {layout === "vertical" ? (
@@ -139,6 +153,7 @@ export const Header = () => {
                 items={parts}
                 bounds={240}
                 direction="horizontal"
+                key={`${i18n.language}${scheme}`}
               />
             ) : null}
             <Space
@@ -152,7 +167,7 @@ export const Header = () => {
               }}
             >
               <Tooltip
-                title="Download PDF"
+                title={t("header.tooltip.pdf")}
                 placement={layout === "vertical" ? "left" : "bottom"}
               >
                 <Button
@@ -170,7 +185,7 @@ export const Header = () => {
                 />
               </Tooltip>
               <Tooltip
-                title="Change Theme"
+                title={t("header.tooltip.theme")}
                 placement={layout === "vertical" ? "left" : "bottom"}
               >
                 <Button
@@ -190,7 +205,7 @@ export const Header = () => {
                 />
               </Tooltip>
               <Tooltip
-                title="Translate"
+                title={t("header.tooltip.lang")}
                 placement={layout === "vertical" ? "left" : "bottom"}
               >
                 <Button
@@ -202,11 +217,12 @@ export const Header = () => {
                     position: "relative",
                     bottom: layout === "vertical" ? "0" : "2px",
                   }}
+                  onClick={() => changeLanguage()}
                 >
                   <Typography.Text
                     style={{ fontWeight: 350, color: "var(--icon-color)" }}
                   >
-                    EN
+                    {i18n.language === "ru" ? "EN" : "RU"}
                   </Typography.Text>
                 </Button>
               </Tooltip>

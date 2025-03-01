@@ -1,0 +1,51 @@
+{
+  "header.menu.home": "Главное",
+  "header.menu.projects": "Проекты",
+  "header.menu.about": "Обо мне",
+  "header.tooltip.pdf": "Скачать PDF",
+  "header.tooltip.theme": "Сменить тему",
+  "header.tooltip.lang": "Перевести",
+
+  "home.scroll": "КОНТАКТЫ",
+  "home.contact": "Всегда на связи",
+  "home.name": "Екатерина Прожирко",
+  "home.description": "Frontend-разработчик с\u00A0коммерческим опытом, специализируюсь на\u00A0современных, адаптивных и\u00A0удобных веб-интерфейсах. Постоянно совершенствуюсь и\u00A0расширяю профессиональные компетенции.",
+
+  "projects": "Проекты",
+  "projects.browser": "Мини игра",
+  "projects.edu": "Образовательная платформа",
+
+  "expertise": "Навыки",
+  "expertise.title.web": "Веб-разработка",
+  "expertise.title.design": "Дизайн",
+  "expertise.title.eng": "Английский язык",
+  "expertise.skills.color": "Композиция и колористика",
+  "expertise.skills.typo": "Типографика",
+
+  "education": "Образование",
+  "education.title.master": "Магистратура: Университет науки и технологий МИСИС",
+  "education.subtitle.master": "Внедрение сложных информационных систем на базе интеграционных ИТ-решений, 09.04.02",
+  "education.period.master": "Сентябрь 2024 – по настоящее время",
+  "education.title.bach": "Бакалавриат: Университет науки и технологий МИСИС",
+  "education.subtitle.bach": "Прикладная информатика в дизайне, 09.03.03",
+  "education.period.bach": "Сентябрь 2020 – Июнь 2024",
+
+  "experience": "Опыт",
+  "experience.tooltip": "Обязанности",
+  "experience.first.title": "Стартап-проект: туристический сервис персонализированного подбора жилья",
+  "experience.first.period": "Октябрь 2022 – Сентябрь 2023",
+  "experience.first.tooltip": "Разработка и отладка архитектуры сервиса на React и Python|Планирование и распределение задач|Взаимодействие с внешними техническими партнерами",
+  "experience.second.title": "Департамент информационных технологий города Москвы",
+  "experience.second.period": "Февраль 2024 – Июль 2024",
+  "experience.second.tooltip": "Разработка React-компонентов в средствах автоматизации|Рефакторинг и поддержка кода|Устранение дефектов пользовательского интерфейса|Составление технической документации и регламентов работы",
+  "experience.third.title": "Группа Астра",
+  "experience.third.period": "Август 2024 – по настоящее время",
+
+  "certificates": "Сертификаты",
+  "certificates.open": "Источник",
+  "certificates.list": "ЛЦТ 2023. Выход в финал конкурса Мэра Москвы по задаче «Рекомендательный сервис формирования персонализированных туристических пакетов»|Защита проектной работы в рамках «Астра-Стипендия» 2023г., 2024г|ALSE-1602 «Базовое администрирование ОС Astra Linux Special Edition»|Курс «Практики системной инженерии», УрФУ|English Language Test – CEFR level B2",
+
+  "contacts.title": "Контакты",
+  "contacts.updated": "Обновлено",
+  "contacts.author": "Разработано"
+}

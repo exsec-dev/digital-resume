@@ -1,9 +1,12 @@
 import React from "react";
 import { Typography, Flex, Button, Space } from "antd";
+import { useTranslation } from "react-i18next";
 import { ArrowDownwardRounded } from "@mui/icons-material";
 import "./index.scss";
 
 export const Home = () => {
+  const { t } = useTranslation();
+
   return (
     <Flex id="home" vertical gap={48}>
       <Flex className="title-container" justify="space-between">
@@ -36,16 +39,16 @@ export const Home = () => {
             }
           }}
         >
-          SCROLL DOWN
+          {t("home.scroll")}
         </Button>
       </Flex>
       <Flex className="description" justify="space-between" align="start">
         <Space direction="vertical" size={4} style={{ whiteSpace: "nowrap" }}>
           <Typography.Title level={5} style={{ margin: 0 }}>
-            Contact Me
+            {t("home.contact")}
           </Typography.Title>
           <Typography.Text data-nosnippet>
-            Ekaterina Prozhirko
+            {t("home.name")}
             <br />
             <a
               href="mailto:exsec.b@gmail.com"
@@ -60,10 +63,7 @@ export const Home = () => {
           </Typography.Text>
         </Space>
         <Typography.Text style={{ minWidth: "300px", maxWidth: "600px" }}>
-          Frontend developer with commercial&nbsp;experience, specializing in
-          modern, responsive, and&nbsp;user-centric web&nbsp;interfaces.
-          I&nbsp;apply technical&nbsp;expertise and&nbsp;design principles
-          to&nbsp;create efficient digital&nbsp;solutions.
+          {t("home.description")}
         </Typography.Text>
       </Flex>
     </Flex>

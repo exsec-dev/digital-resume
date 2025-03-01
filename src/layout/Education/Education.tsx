@@ -1,22 +1,25 @@
 import React from "react";
 import { Space } from "antd";
+import { useTranslation } from "react-i18next";
 import { TimePeriodPanel, CollapsePanel } from "components";
 
 export const Education = () => {
+  const { t } = useTranslation();
+
   return (
     <CollapsePanel
-      title="Education"
+      title={t("education")}
       content={
         <Space direction="vertical" size={36} style={{ width: "100%" }}>
           <TimePeriodPanel
-            title="Master's Degree: National University of Science and Technology MISIS"
-            subtitle="Implementation of Sophisticated Digital Systems Based on Integrated IT-Solutions, 09.04.02"
-            period="Sep 2024 – Present"
+            title={t("education.title.master")}
+            subtitle={t("education.subtitle.master")}
+            period={t("education.period.master")}
           />
           <TimePeriodPanel
-            title="Bachelor's Degree: National University of Science and Technology MISIS"
-            subtitle="Applied Computer Science in Design, 09.03.03"
-            period="Sep 2020 – Jun 2024"
+            title={t("education.title.bach")}
+            subtitle={t("education.subtitle.bach")}
+            period={t("education.period.bach")}
           />
         </Space>
       }

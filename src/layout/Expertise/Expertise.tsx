@@ -1,44 +1,47 @@
 import React from "react";
 import { Typography, Flex, Space, Divider } from "antd";
+import { useTranslation } from "react-i18next";
 import "./index.scss";
 
-const content = [
-  {
-    title: "Web Development",
-    skills: [
-      "JavaScript / TypeScript",
-      "React",
-      "HTML",
-      "CSS / SCSS",
-      "Git",
-      "Material UI / Antd",
-      "Redux",
-      "SQL",
-      "Docker",
-      "Linux",
-    ],
-  },
-  {
-    title: "Design",
-    skills: [
-      "Figma",
-      "UI/UX",
-      "Adobe Illustrator, Photoshop",
-      "Pixso",
-      "Composition and Color Theory",
-      "Typography",
-    ],
-  },
-  {
-    title: "English Proficiency",
-    text: "MISIS English Language Test – CEFR level B2 (Upper Intermediate)",
-  },
-];
-
 export const Expertise = () => {
+  const { t } = useTranslation();
+
+  const content = [
+    {
+      title: t("expertise.title.web"),
+      skills: [
+        "JavaScript / TypeScript",
+        "React",
+        "HTML",
+        "CSS / SCSS",
+        "Git",
+        "Material UI / Antd",
+        "Redux",
+        "SQL",
+        "Docker",
+        "Linux",
+      ],
+    },
+    {
+      title: t("expertise.title.design"),
+      skills: [
+        "Figma",
+        "UI/UX",
+        "Adobe Illustrator, Photoshop",
+        "Pixso",
+        t("expertise.skills.color"),
+        t("expertise.skills.typo"),
+      ],
+    },
+    {
+      title: t("expertise.title.eng"),
+      text: "English Language Test – CEFR level B2 (Upper Intermediate)",
+    },
+  ];
+
   return (
     <Flex id="about" vertical gap={16}>
-      <Typography.Title level={3}>Expertise</Typography.Title>
+      <Typography.Title level={3}>{t("expertise")}</Typography.Title>
       <Space direction="vertical" size={42}>
         {content.map((chapter) => {
           return (

@@ -19,7 +19,7 @@ const getTheme = (): ConfigProviderProps["theme"] => {
     token: {
       colorPrimary: "var(--primary-color)",
       fontSize: 14,
-      fontFamily: '"Geist", "Golos Text", sans-serif',
+      fontFamily: '"Geist", "Onest", sans-serif',
       colorText: "var(--primary-color)",
     },
     components: {

@@ -1,0 +1,51 @@
+{
+  "header.menu.home": "Home",
+  "header.menu.projects": "Projects",
+  "header.menu.about": "About",
+  "header.tooltip.pdf": "Download PDF",
+  "header.tooltip.theme": "Change Theme",
+  "header.tooltip.lang": "Translate",
+
+  "home.scroll": "SCROLL DOWN",
+  "home.contact": "Contact Me",
+  "home.name": "Ekaterina Prozhirko",
+  "home.description": "Frontend developer with commercial\u00A0experience, specializing in modern, responsive, and\u00A0user-centric web\u00A0interfaces. I\u00A0apply technical\u00A0expertise and\u00A0design principles to\u00A0create efficient digital\u00A0solutions.",
+
+  "projects": "Projects",
+  "projects.browser": "Browser Game",
+  "projects.edu": "Educational Platform",
+
+  "expertise": "Expertise",
+  "expertise.title.web": "Web Development",
+  "expertise.title.design": "Design",
+  "expertise.title.eng": "English Proficiency",
+  "expertise.skills.color": "Composition and Color Theory",
+  "expertise.skills.typo": "Typography",
+
+  "education": "Education",
+  "education.title.master": "Master's Degree: National University of Science and Technology MISIS",
+  "education.subtitle.master": "Implementation of Sophisticated Digital Systems Based on Integrated IT-Solutions, 09.04.02",
+  "education.period.master": "Sep 2024 – Present",
+  "education.title.bach": "Bachelor's Degree: National University of Science and Technology MISIS",
+  "education.subtitle.bach": "Applied Computer Science in Design, 09.03.03",
+  "education.period.bach": "Sep 2020 – Jun 2024",
+
+  "experience": "Experience",
+  "experience.tooltip": "Responsibilities",
+  "experience.first.title": "Startup Project: Tourism Service for Personalized Accommodation Selection",
+  "experience.first.period": "Oct 2022 – Sep 2023",
+  "experience.first.tooltip": "Development and debugging of the service architecture using React and Python|Task planning and distribution|Collaboration with external technical partners",
+  "experience.second.title": "Department of Information Technologies of Moscow",
+  "experience.second.period": "Feb 2024 – Jul 2024",
+  "experience.second.tooltip": "Development of React components for automation tools|Code refactoring and optimization|User interface issue resolution|Creation of technical documentation and operational guidelines",
+  "experience.third.title": "Astra Group of Companies",
+  "experience.third.period": "Aug 2024 – Present",
+
+  "certificates": "Certificates",
+  "certificates.open": "View Source",
+  "certificates.list": "LCT 2023. Finalist in the Moscow Mayor’s Competition «Recommender System for Personalized Tourist Packages»|Project work defense within the «Astra-Scholarship» program 2023, 2024|ALSE-1602 «Astra Linux Special Edition Administration Basics»|Course «System Engineering Practices», UrFU|English Language Test – CEFR level B2",
+
+  "contacts.title": "Get in Touch",
+  "contacts.updated": "Last Updated",
+  "contacts.author": "Made by"
+}

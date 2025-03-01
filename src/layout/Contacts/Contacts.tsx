@@ -1,8 +1,10 @@
 import React from "react";
 import { Layout, Flex, Space, Typography, Button } from "antd";
+import { useTranslation } from "react-i18next";
 import { ArrowOutwardRounded, Telegram, GitHub } from "@mui/icons-material";
 
 export const Contacts = () => {
+  const { t } = useTranslation();
   return (
     <Layout.Footer style={{ padding: 0 }} id="contact">
       <Flex
@@ -16,7 +18,7 @@ export const Contacts = () => {
             level={1}
             style={{ fontWeight: 650, fontSize: "52px" }}
           >
-            Get in Touch
+            {t("contacts.title")}
           </Typography.Title>
           <Space data-nosnippet>
             <Button
@@ -94,10 +96,10 @@ export const Contacts = () => {
           data-nosnippet
         >
           <Typography.Text style={{ fontSize: "12px" }}>
-            Last Updated: {process.env.REACT_APP_BUILD_DATE}
+            {`${t("contacts.updated")}: ${process.env.REACT_APP_BUILD_DATE}`}
           </Typography.Text>
           <Typography.Text style={{ fontSize: "12px" }}>
-            Made by Exsec
+            {t("contacts.author")} Exsec ©
           </Typography.Text>
         </Flex>
       </Flex>

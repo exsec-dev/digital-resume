@@ -29,7 +29,7 @@ export const TimePeriodPanel = ({
         size={isSmall ? 0 : 4}
         style={{ width: "100%" }}
       >
-        <Flex justify="space-between" align="start">
+        <Flex justify="space-between" align="start" gap={6}>
           <Typography.Text
             style={{
               fontWeight: 500,
@@ -57,14 +57,7 @@ export const TimePeriodPanel = ({
                   >
                     {info.title}
                   </Typography.Title>
-                  <Space
-                    direction="vertical"
-                    size={0}
-                    style={{
-                      borderLeft: "solid 2px var(--light-grey)",
-                      paddingLeft: "8px",
-                    }}
-                  >
+                  <Space direction="vertical" size={0}>
                     {info.text.map((item, i) => (
                       <Typography.Text
                         key={i}
