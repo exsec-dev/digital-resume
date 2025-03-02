@@ -15,7 +15,7 @@ export const Home = () => {
           style={{
             letterSpacing: "-0.02rem",
             lineHeight: "100%",
-            fontWeight: "550",
+            fontWeight: "700",
             marginBottom: "0",
             whiteSpace: "nowrap",
           }}
