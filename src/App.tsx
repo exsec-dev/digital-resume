@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { Layout, ConfigProvider, Flex } from "antd";
 import type { GetProps } from "antd";
+import { MainContext, Scheme } from "MainContext";
 import { RunningLine } from "components";
 import {
   Header,
@@ -52,23 +53,36 @@ const getTheme = (): ConfigProviderProps["theme"] => {
 };
 
 function App() {
+  const [scheme, setScheme] = useState<Scheme>(
+    (localStorage.getItem("scheme") as Scheme) || "light",
+  );
+
   return (
     <ConfigProvider theme={getTheme()}>
-      <Layout className="layout">
-        <Header />
-        <Layout.Content>
-          <Flex vertical className="chapters">
-            <Home />
-            <Projects />
-            <Expertise />
-            <Education />
-            <Experience />
-            <Certificates />
-            <RunningLine />
-          </Flex>
-        </Layout.Content>
-        <Contacts />
-      </Layout>
+      <MainContext.Provider
+        value={{
+          scheme,
+          toggleScheme: (value: Scheme) => {
+            setScheme(value);
+          },
+        }}
+      >
+        <Layout className="layout">
+          <Header />
+          <Layout.Content>
+            <Flex vertical className="chapters">
+              <Home />
+              <Projects />
+              <Expertise />
+              <Education />
+              <Experience />
+              <Certificates />
+              <RunningLine />
+            </Flex>
+          </Layout.Content>
+          <Contacts />
+        </Layout>
+      </MainContext.Provider>
     </ConfigProvider>
   );
 }

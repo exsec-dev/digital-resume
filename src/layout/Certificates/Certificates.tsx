@@ -1,7 +1,7 @@
 import React from "react";
 import { Space, Typography } from "antd";
 import { useTranslation } from "react-i18next";
-import { FiberManualRecord, OpenInNewRounded } from "@mui/icons-material";
+import { OpenInNewRounded, Add } from "@mui/icons-material";
 import { CollapsePanel } from "components";
 import "./index.scss";
 
@@ -36,8 +36,15 @@ export const Certificates = () => {
           {t("certificates.list")
             .split("|")
             .map((item: string, i: number) => (
-              <Space key={i} size={14} align="start">
-                <FiberManualRecord style={{ fontSize: "13px", opacity: 0.2 }} />
+              <Space key={i} size={8} align="start">
+                <Add
+                  style={{
+                    fontSize: "18px",
+                    opacity: 0.2,
+                    position: "relative",
+                    top: "2px",
+                  }}
+                />
                 <Typography.Text>{item}</Typography.Text>
               </Space>
             ))}

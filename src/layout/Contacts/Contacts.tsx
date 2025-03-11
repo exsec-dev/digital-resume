@@ -92,7 +92,11 @@ export const Contacts = () => {
         <Flex
           justify="space-between"
           align="end"
-          style={{ width: "100%", letterSpacing: "0.01rem" }}
+          style={{
+            width: "100%",
+            letterSpacing: "0.01rem",
+            opacity: "var(--light-opacity)",
+          }}
           data-nosnippet
         >
           <Typography.Text style={{ fontSize: "12px" }}>

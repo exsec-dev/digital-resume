@@ -1,31 +1,20 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import { useTranslation } from "react-i18next";
-import { Layout, Anchor, Flex, Space, Tooltip, Button, Typography } from "antd";
-import { Logo } from "components";
+import { MainContext } from "MainContext";
+import { Layout, Anchor, Flex, Tooltip, Button } from "antd";
+import { Logo, ThemeSwitcher } from "components";
 import {
   DownloadRounded,
-  ContrastRounded,
   MenuRounded,
-  MenuOpenRounded,
+  CloseRounded,
+  PublicRounded,
 } from "@mui/icons-material";
 import "./index.scss";
 
-const variables = {
-  "--primary-color": ["#f8f6f0", "#181614"],
-  "--bg-color": ["#181614", "#f8f6f0"],
-  "--icon-color": ["#262626", "#ffffff"],
-  "--text-weight": ["450", "350"],
-  "--secondary-color": ["#2a2a2a", "#e1e1e1"],
-  "--pop-color": ["#1c1b19", "#f9f7f3"],
-  "--light-grey": ["#4e4e4e", "#dbdbdb"],
-};
-
 export const Header = () => {
   const { t, i18n } = useTranslation();
+  const { scheme } = useContext(MainContext);
 
-  const [scheme, setScheme] = useState<string>(
-    localStorage.getItem("scheme") || "light",
-  );
   const [collapsed, setCollapsed] = useState<boolean>(true);
   const menuRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
@@ -58,16 +47,6 @@ export const Header = () => {
       mediaQuery.removeEventListener("change", handleScreenChange);
     };
   }, []);
-
-  useEffect(() => {
-    Object.entries(variables).forEach(([variable, values]) => {
-      document.documentElement.style.setProperty(
-        variable,
-        values[scheme === "dark" ? 0 : 1],
-      );
-    });
-    localStorage.setItem("scheme", scheme);
-  }, [scheme]);
 
   const downloadFile = () => {
     const link = document.createElement("a");
@@ -113,14 +92,14 @@ export const Header = () => {
         gap={8}
       >
         <Logo />
-        <Space
+        <Flex
           className="fixed-panel"
-          direction="vertical"
+          vertical
           style={{
             lineHeight: layout === "vertical" ? 0 : "unset",
             top: layout === "vertical" ? "22px" : undefined,
           }}
-          size={6}
+          gap={6}
         >
           {layout === "vertical" ? (
             <Button
@@ -135,7 +114,7 @@ export const Header = () => {
                     }}
                   />
                 ) : (
-                  <MenuOpenRounded
+                  <CloseRounded
                     style={{
                       fontSize: layout === "vertical" ? "22px" : "20px",
                     }}
@@ -146,7 +125,11 @@ export const Header = () => {
               style={{ padding: layout === "vertical" ? "20px" : "unset" }}
             />
           ) : null}
-          <Space className="button-container" size={6} direction={layout}>
+          <Flex
+            className="button-container"
+            gap={6}
+            vertical={layout === "vertical"}
+          >
             {layout === "horizontal" ? (
               <Anchor
                 className="navigation"
@@ -156,11 +139,11 @@ export const Header = () => {
                 key={`${i18n.language}${scheme}`}
               />
             ) : null}
-            <Space
+            <Flex
               className="features"
               ref={menuRef}
-              size={6}
-              direction={layout}
+              gap={6}
+              vertical={layout === "vertical"}
               style={{
                 lineHeight: layout === "vertical" ? 0 : "unset",
                 bottom: collapsed && layout === "vertical" ? "200px" : 0,
@@ -173,37 +156,17 @@ export const Header = () => {
                 <Button
                   type="primary"
                   shape="circle"
-                  icon={
-                    <DownloadRounded
-                      style={{
-                        fontSize: layout === "vertical" ? "22px" : "20px",
-                      }}
-                    />
-                  }
                   onClick={downloadFile}
                   style={{ padding: layout === "vertical" ? "20px" : "unset" }}
-                />
+                >
+                  <DownloadRounded
+                    style={{
+                      fontSize: layout === "vertical" ? "22px" : "20px",
+                    }}
+                  />
+                </Button>
               </Tooltip>
-              <Tooltip
-                title={t("header.tooltip.theme")}
-                placement={layout === "vertical" ? "left" : "bottom"}
-              >
-                <Button
-                  type="primary"
-                  shape="circle"
-                  icon={
-                    <ContrastRounded
-                      style={{
-                        fontSize: layout === "vertical" ? "22px" : "20px",
-                      }}
-                    />
-                  }
-                  onClick={() =>
-                    setScheme(scheme === "light" ? "dark" : "light")
-                  }
-                  style={{ padding: layout === "vertical" ? "20px" : "unset" }}
-                />
-              </Tooltip>
+              <ThemeSwitcher layout={layout} />
               <Tooltip
                 title={t("header.tooltip.lang")}
                 placement={layout === "vertical" ? "left" : "bottom"}
@@ -215,20 +178,19 @@ export const Header = () => {
                     fontWeight: 300,
                     padding: layout === "vertical" ? "20px" : "unset",
                     position: "relative",
-                    bottom: layout === "vertical" ? "0" : "2px",
                   }}
                   onClick={() => changeLanguage()}
                 >
-                  <Typography.Text
-                    style={{ fontWeight: 350, color: "var(--icon-color)" }}
-                  >
-                    {i18n.language === "ru" ? "EN" : "RU"}
-                  </Typography.Text>
+                  <PublicRounded
+                    style={{
+                      fontSize: layout === "vertical" ? "22px" : "20px",
+                    }}
+                  />
                 </Button>
               </Tooltip>
-            </Space>
-          </Space>
-        </Space>
+            </Flex>
+          </Flex>
+        </Flex>
       </Flex>
     </Layout.Header>
   );

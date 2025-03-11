@@ -1,6 +1,7 @@
 import React from "react";
 import { Typography, Image, Space } from "antd";
 import { ArrowOutwardRounded } from "@mui/icons-material";
+import { useTranslation } from "react-i18next";
 
 export const ProjectCard = ({
   src,
@@ -13,6 +14,8 @@ export const ProjectCard = ({
   title: string;
   text: string;
 }) => {
+  const { t } = useTranslation();
+
   return (
     <Space direction="vertical" size={16}>
       <Image
@@ -31,7 +34,7 @@ export const ProjectCard = ({
                   letterSpacing: "0.01rem",
                 }}
               >
-                View Source
+                {t("certificates.open")}
               </Typography.Text>
               <ArrowOutwardRounded
                 style={{ fontSize: "18px", marginTop: "2px" }}
