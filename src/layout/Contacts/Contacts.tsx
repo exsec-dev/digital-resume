@@ -20,7 +20,7 @@ export const Contacts = () => {
           >
             {t("contacts.title")}
           </Typography.Title>
-          <Space data-nosnippet>
+          <Space>
             <Button
               type="primary"
               icon={
@@ -97,7 +97,6 @@ export const Contacts = () => {
             letterSpacing: "0.01rem",
             opacity: "var(--light-opacity)",
           }}
-          data-nosnippet
         >
           <Typography.Text style={{ fontSize: "12px" }}>
             {`${t("contacts.updated")}: ${process.env.REACT_APP_BUILD_DATE}`}

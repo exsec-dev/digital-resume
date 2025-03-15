@@ -47,7 +47,7 @@ export const Home = () => {
           <Typography.Title level={5} style={{ margin: 0 }}>
             {t("home.contact")}
           </Typography.Title>
-          <Typography.Text data-nosnippet>
+          <Typography.Text>
             {t("home.name")}
             <br />
             <a

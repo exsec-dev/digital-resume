@@ -2,11 +2,12 @@ import React from "react";
 import { Typography, Flex, Col, Row } from "antd";
 import { ProjectCard } from "components";
 import { useTranslation } from "react-i18next";
-import proj1 from "../../assets/images/astraedu.png";
-import proj2 from "../../assets/images/wordle.png";
-import proj3 from "../../assets/images/pixel-cat.png";
-import proj4 from "../../assets/images/game-of-life.png";
-import proj5 from "../../assets/images/astrabot.png";
+import proj1 from "../../assets/images/astraedu.webp";
+import proj2 from "../../assets/images/wordle.webp";
+import proj3 from "../../assets/images/pixel-cat.webp";
+import proj4 from "../../assets/images/game-of-life.webp";
+import proj5 from "../../assets/images/astrabot.webp";
+import proj6 from "../../assets/images/idle.webp";
 import "./index.scss";
 
 export const Projects = () => {
@@ -43,6 +44,12 @@ export const Projects = () => {
       title: "AstraBot",
       text: t("projects.bot"),
     },
+    {
+      src: proj6,
+      url: "https://exsec.dev/idlebot",
+      title: "Idle Project",
+      text: t("projects.service"),
+    },
   ];
 
   return (
@@ -51,7 +58,7 @@ export const Projects = () => {
       <Row gutter={[0, 40]} justify="space-between" wrap>
         {previews.map((preview) => (
           <Col
-            key={preview.src}
+            key={preview.title}
             xs={{ flex: "100%" }}
             md={{ flex: "46%" }}
             lg={{ flex: "45%" }}
@@ -60,16 +67,18 @@ export const Projects = () => {
             <ProjectCard {...preview} />
           </Col>
         ))}
-        <Col
-          style={{
-            visibility: "hidden",
-            pointerEvents: "none",
-          }}
-          xs={{ flex: "100%" }}
-          md={{ flex: "46%" }}
-          lg={{ flex: "45%" }}
-          xl={{ flex: "30%" }}
-        />
+        {previews.length % 3 !== 0 ? (
+          <Col
+            style={{
+              visibility: "hidden",
+              pointerEvents: "none",
+            }}
+            xs={{ flex: "100%" }}
+            md={{ flex: "46%" }}
+            lg={{ flex: "45%" }}
+            xl={{ flex: "30%" }}
+          />
+        ) : null}
       </Row>
     </Flex>
   );

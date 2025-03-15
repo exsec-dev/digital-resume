@@ -15,6 +15,7 @@
   "projects.browser": "Browser Game",
   "projects.edu": "Educational Platform",
   "projects.bot": "Telegram Bot",
+  "projects.service": "Tourist Service",
 
   "expertise": "Expertise",
   "expertise.title.web": "Web Development",
