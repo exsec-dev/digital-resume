@@ -42,6 +42,7 @@ export const TimePeriodPanel = ({
           {info ? (
             <Popover
               placement="leftTop"
+              destroyTooltipOnHide
               content={
                 <Space
                   className="popover-container"

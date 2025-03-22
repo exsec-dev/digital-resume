@@ -152,6 +152,7 @@ export const Header = () => {
               <Tooltip
                 title={t("header.tooltip.pdf")}
                 placement={layout === "vertical" ? "left" : "bottom"}
+                destroyTooltipOnHide
               >
                 <Button
                   type="primary"
@@ -170,6 +171,7 @@ export const Header = () => {
               <Tooltip
                 title={t("header.tooltip.lang")}
                 placement={layout === "vertical" ? "left" : "bottom"}
+                destroyTooltipOnHide
               >
                 <Button
                   type="primary"

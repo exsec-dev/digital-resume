@@ -37,6 +37,7 @@ export const ThemeSwitcher = ({ layout }: ThemeSwitcherProps) => {
     <Tooltip
       title={t("header.tooltip.theme")}
       placement={layout === "vertical" ? "left" : "bottom"}
+      destroyTooltipOnHide
     >
       <Button
         type="primary"
