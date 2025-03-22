@@ -6,12 +6,12 @@ import { useTranslation } from "react-i18next";
 
 const variables = {
   "--primary-color": ["#f8f6f0", "#181614"],
-  "--bg-color": ["#161515", "#f8f6f0"],
+  "--bg-color": ["#121212", "#f8f6f0"],
   "--icon-color": ["#262626", "#fffcfa"],
   "--text-weight": ["450", "350"],
   "--button-bg": ["#ebeae4", "#1f1c19"],
   "--secondary-color": ["#2a2a2a", "#e1e1e1"],
-  "--pop-color": ["#1e1e1e", "#f6f6f4"],
+  "--pop-color": ["#1b1b1b", "#f6f6f4"],
   "--light-grey": ["#4e4e4e", "#dbdbdb"],
 };
 
