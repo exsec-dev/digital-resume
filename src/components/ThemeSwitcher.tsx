@@ -7,19 +7,19 @@ import { useTranslation } from "react-i18next";
 const variables = {
   "--primary-color": ["#f8f6f0", "#181614"],
   "--bg-color": ["#121212", "#f8f6f0"],
-  "--icon-color": ["#262626", "#fffcfa"],
+  "--header-color": ["rgba(10, 10, 10, 0.8)", "rgb(239 237 233 / 80%)"],
+  "--noise-bg": ["#161616", "#ebebeb"],
+  "--mobile-header-color": ["#121212a6", "#f8f6f0a6"],
+  "--icon-color": ["#fffcfa", "#262626"],
   "--text-weight": ["450", "350"],
+  "--header-weight": ["400", "525"],
   "--button-bg": ["#ebeae4", "#1f1c19"],
   "--secondary-color": ["#2a2a2a", "#e1e1e1"],
   "--pop-color": ["#1b1b1b", "#f6f6f4"],
   "--light-grey": ["#4e4e4e", "#dbdbdb"],
 };
 
-interface ThemeSwitcherProps {
-  layout: "vertical" | "horizontal";
-}
-
-export const ThemeSwitcher = ({ layout }: ThemeSwitcherProps) => {
+export const ThemeSwitcher = () => {
   const { t } = useTranslation();
   const { scheme, toggleScheme } = useContext(MainContext);
 
@@ -36,20 +36,15 @@ export const ThemeSwitcher = ({ layout }: ThemeSwitcherProps) => {
   return (
     <Tooltip
       title={t("header.tooltip.theme")}
-      placement={layout === "vertical" ? "left" : "bottom"}
+      placement="bottom"
       destroyTooltipOnHide
     >
       <Button
         type="primary"
         shape="circle"
         onClick={() => toggleScheme(scheme === "light" ? "dark" : "light")}
-        style={{ padding: layout === "vertical" ? "20px" : "unset" }}
       >
-        <DarkModeRounded
-          style={{
-            fontSize: layout === "vertical" ? "22px" : "20px",
-          }}
-        />
+        <DarkModeRounded />
       </Button>
     </Tooltip>
   );

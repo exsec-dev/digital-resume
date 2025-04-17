@@ -2,41 +2,119 @@
   flex-direction: column;
   align-items: flex-end;
   gap: 24px;
-}
 
-.title {
-  font-size: 64px !important;
-  width: 100%;
-}
+  h1 {
+    font-family: "Defectica";
+    line-height: 90%;
+    margin-bottom: 0;
+    white-space: nowrap;
+    font-size: 72px;
+    font-weight: 400;
+    width: 100%;
+    transition: color 0.2s var(--bezier-animation);
 
-.secondary {
-  border: 1.5px solid var(--secondary-color) !important;
-}
+    &:hover {
+      text-transform: lowercase;
+    }
 
-button span {
-  font-weight: 500;
+    span {
+      display: inline-flex;
+
+      &:nth-child(odd) {
+        width: 16px;
+      }
+
+      &:nth-child(even) {
+        width: 53px;
+      }
+    }
+  }
+
+  button {
+    border: 1.5px solid var(--secondary-color) !important;
+    height: 48px;
+    padding: 16px 20px !important;
+
+    span {
+      font-weight: 500;
+
+      svg {
+        font-size: 1rem;
+      }
+    }
+  }
 }
 
 .description {
   flex-direction: column;
   gap: 24px;
+
+  h5 {
+    margin: 0;
+  }
+
+  a {
+    letter-spacing: 0.02rem;
+    color: var(--primary-color) !important;
+    opacity: var(--light-opacity);
+  }
+
+  * {
+    transition: color 0.2s var(--bezier-animation);
+  }
+}
+
+@media (min-width: 400px) {
+  .title-container h1 {
+    font-size: 82px;
+
+    span {
+      &:nth-child(odd) {
+        width: 20px;
+      }
+
+      &:nth-child(even) {
+        width: 60px;
+      }
+    }
+  }
 }
 
 @media (min-width: 600px) {
   .title-container {
     flex-direction: row;
-  }
 
-  .title {
-    font-size: 90px !important;
-    width: unset;
+    h1 {
+      font-size: 100px;
+      width: unset;
+
+      span {
+        &:nth-child(odd) {
+          width: 20px;
+        }
+
+        &:nth-child(even) {
+          width: 73px;
+        }
+      }
+    }
   }
 }
 
 @media (min-width: 768px) {
-  .title {
-    font-size: 132px !important;
+  .title-container h1 {
+    font-size: 120px;
     width: unset;
+
+    span {
+      &:nth-child(odd) {
+        width: 25px;
+      }
+
+      &:nth-child(even) {
+        width: 88px;
+      }
+    }
   }
 
   .description {
@@ -54,9 +132,19 @@ button span {
 }
 
 @media (min-width: 1024px) {
-  .title {
-    font-size: 150px !important;
+  .title-container h1 {
+    font-size: 150px;
     width: unset;
+
+    span {
+      &:nth-child(odd) {
+        width: 34px;
+      }
+
+      &:nth-child(even) {
+        width: 110px;
+      }
+    }
   }
 
   .description {
@@ -65,7 +153,17 @@ button span {
 }
 
 @media (min-width: 1440px) {
-  .title {
-    font-size: 180px !important;
+  .title-container h1 {
+    font-size: 172px;
+
+    span {
+      &:nth-child(odd) {
+        width: 40px;
+      }
+
+      &:nth-child(even) {
+        width: 126px;
+      }
+    }
   }
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { Typography, Flex, Col, Row } from "antd";
 import { ProjectCard } from "components";
 import { useTranslation } from "react-i18next";
@@ -8,49 +8,51 @@ import proj3 from "../../assets/images/pixel-cat.webp";
 import proj4 from "../../assets/images/game-of-life.webp";
 import proj5 from "../../assets/images/astrabot.webp";
 import proj6 from "../../assets/images/idle.webp";
-import "./index.scss";
 
 export const Projects = () => {
   const { t } = useTranslation();
 
-  const previews = [
-    {
-      src: proj1,
-      url: "https://exsec.dev/astraedu",
-      title: "AstraEdu",
-      text: t("projects.edu"),
-    },
-    {
-      src: proj2,
-      url: "https://exsec.dev/wordle",
-      title: "Wordle",
-      text: t("projects.browser"),
-    },
-    {
-      src: proj3,
-      url: "https://exsec.dev/pixel-cat",
-      title: "Pixel Cat",
-      text: t("projects.browser"),
-    },
-    {
-      src: proj4,
-      url: "https://exsec.dev/game-of-life",
-      title: "Game of Life",
-      text: t("projects.browser"),
-    },
-    {
-      src: proj5,
-      url: "https://t.me/AstraEdu_bot",
-      title: "AstraBot",
-      text: t("projects.bot"),
-    },
-    {
-      src: proj6,
-      url: "https://exsec.dev/idlebot",
-      title: "Idle Project",
-      text: t("projects.service"),
-    },
-  ];
+  const previews = useMemo(
+    () => [
+      {
+        src: proj1,
+        url: "https://exsec.dev/astraedu",
+        title: "AstraEdu",
+        text: t("projects.edu"),
+      },
+      {
+        src: proj2,
+        url: "https://exsec.dev/wordle",
+        title: "Wordle",
+        text: t("projects.browser"),
+      },
+      {
+        src: proj3,
+        url: "https://exsec.dev/pixel-cat",
+        title: "Pixel Cat",
+        text: t("projects.browser"),
+      },
+      {
+        src: proj4,
+        url: "https://exsec.dev/game-of-life",
+        title: "Game of Life",
+        text: t("projects.browser"),
+      },
+      {
+        src: proj5,
+        url: "https://t.me/AstraEdu_bot",
+        title: "AstraBot",
+        text: t("projects.bot"),
+      },
+      {
+        src: proj6,
+        url: "https://exsec.dev/idlebot",
+        title: "Idle Project",
+        text: t("projects.service"),
+      },
+    ],
+    [t],
+  );
 
   return (
     <Flex id="projects" vertical gap={16}>

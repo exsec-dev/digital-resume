@@ -1,5 +1,5 @@
 import React from "react";
-import { Typography, Space, Divider, Flex, Popover } from "antd";
+import { Typography, Space, Divider, Flex, Popover, Button } from "antd";
 import { InfoCircleOutlined } from "@ant-design/icons";
 
 export const TimePeriodPanel = ({
@@ -19,29 +19,23 @@ export const TimePeriodPanel = ({
   };
 }) => {
   return (
-    <Space
-      direction="vertical"
-      size={isSmall ? 6 : 8}
-      style={{ width: "100%" }}
-    >
+    <Space className="timeperiod" direction="vertical" size={isSmall ? 6 : 8}>
       <Space
+        className="timeperiod-data"
         direction="vertical"
         size={isSmall ? 0 : 4}
-        style={{ width: "100%" }}
       >
         <Flex justify="space-between" align="start" gap={6}>
           <Typography.Text
-            style={{
-              fontWeight: 500,
-              fontSize: isSmall ? 15 : 16,
-              lineHeight: "24px",
-            }}
+            className="timeperiod-data-title"
+            style={{ fontSize: isSmall ? 15 : 16 }}
           >
             {title}
           </Typography.Text>
           {info ? (
             <Popover
               placement="leftTop"
+              trigger="hover"
               destroyTooltipOnHide
               content={
                 <Space
@@ -49,60 +43,30 @@ export const TimePeriodPanel = ({
                   direction="vertical"
                   size={2}
                 >
-                  <Typography.Title
-                    style={{
-                      fontWeight: 475,
-                      fontSize: "14px",
-                      letterSpacing: "0.02rem",
-                    }}
-                  >
-                    {info.title}
-                  </Typography.Title>
+                  <Typography.Title level={5}>{info.title}</Typography.Title>
                   <Space direction="vertical" size={0}>
                     {info.text.map((item, i) => (
-                      <Typography.Text
-                        key={i}
-                        style={{
-                          fontSize: "12px",
-                          letterSpacing: "0.02rem",
-                          opacity: 0.7,
-                          display: "inline-block",
-                        }}
-                      >
-                        {item}
-                      </Typography.Text>
+                      <Typography.Text key={i}>{item}</Typography.Text>
                     ))}
                   </Space>
                 </Space>
               }
-              trigger="hover"
             >
-              <InfoCircleOutlined
-                className="popover-icon"
-                style={{ opacity: "0.4", paddingTop: "5px" }}
-              />
+              <Button type="text" shape="circle" size="small">
+                <InfoCircleOutlined />
+              </Button>
             </Popover>
           ) : null}
         </Flex>
-        <Typography.Text
-          style={{ letterSpacing: "0.02rem", lineHeight: "20px" }}
-        >
+        <Typography.Text className="timeperiod-data-additional">
           {subtitle}
         </Typography.Text>
       </Space>
-      <Divider
-        style={{
-          margin: 0,
-          opacity: 0.2,
-          borderBlockStart: "1.5px solid var(--primary-color)",
-        }}
-      />
+      <Divider />
       <Typography.Text
         italic
-        style={{
-          opacity: "var(--light-opacity)",
-          fontSize: isSmall ? 13 : 14,
-        }}
+        className="timeperiod-period"
+        style={{ fontSize: isSmall ? 13 : 14 }}
       >
         {period}
       </Typography.Text>

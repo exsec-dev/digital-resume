@@ -31,7 +31,7 @@ const getTheme = (): ConfigProviderProps["theme"] => {
       },
       Anchor: {
         colorText: "var(--bg-color)",
-        linkPaddingInlineStart: 36,
+        linkPaddingInlineStart: 16,
       },
       Button: {
         primaryShadow: "none",

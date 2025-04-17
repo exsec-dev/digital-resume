@@ -2,12 +2,12 @@
   "header.menu.home": "Главное",
   "header.menu.projects": "Проекты",
   "header.menu.about": "Обо мне",
-  "header.tooltip.pdf": "Скачать PDF",
+  "header.tooltip.pdf": "Загрузить",
   "header.tooltip.theme": "Сменить тему",
   "header.tooltip.lang": "Перевести",
 
   "home.scroll": "КОНТАКТЫ",
-  "home.contact": "Всегда на связи ツ",
+  "home.contact": "Всегда на связи",
   "home.name": "Екатерина Прожирко",
   "home.description": "Frontend-разработчик с\u00A0коммерческим опытом, специализируюсь на\u00A0современных, адаптивных и\u00A0удобных веб-интерфейсах. Постоянно совершенствуюсь и\u00A0расширяю профессиональные компетенции.",
 
@@ -49,5 +49,5 @@
 
   "contacts.title": "Контакты",
   "contacts.updated": "Обновлено",
-  "contacts.author": "Разработано"
+  "contacts.author": "Сделано"
 }

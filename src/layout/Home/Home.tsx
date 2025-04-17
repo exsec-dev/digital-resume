@@ -10,28 +10,19 @@ export const Home = () => {
   return (
     <Flex id="home" vertical gap={48}>
       <Flex className="title-container" justify="space-between">
-        <Typography.Title
-          className="title"
-          style={{
-            letterSpacing: "-0.02rem",
-            lineHeight: "100%",
-            fontWeight: "700",
-            marginBottom: "0",
-            whiteSpace: "nowrap",
-          }}
-        >
-          Digital
+        <Typography.Title>
+          D<span>I</span>
+          <span>G</span>
+          <span>I</span>TAL
           <br />
-          Résumé
+          RESUME
         </Typography.Title>
         <Button
-          className="secondary"
           color="default"
           variant="filled"
           shape="round"
           iconPosition="end"
-          icon={<ArrowDownwardRounded style={{ fontSize: "1rem" }} />}
-          style={{ height: "48px", padding: "16px 20px" }}
+          icon={<ArrowDownwardRounded />}
           onClick={() => {
             const element = document.getElementById("contact");
             if (element) {
@@ -44,22 +35,13 @@ export const Home = () => {
       </Flex>
       <Flex className="description" justify="space-between" align="start">
         <Space direction="vertical" size={4} style={{ whiteSpace: "nowrap" }}>
-          <Typography.Title level={5} style={{ margin: 0 }}>
-            {t("home.contact")}
-          </Typography.Title>
+          <Typography.Title level={5}>{t("home.contact")}</Typography.Title>
           <Typography.Text>
             {t("home.name")}
             <br />
-            <a
-              href="mailto:exsec.b@gmail.com"
-              style={{
-                letterSpacing: "0.02rem",
-                color: "var(--primary-color)",
-                opacity: "var(--light-opacity)",
-              }}
-            >
+            <Typography.Link href="mailto:exsec.b@gmail.com">
               exsec.b@gmail.com
-            </a>
+            </Typography.Link>
           </Typography.Text>
         </Space>
         <Typography.Text style={{ minWidth: "300px", maxWidth: "600px" }}>

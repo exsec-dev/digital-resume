@@ -1,5 +1,13 @@
+@font-face {
+  font-family: "Defectica";
+  src: url("./assets/fonts/Defectica.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+
 :root {
   --light-opacity: 0.6;
+  --bezier-animation: cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
 ::-webkit-scrollbar {
@@ -7,16 +15,17 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: transparent;
+  background: var(--noise-bg);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #2a2a2a;
+  background: #212121;
 }
 
 body {
   background: var(--bg-color);
   overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
 }
 
 ::selection {
@@ -33,23 +42,33 @@ body {
   inset: 0;
   pointer-events: none;
   position: fixed;
+  z-index: 3000;
 
   & div {
     width: 100%;
     height: 100%;
-    background-size: 140px;
+    background-size: 110px;
     background-repeat: repeat;
-    background-image: url(./assets/images/noise.png);
+    background-image: url(./assets/images/noise.webp);
     opacity: 0.05;
   }
 }
 
 .layout {
-  padding: 0 28px;
+  padding: 130px 28px 0;
+  transition: background-color 0.2s var(--bezier-animation);
   gap: 0;
 
   .chapters {
     gap: 56px;
+
+    h3 {
+      transition: color 0.2s var(--bezier-animation);
+    }
+
+    svg {
+      transition: color 0.2s var(--bezier-animation);
+    }
   }
 }
 
@@ -65,6 +84,8 @@ body {
   display: flex;
   align-items: center;
   overflow: hidden;
+  transition: all 0.2s var(--bezier-animation);
+  user-select: none;
 
   .line {
     color: var(--bg-color);
@@ -73,7 +94,14 @@ body {
     white-space: nowrap;
     display: inline-block;
     animation: run 36s linear infinite;
+    margin-right: 96px !important;
+    text-transform: uppercase;
+    font-weight: 600;
   }
+}
+
+.preview-mask {
+  border-radius: 26px;
 }
 
 @keyframes run {
@@ -81,7 +109,7 @@ body {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-100%);
+    transform: translateX(calc(-100% - 96px));
   }
 }
 
@@ -93,13 +121,13 @@ body {
 
 @media (min-width: 600px) {
   .layout {
-    padding: 0 32px;
+    padding: 130px 32px 0;
   }
 }
 
 @media (min-width: 768px) {
   .layout {
-    padding: 0 50px;
+    padding: 130px 50px 0;
     gap: 30px;
 
     .chapters {
@@ -110,7 +138,7 @@ body {
 
 @media (min-width: 1024px) {
   .layout {
-    padding: 0 80px;
+    padding: 130px 80px 0;
 
     .chapters {
       gap: 72px;
@@ -120,6 +148,6 @@ body {
 
 @media (min-width: 1440px) {
   .layout {
-    padding: 0 100px;
+    padding: 130px 100px 0;
   }
 }

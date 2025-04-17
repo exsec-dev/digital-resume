@@ -1,52 +1,12 @@
-import React, { useState, useEffect, useRef, useContext } from "react";
+import React from "react";
 import { useTranslation } from "react-i18next";
-import { MainContext } from "MainContext";
 import { Layout, Anchor, Flex, Tooltip, Button } from "antd";
 import { Logo, ThemeSwitcher } from "components";
-import {
-  DownloadRounded,
-  MenuRounded,
-  CloseRounded,
-  PublicRounded,
-} from "@mui/icons-material";
+import { DownloadRounded, PublicRounded } from "@mui/icons-material";
 import "./index.scss";
 
 export const Header = () => {
   const { t, i18n } = useTranslation();
-  const { scheme } = useContext(MainContext);
-
-  const [collapsed, setCollapsed] = useState<boolean>(true);
-  const menuRef = useRef<HTMLDivElement>(null);
-  const buttonRef = useRef<HTMLButtonElement>(null);
-
-  const [layout, setLayout] = useState<"vertical" | "horizontal">(
-    window.matchMedia("(min-width: 768px)").matches ? "horizontal" : "vertical",
-  );
-
-  const handleClickOutside = (event: MouseEvent) => {
-    if (
-      menuRef.current &&
-      !menuRef.current.contains(event.target as Node) &&
-      buttonRef.current &&
-      !buttonRef.current.contains(event.target as Node)
-    ) {
-      setCollapsed(true);
-    }
-  };
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia("(min-width: 768px)");
-    const handleScreenChange = (event: MediaQueryListEvent) => {
-      setLayout(event.matches ? "horizontal" : "vertical");
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-    mediaQuery.addEventListener("change", handleScreenChange);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-      mediaQuery.removeEventListener("change", handleScreenChange);
-    };
-  }, []);
 
   const downloadFile = () => {
     const link = document.createElement("a");
@@ -65,7 +25,7 @@ export const Header = () => {
     }
   };
 
-  const parts = [
+  const items = [
     {
       key: "home",
       href: "#home",
@@ -85,112 +45,36 @@ export const Header = () => {
 
   return (
     <Layout.Header className="header">
-      <Flex
-        vertical={layout === "horizontal"}
-        align={layout === "vertical" ? "start" : "center"}
-        justify="space-between"
-        gap={8}
-      >
+      <Flex justify="space-between" align="center" style={{ height: "100%" }}>
         <Logo />
-        <Flex
-          className="fixed-panel"
-          vertical
-          style={{
-            lineHeight: layout === "vertical" ? 0 : "unset",
-            top: layout === "vertical" ? "22px" : undefined,
-          }}
-          gap={6}
-        >
-          {layout === "vertical" ? (
-            <Button
-              ref={buttonRef}
-              type="primary"
-              shape="circle"
-              icon={
-                collapsed ? (
-                  <MenuRounded
-                    style={{
-                      fontSize: layout === "vertical" ? "22px" : "20px",
-                    }}
-                  />
-                ) : (
-                  <CloseRounded
-                    style={{
-                      fontSize: layout === "vertical" ? "22px" : "20px",
-                    }}
-                  />
-                )
-              }
-              onClick={() => setCollapsed(!collapsed)}
-              style={{ padding: layout === "vertical" ? "20px" : "unset" }}
-            />
-          ) : null}
-          <Flex
-            className="button-container"
-            gap={6}
-            vertical={layout === "vertical"}
-          >
-            {layout === "horizontal" ? (
-              <Anchor
-                className="navigation"
-                items={parts}
-                bounds={240}
-                direction="horizontal"
-                key={`${i18n.language}${scheme}`}
-              />
-            ) : null}
-            <Flex
-              className="features"
-              ref={menuRef}
-              gap={6}
-              vertical={layout === "vertical"}
-              style={{
-                lineHeight: layout === "vertical" ? 0 : "unset",
-                bottom: collapsed && layout === "vertical" ? "200px" : 0,
-              }}
+        <Flex gap={18}>
+          <Anchor
+            className="navigation"
+            items={items}
+            bounds={240}
+            targetOffset={100}
+            direction="horizontal"
+          />
+          <Flex className="button-container">
+            <ThemeSwitcher />
+            <Tooltip
+              title={t("header.tooltip.lang")}
+              placement="bottom"
+              destroyTooltipOnHide
             >
-              <Tooltip
-                title={t("header.tooltip.pdf")}
-                placement={layout === "vertical" ? "left" : "bottom"}
-                destroyTooltipOnHide
-              >
-                <Button
-                  type="primary"
-                  shape="circle"
-                  onClick={downloadFile}
-                  style={{ padding: layout === "vertical" ? "20px" : "unset" }}
-                >
-                  <DownloadRounded
-                    style={{
-                      fontSize: layout === "vertical" ? "22px" : "20px",
-                    }}
-                  />
-                </Button>
-              </Tooltip>
-              <ThemeSwitcher layout={layout} />
-              <Tooltip
-                title={t("header.tooltip.lang")}
-                placement={layout === "vertical" ? "left" : "bottom"}
-                destroyTooltipOnHide
-              >
-                <Button
-                  type="primary"
-                  shape="circle"
-                  style={{
-                    fontWeight: 300,
-                    padding: layout === "vertical" ? "20px" : "unset",
-                    position: "relative",
-                  }}
-                  onClick={() => changeLanguage()}
-                >
-                  <PublicRounded
-                    style={{
-                      fontSize: layout === "vertical" ? "22px" : "20px",
-                    }}
-                  />
-                </Button>
-              </Tooltip>
-            </Flex>
+              <Button type="primary" shape="circle" onClick={changeLanguage}>
+                <PublicRounded />
+              </Button>
+            </Tooltip>
+            <Button
+              className="download"
+              type="primary"
+              onClick={downloadFile}
+              iconPosition="end"
+              icon={<DownloadRounded />}
+            >
+              {t("header.tooltip.pdf")}
+            </Button>
           </Flex>
         </Flex>
       </Flex>
