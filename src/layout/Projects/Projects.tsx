@@ -1,5 +1,6 @@
 import React, { useMemo } from "react";
-import { Typography, Flex, Col, Row } from "antd";
+import { Typography, Flex, Col, Row, Collapse, Space } from "antd";
+import { RightOutlined, FolderOpenFilled } from "@ant-design/icons";
 import { ProjectCard } from "components";
 import { useTranslation } from "react-i18next";
 import proj1 from "../../assets/images/astraedu.webp";
@@ -27,15 +28,21 @@ export const Projects = () => {
         text: t("projects.browser"),
       },
       {
-        src: proj3,
-        url: "https://exsec.dev/pixel-cat",
-        title: "Pixel Cat",
-        text: t("projects.browser"),
-      },
-      {
         src: proj4,
         url: "https://exsec.dev/game-of-life",
         title: "Game of Life",
+        text: t("projects.browser"),
+      },
+    ],
+    [t],
+  );
+
+  const previewsArchive = useMemo(
+    () => [
+      {
+        src: proj3,
+        url: "https://exsec.dev/pixel-cat",
+        title: "Pixel Cat",
         text: t("projects.browser"),
       },
       {
@@ -82,6 +89,78 @@ export const Projects = () => {
           />
         ) : null}
       </Row>
+      <Collapse
+        items={[
+          {
+            key: "archive",
+            label: (
+              <Space
+                direction="vertical"
+                size={0}
+                style={{ width: "100%", padding: "8px 16px" }}
+              >
+                <Typography.Title
+                  level={5}
+                  style={{
+                    opacity: 0.7,
+                    marginBottom: 0,
+                    fontSize: "15px",
+                    transition: "color 0.2s var(--bezier-animation)",
+                  }}
+                >
+                  <FolderOpenFilled style={{ marginRight: 6 }} />
+                  {t("projects.archive")}
+                </Typography.Title>
+              </Space>
+            ),
+            children: (
+              <Row
+                gutter={[0, 40]}
+                justify="space-between"
+                wrap
+                style={{ padding: "20px 28px 24px" }}
+              >
+                {previewsArchive.map((preview) => (
+                  <Col
+                    key={preview.title}
+                    xs={{ flex: "100%" }}
+                    md={{ flex: "46%" }}
+                    lg={{ flex: "45%" }}
+                    xl={{ flex: "30%" }}
+                  >
+                    <ProjectCard {...preview} />
+                  </Col>
+                ))}
+                {previewsArchive.length % 3 !== 0 ? (
+                  <Col
+                    style={{
+                      visibility: "hidden",
+                      pointerEvents: "none",
+                    }}
+                    xs={{ flex: "100%" }}
+                    md={{ flex: "46%" }}
+                    lg={{ flex: "45%" }}
+                    xl={{ flex: "30%" }}
+                  />
+                ) : null}
+              </Row>
+            ),
+          },
+        ]}
+        size="small"
+        expandIconPosition="end"
+        style={{
+          marginTop: 32,
+          backgroundColor: "var(--pop-color)",
+        }}
+        expandIcon={({ isActive }) => (
+          <RightOutlined
+            id="archive"
+            rotate={isActive ? 90 : 0}
+            style={{ top: 1, right: 12, position: "relative" }}
+          />
+        )}
+      />
     </Flex>
   );
 };

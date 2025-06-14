@@ -117,6 +117,17 @@ body {
   font-size: 16px !important;
   margin-top: 12px;
   opacity: var(--light-opacity);
+
+  &#archive {
+    font-size: 14px !important;
+  }
+}
+
+.ant-collapse,
+.ant-collapse-content.ant-collapse-content-active,
+.ant-collapse-content.ant-collapse-content-inactive {
+  border-color: var(--light-grey);
+  transition: all 0.2s var(--bezier-animation);
 }
 
 @media (min-width: 600px) {

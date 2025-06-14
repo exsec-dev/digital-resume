@@ -43,7 +43,8 @@ const getTheme = (): ConfigProviderProps["theme"] => {
       },
       Collapse: {
         contentPadding: 0,
-        headerPadding: 0,
+        headerPadding: "0 !important",
+        contentBg: "transparent",
       },
       Popover: {
         colorBgElevated: "var(--pop-color)",

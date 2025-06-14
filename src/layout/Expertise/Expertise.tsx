@@ -58,7 +58,7 @@ export const Expertise = () => {
                 style={{
                   margin: 0,
                   opacity: 0.2,
-                  borderBlockStart: "1.5px solid var(--primary-color)",
+                  borderBlockStart: "0.1rem solid var(--primary-color)",
                 }}
               />
               <Flex wrap gap={6} style={{ marginTop: "8px" }}>

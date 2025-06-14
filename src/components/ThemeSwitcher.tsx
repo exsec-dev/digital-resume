@@ -15,7 +15,7 @@ const variables = {
   "--header-weight": ["400", "525"],
   "--button-bg": ["#ebeae4", "#1f1c19"],
   "--secondary-color": ["#2a2a2a", "#e1e1e1"],
-  "--pop-color": ["#1b1b1b", "#f6f6f4"],
+  "--pop-color": ["#1b1b1b", "#f8f7f4"],
   "--light-grey": ["#4e4e4e", "#dbdbdb"],
 };
 
