@@ -105,7 +105,6 @@ export const Projects = () => {
                     opacity: 0.7,
                     marginBottom: 0,
                     fontSize: "15px",
-                    transition: "color 0.2s var(--bezier-animation)",
                   }}
                 >
                   <FolderOpenFilled style={{ marginRight: 6 }} />
