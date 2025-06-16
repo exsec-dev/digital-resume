@@ -56,7 +56,7 @@ body {
 
 .layout {
   padding: 130px 28px 0;
-  transition: background-color 0.2s var(--bezier-animation);
+  transition: background-color 0.4s var(--bezier-animation);
   gap: 0;
 
   .chapters {
@@ -76,7 +76,7 @@ body {
   display: flex;
   align-items: center;
   overflow: hidden;
-  transition: all 0.2s var(--bezier-animation);
+  transition: all 0.4s var(--bezier-animation);
   user-select: none;
 
   .line {
@@ -119,22 +119,22 @@ body {
 .ant-collapse-content.ant-collapse-content-active,
 .ant-collapse-content.ant-collapse-content-inactive {
   border-color: var(--light-grey);
-  transition: all 0.2s var(--bezier-animation);
+  transition: all 0.4s var(--bezier-animation);
 }
 
 .ant-divider-horizontal,
 .ant-timeline-item-tail {
-  transition: border-color 0.2s var(--bezier-animation);
+  transition: border-color 0.4s var(--bezier-animation);
 }
 
 .ant-typography {
-  transition: color 0.2s var(--bezier-animation);
+  transition: color 0.4s var(--bezier-animation);
 }
 
 svg {
   transition:
-    color 0.2s var(--bezier-animation),
-    fill 0.2s var(--bezier-animation) !important;
+    color 0.4s var(--bezier-animation),
+    fill 0.4s var(--bezier-animation) !important;
 }
 
 @media (min-width: 600px) {

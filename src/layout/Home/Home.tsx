@@ -1,7 +1,21 @@
 import React from "react";
-import { Typography, Flex, Button, Space, Tag, theme } from "antd";
+import {
+  Typography,
+  Flex,
+  Button,
+  Space,
+  Tag,
+  theme,
+  Popover,
+  Image,
+} from "antd";
 import { useTranslation } from "react-i18next";
-import { ArrowDownwardRounded } from "@mui/icons-material";
+import {
+  ArrowDownwardRounded,
+  BadgeOutlined,
+  LocationOnOutlined,
+} from "@mui/icons-material";
+import Avatar from "../../assets/images/Me.png";
 import "./index.scss";
 
 const { useToken } = theme;
@@ -39,17 +53,59 @@ export const Home = () => {
               element.scrollIntoView({ behavior: "smooth" });
             }
           }}
+          style={{
+            transition:
+              "border-color 0.4s var(--bezier-animation), color 0.4s var(--bezier-animation)",
+          }}
         >
           {t("home.scroll")}
         </Button>
       </Flex>
       <Flex className="description" justify="space-between" align="start">
-        <Space direction="vertical" size={4} style={{ whiteSpace: "nowrap" }}>
+        <Space direction="vertical" size={0} style={{ whiteSpace: "nowrap" }}>
           <Typography.Title level={5}>{t("home.contact")}</Typography.Title>
           <Typography.Text>
-            {t("home.name")}
+            <Space size={4}>
+              {t("home.name")}
+              <Popover
+                placement="rightTop"
+                trigger="hover"
+                destroyTooltipOnHide
+                classNames={{
+                  body: "image-popover",
+                }}
+                content={
+                  <Space
+                    className="avatar-container"
+                    direction="vertical"
+                    size={2}
+                  >
+                    <Image src={Avatar} preview={false} />
+                    <Space
+                      size={2}
+                      style={{ width: "100%", justifyContent: "flex-end" }}
+                    >
+                      <Typography.Text>{t("home.place")}</Typography.Text>
+                      <LocationOnOutlined />
+                    </Space>
+                  </Space>
+                }
+              >
+                <Button type="text" style={{ padding: "2px", height: 25 }}>
+                  <BadgeOutlined
+                    style={{
+                      fontSize: "21px",
+                      opacity: "var(--light-opacity)",
+                    }}
+                  />
+                </Button>
+              </Popover>
+            </Space>
             <br />
-            <Typography.Link href="mailto:exsec.b@gmail.com">
+            <Typography.Link
+              href="mailto:exsec.b@gmail.com"
+              style={{ transition: "color 0.4s var(--bezier-animation)" }}
+            >
               exsec.b@gmail.com
             </Typography.Link>
           </Typography.Text>

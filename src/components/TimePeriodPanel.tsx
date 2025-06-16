@@ -37,6 +37,9 @@ export const TimePeriodPanel = ({
               placement="leftTop"
               trigger="hover"
               destroyTooltipOnHide
+              classNames={{
+                body: "info-popover",
+              }}
               content={
                 <Space
                   className="popover-container"

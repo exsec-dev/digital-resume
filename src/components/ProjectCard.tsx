@@ -45,7 +45,7 @@ export const ProjectCard = ({
         style={{
           border: "1px solid var(--secondary-color)",
           borderRadius: "26px",
-          transition: "border-color 0.2s var(--bezier-animation)",
+          transition: "border-color 0.4s var(--bezier-animation)",
         }}
       />
       <Space direction="vertical" size={0}>

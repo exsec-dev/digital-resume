@@ -8,7 +8,7 @@
   padding: 10px 28px;
   backdrop-filter: blur(8px);
   background-color: var(--mobile-header-color);
-  transition: background-color 0.2s var(--bezier-animation);
+  transition: background-color 0.4s var(--bezier-animation);
 
   .logo {
     width: 3.5rem;
@@ -21,6 +21,9 @@
       background: none !important;
       color: var(--bg-color);
       border-radius: 8px;
+      transition:
+        background-color 0.4s var(--bezier-animation),
+        color 0.4s var(--bezier-animation);
 
       &:hover {
         color: var(--bg-color) !important;

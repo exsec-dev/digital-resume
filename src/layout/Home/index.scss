@@ -59,7 +59,29 @@
   }
 
   * {
-    transition: color 0.2s var(--bezier-animation);
+    transition: color 0.4s var(--bezier-animation);
+  }
+}
+
+.image-popover {
+  padding: 8px !important;
+
+  .avatar-container {
+    width: 120px;
+
+    span {
+      font-size: 10px;
+      opacity: var(--light-opacity);
+      letter-spacing: 0.02rem;
+      font-weight: 450;
+    }
+
+    svg {
+      font-size: 14px;
+      position: relative;
+      top: 2px;
+      opacity: var(--light-opacity);
+    }
   }
 }
 
@@ -76,6 +98,10 @@
         width: 60px;
       }
     }
+  }
+
+  .image-popover .avatar-container {
+    width: 150px;
   }
 }
 
@@ -97,6 +123,10 @@
         }
       }
     }
+  }
+
+  .image-popover .avatar-container {
+    width: 160px;
   }
 }
 
@@ -127,6 +157,10 @@
     h5.ant-typography {
       font-size: 18px;
     }
+  }
+
+  .image-popover .avatar-container {
+    width: 180px;
   }
 }
 

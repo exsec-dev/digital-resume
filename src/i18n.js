@@ -1,7 +1,6 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
-
 import en from "./locales/en.json";
 import ru from "./locales/ru.json";
 
@@ -14,7 +13,7 @@ i18n
       ru: { translation: ru }
     },
     detection: {
-      order: ["localStorage", "navigator", "htmlTag"],
+      order: ["localStorage", "htmlTag"],
       caches: ["localStorage"],
     },
     fallbackLng: "en",
