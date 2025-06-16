@@ -23,11 +23,7 @@ export const Experience = () => {
               isSmall
             />
           }
-          pendingDot={
-            <LoadingOutlined
-              style={{ color: "var(--primary-color)", opacity: 0.3 }}
-            />
-          }
+          pendingDot={<LoadingOutlined style={{ opacity: 0.3 }} />}
           reverse
           items={[
             {

@@ -1,6 +1,6 @@
-import React, { useMemo } from "react";
-import { Typography, Flex, Col, Row, Collapse, Space } from "antd";
-import { RightOutlined, FolderOpenFilled } from "@ant-design/icons";
+import React, { useMemo, useState } from "react";
+import { Typography, Flex, Col, Row, Collapse } from "antd";
+import { FolderOpenFilled, FolderFilled } from "@ant-design/icons";
 import { ProjectCard } from "components";
 import { useTranslation } from "react-i18next";
 import proj1 from "../../assets/images/astraedu.webp";
@@ -10,8 +10,24 @@ import proj4 from "../../assets/images/game-of-life.webp";
 import proj5 from "../../assets/images/astrabot.webp";
 import proj6 from "../../assets/images/idle.webp";
 
+const EmptyCard = () => {
+  return (
+    <Col
+      style={{
+        visibility: "hidden",
+        pointerEvents: "none",
+      }}
+      xs={{ flex: "100%" }}
+      md={{ flex: "46%" }}
+      lg={{ flex: "45%" }}
+      xl={{ flex: "30%" }}
+    />
+  );
+};
+
 export const Projects = () => {
   const { t } = useTranslation();
+  const [isArchiveOpened, setIsArchiveOpened] = useState<boolean>(false);
 
   const previews = useMemo(
     () => [
@@ -76,41 +92,33 @@ export const Projects = () => {
             <ProjectCard {...preview} />
           </Col>
         ))}
-        {previews.length % 3 !== 0 ? (
-          <Col
-            style={{
-              visibility: "hidden",
-              pointerEvents: "none",
-            }}
-            xs={{ flex: "100%" }}
-            md={{ flex: "46%" }}
-            lg={{ flex: "45%" }}
-            xl={{ flex: "30%" }}
-          />
-        ) : null}
+        {previews.length % 3 !== 0 ? <EmptyCard /> : null}
       </Row>
       <Collapse
+        className="collapse-panel--small"
+        activeKey={isArchiveOpened ? "archive" : undefined}
+        onChange={() => setIsArchiveOpened(!isArchiveOpened)}
         items={[
           {
             key: "archive",
             label: (
-              <Space
-                direction="vertical"
-                size={0}
-                style={{ width: "100%", padding: "8px 16px" }}
+              <Typography.Title
+                level={5}
+                style={{
+                  opacity: 0.7,
+                  marginBottom: 0,
+                  fontSize: "15px",
+                  padding: "8px 16px",
+                  width: "fit-content",
+                }}
               >
-                <Typography.Title
-                  level={5}
-                  style={{
-                    opacity: 0.7,
-                    marginBottom: 0,
-                    fontSize: "15px",
-                  }}
-                >
-                  <FolderOpenFilled style={{ marginRight: 6 }} />
-                  {t("projects.archive")}
-                </Typography.Title>
-              </Space>
+                {isArchiveOpened ? (
+                  <FolderOpenFilled style={{ marginRight: 8 }} />
+                ) : (
+                  <FolderFilled style={{ marginRight: 8 }} />
+                )}
+                {t("projects.archive")}
+              </Typography.Title>
             ),
             children: (
               <Row
@@ -130,18 +138,7 @@ export const Projects = () => {
                     <ProjectCard {...preview} />
                   </Col>
                 ))}
-                {previewsArchive.length % 3 !== 0 ? (
-                  <Col
-                    style={{
-                      visibility: "hidden",
-                      pointerEvents: "none",
-                    }}
-                    xs={{ flex: "100%" }}
-                    md={{ flex: "46%" }}
-                    lg={{ flex: "45%" }}
-                    xl={{ flex: "30%" }}
-                  />
-                ) : null}
+                {previewsArchive.length % 3 !== 0 ? <EmptyCard /> : null}
               </Row>
             ),
           },
@@ -152,13 +149,6 @@ export const Projects = () => {
           marginTop: 32,
           backgroundColor: "var(--pop-color)",
         }}
-        expandIcon={({ isActive }) => (
-          <RightOutlined
-            id="archive"
-            rotate={isActive ? 90 : 0}
-            style={{ top: 1, right: 12, position: "relative" }}
-          />
-        )}
       />
     </Flex>
   );

@@ -1,5 +1,11 @@
-.ant-timeline-item-tail {
-  opacity: 0.1;
+.ant-timeline {
+  .ant-timeline-item-tail {
+    opacity: 0.1;
+  }
+
+  svg {
+    fill: var(--primary-color);
+  }
 }
 
 .ant-collapse-content-box {

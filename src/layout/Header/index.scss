@@ -30,7 +30,7 @@
       }
 
       svg {
-        color: var(--button-bg);
+        fill: var(--button-bg);
         font-size: 22px;
       }
 
@@ -39,7 +39,7 @@
         background-color: var(--button-bg) !important;
 
         svg {
-          color: var(--bg-color);
+          fill: var(--bg-color);
           font-size: 18px;
         }
       }
@@ -63,6 +63,9 @@
       .ant-anchor-link-title {
         opacity: 0.4;
         color: var(--primary-color);
+        transition:
+          color 0.4s var(--bezier-animation),
+          font-weight 0.4s var(--bezier-animation);
       }
     }
 

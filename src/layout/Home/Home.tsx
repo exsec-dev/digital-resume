@@ -15,7 +15,7 @@ import {
   BadgeOutlined,
   LocationOnOutlined,
 } from "@mui/icons-material";
-import Avatar from "../../assets/images/Me.png";
+import Avatar from "../../assets/images/avatar.webp";
 import "./index.scss";
 
 const { useToken } = theme;
@@ -80,7 +80,7 @@ export const Home = () => {
                     direction="vertical"
                     size={2}
                   >
-                    <Image src={Avatar} preview={false} />
+                    <Image src={Avatar} preview={false} placeholder />
                     <Space
                       size={2}
                       style={{ width: "100%", justifyContent: "flex-end" }}
@@ -96,6 +96,7 @@ export const Home = () => {
                     style={{
                       fontSize: "21px",
                       opacity: "var(--light-opacity)",
+                      fill: "var(--primary-color)",
                     }}
                   />
                 </Button>

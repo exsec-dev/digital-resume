@@ -57,17 +57,13 @@
     color: var(--primary-color) !important;
     opacity: var(--light-opacity);
   }
-
-  * {
-    transition: color 0.4s var(--bezier-animation);
-  }
 }
 
 .image-popover {
   padding: 8px !important;
 
   .avatar-container {
-    width: 120px;
+    width: 144px;
 
     span {
       font-size: 10px;

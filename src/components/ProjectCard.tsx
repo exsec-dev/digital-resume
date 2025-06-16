@@ -20,6 +20,7 @@ export const ProjectCard = ({
     <Space direction="vertical" size={16}>
       <Image
         src={src}
+        placeholder
         preview={{
           onVisibleChange: () =>
             window.open(url, "_blank", "noopener,noreferrer"),
