@@ -9,6 +9,7 @@ import proj3 from "../../assets/images/pixel-cat.webp";
 import proj4 from "../../assets/images/game-of-life.webp";
 import proj5 from "../../assets/images/astrabot.webp";
 import proj6 from "../../assets/images/idle.webp";
+import proj7 from "../../assets/images/generator.webp";
 
 const EmptyCard = () => {
   return (
@@ -32,6 +33,12 @@ export const Projects = () => {
   const previews = useMemo(
     () => [
       {
+        src: proj7,
+        url: "https://exsec.dev/password-generator",
+        title: "Password Generator",
+        text: t("projects.utility"),
+      },
+      {
         src: proj1,
         url: "https://exsec.dev/astraedu",
         title: "AstraEdu",
@@ -43,18 +50,18 @@ export const Projects = () => {
         title: "Wordle",
         text: t("projects.browser"),
       },
-      {
-        src: proj4,
-        url: "https://exsec.dev/game-of-life",
-        title: "Game of Life",
-        text: t("projects.browser"),
-      },
     ],
     [t],
   );
 
   const previewsArchive = useMemo(
     () => [
+      {
+        src: proj4,
+        url: "https://exsec.dev/game-of-life",
+        title: "Game of Life",
+        text: t("projects.browser"),
+      },
       {
         src: proj3,
         url: "https://exsec.dev/pixel-cat",
