@@ -4,15 +4,11 @@ import { Typography } from "antd";
 export const RunningLine = () => {
   return (
     <div className="running-container" id="contact">
-      <Typography.Title level={1} className="line">
-        from concept to code — building engaging web experiences
-      </Typography.Title>
-      <Typography.Title level={1} className="line">
-        from concept to code — building engaging web experiences
-      </Typography.Title>
-      <Typography.Title level={1} className="line">
-        from concept to code — building engaging web experiences
-      </Typography.Title>
+      {Array.from({ length: 5 }).map((_, index) => (
+        <Typography.Title key={index} level={1} className="line">
+          from concept to code
+        </Typography.Title>
+      ))}
     </div>
   );
 };

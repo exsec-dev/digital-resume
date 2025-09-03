@@ -6,7 +6,7 @@
   "header.tooltip.theme": "Change Theme",
   "header.tooltip.lang": "Translate",
 
-  "home.scroll": "SCROLL DOWN",
+  "home.scroll": "Scroll down",
   "home.contact": "Contact Me",
   "home.name": "Ekaterina Prozhirko",
   "home.place": "Based in Moscow, Russia",
@@ -52,7 +52,7 @@
 
   "certificates": "Certificates",
   "certificates.open": "View Source",
-  "certificates.list": "LCT 2023. Finalist in the Moscow Mayor’s Competition «Recommender System for Personalized Tourist Packages»|Project work defense within the «Astra-Scholarship» program 2023, 2024|ALSE-1602 «Astra Linux Special Edition Administration Basics»|Course «System Engineering Practices», UrFU|English Language Test – CEFR level B2",
+  "certificates.list": "LCT 2023. Finalist in the Moscow Mayor’s Competition «Recommender System for Personalized Tourist Packages»|Project work defense within the «Astra-Scholarship» program 2022, 2023, 2024|ALSE-1602 «Astra Linux Special Edition Administration Basics»|Course «System Engineering Practices», UrFU|Course «Project Management in a Modern Company», MISIS|English Language Test – CEFR level B2",
 
   "contacts.title": "Get in Touch",
   "contacts.updated": "Last Updated",

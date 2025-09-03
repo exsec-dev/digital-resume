@@ -39,8 +39,10 @@
         background-color: var(--button-bg) !important;
 
         svg {
+          position: relative;
           fill: var(--bg-color);
           font-size: 18px;
+          top: 1px;
         }
       }
     }

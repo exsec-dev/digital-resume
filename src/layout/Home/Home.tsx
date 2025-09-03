@@ -54,8 +54,9 @@ export const Home = () => {
             }
           }}
           style={{
+            textTransform: "uppercase",
             transition:
-              "border-color 0.4s var(--bezier-animation), color 0.4s var(--bezier-animation)",
+              "border-color 0.4s var(--bezier-animation), color 0.4s var(--bezier-animation), background-color 0.2s var(--bezier-animation)",
           }}
         >
           {t("home.scroll")}
