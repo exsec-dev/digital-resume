@@ -3,13 +3,7 @@ import { Typography, Flex, Col, Row, Collapse } from "antd";
 import { FolderOpenFilled, FolderFilled } from "@ant-design/icons";
 import { ProjectCard } from "components";
 import { useTranslation } from "react-i18next";
-import proj1 from "../../assets/images/astraedu.webp";
-import proj2 from "../../assets/images/wordle.webp";
-import proj3 from "../../assets/images/pixel-cat.webp";
-import proj4 from "../../assets/images/game-of-life.webp";
-import proj5 from "../../assets/images/astrabot.webp";
-import proj6 from "../../assets/images/idle.webp";
-import proj7 from "../../assets/images/generator.webp";
+import images from "assets/images";
 
 const EmptyCard = () => {
   return (
@@ -33,19 +27,19 @@ export const Projects = () => {
   const previews = useMemo(
     () => [
       {
-        src: proj7,
+        src: images.generator,
         url: "https://exsec.dev/password-generator",
         title: "Password Generator",
         text: t("projects.utility"),
       },
       {
-        src: proj1,
+        src: images.astradu,
         url: "https://exsec.dev/astraedu",
         title: "AstraEdu",
         text: t("projects.edu"),
       },
       {
-        src: proj2,
+        src: images.wordle,
         url: "https://exsec.dev/wordle",
         title: "Wordle",
         text: t("projects.browser"),
@@ -57,25 +51,25 @@ export const Projects = () => {
   const previewsArchive = useMemo(
     () => [
       {
-        src: proj4,
+        src: images.gameOfLife,
         url: "https://exsec.dev/game-of-life",
         title: "Game of Life",
         text: t("projects.browser"),
       },
       {
-        src: proj3,
+        src: images.pixelCat,
         url: "https://exsec.dev/pixel-cat",
         title: "Pixel Cat",
         text: t("projects.browser"),
       },
       {
-        src: proj5,
+        src: images.astrabot,
         url: "https://t.me/AstraEdu_bot",
         title: "AstraBot",
         text: t("projects.bot"),
       },
       {
-        src: proj6,
+        src: images.idle,
         url: "https://exsec.dev/idlebot",
         title: "Idle Project",
         text: t("projects.service"),

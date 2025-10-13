@@ -4,7 +4,7 @@
   gap: 24px;
 
   h1 {
-    font-family: "Defectica";
+    font-family: "Defectica", sans-serif;
     line-height: 90%;
     margin-bottom: 0;
     white-space: nowrap;
@@ -64,6 +64,7 @@
 
   .avatar-container {
     width: 144px;
+    height: calc(144px * 1.225 + 24px);
 
     span {
       font-size: 10px;
@@ -98,6 +99,7 @@
 
   .image-popover .avatar-container {
     width: 150px;
+    height: calc(150px * 1.225 + 24px);
   }
 }
 
@@ -123,6 +125,7 @@
 
   .image-popover .avatar-container {
     width: 160px;
+    height: calc(160px * 1.225 + 24px);
   }
 }
 
@@ -157,6 +160,7 @@
 
   .image-popover .avatar-container {
     width: 180px;
+    height: calc(180px * 1.225 + 24px);
   }
 }
 

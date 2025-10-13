@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { Layout, Anchor, Flex, Tooltip, Button } from "antd";
 import { Logo, ThemeSwitcher } from "components";
@@ -25,23 +25,26 @@ export const Header = () => {
     }
   };
 
-  const items = [
-    {
-      key: "home",
-      href: "#home",
-      title: t("header.menu.home"),
-    },
-    {
-      key: "projects",
-      href: "#projects",
-      title: t("header.menu.projects"),
-    },
-    {
-      key: "about",
-      href: "#about",
-      title: t("header.menu.about"),
-    },
-  ];
+  const items = useMemo(
+    () => [
+      {
+        key: "home",
+        href: "#home",
+        title: t("header.menu.home"),
+      },
+      {
+        key: "projects",
+        href: "#projects",
+        title: t("header.menu.projects"),
+      },
+      {
+        key: "about",
+        href: "#about",
+        title: t("header.menu.about"),
+      },
+    ],
+    [t],
+  );
 
   return (
     <Layout.Header className="header">

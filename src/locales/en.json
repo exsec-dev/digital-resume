@@ -10,10 +10,10 @@
   "home.contact": "Contact Me",
   "home.name": "Ekaterina Prozhirko",
   "home.place": "Based in Moscow, Russia",
-  "home.status": "Currently:",
+  "home.status": "Currently",
   "home.status.available": "Available for hire",
   "home.status.open": "Open to offers",
-  "home.status.employed": "Not looking for a job",
+  "home.status.employed": "Not available for hire",
   "home.description": "Frontend developer with commercial\u00A0experience, specializing in modern, responsive, and\u00A0user-centric web\u00A0interfaces. I\u00A0apply technical\u00A0expertise and\u00A0design principles to\u00A0create efficient digital\u00A0solutions.",
 
   "projects": "Projects",
