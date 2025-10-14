@@ -82,7 +82,13 @@ export const Home = () => {
                     size={2}
                     style={{ justifyContent: "flex-end" }}
                   >
-                    <Image src={images.avatar} preview={false} placeholder />
+                    <Image
+                      src={images.avatar}
+                      preview={false}
+                      placeholder
+                      loading="lazy"
+                      alt="Avatar"
+                    />
                     <Space
                       size={2}
                       style={{ width: "100%", justifyContent: "center" }}

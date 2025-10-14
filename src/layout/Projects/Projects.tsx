@@ -5,21 +5,6 @@ import { ProjectCard } from "components";
 import { useTranslation } from "react-i18next";
 import images from "assets/images";
 
-const EmptyCard = () => {
-  return (
-    <Col
-      style={{
-        visibility: "hidden",
-        pointerEvents: "none",
-      }}
-      xs={{ flex: "100%" }}
-      md={{ flex: "46%" }}
-      lg={{ flex: "45%" }}
-      xl={{ flex: "30%" }}
-    />
-  );
-};
-
 export const Projects = () => {
   const { t } = useTranslation();
   const [isArchiveOpened, setIsArchiveOpened] = useState<boolean>(false);
@@ -93,7 +78,6 @@ export const Projects = () => {
             <ProjectCard {...preview} />
           </Col>
         ))}
-        {previews.length % 3 !== 0 ? <EmptyCard /> : null}
       </Row>
       <Collapse
         className="collapse-panel--small"
@@ -139,7 +123,6 @@ export const Projects = () => {
                     <ProjectCard {...preview} />
                   </Col>
                 ))}
-                {previewsArchive.length % 3 !== 0 ? <EmptyCard /> : null}
               </Row>
             ),
           },

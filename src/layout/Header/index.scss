@@ -18,15 +18,14 @@
     gap: 4px;
 
     button {
-      background: none !important;
       color: var(--bg-color);
       border-radius: 8px;
       transition:
         background-color 0.4s var(--bezier-animation),
         color 0.4s var(--bezier-animation);
 
-      &:hover {
-        color: var(--bg-color) !important;
+      &:not(.ant-btn-primary) {
+        background: none !important;
       }
 
       svg {
@@ -37,7 +36,6 @@
       &.download {
         width: 120px;
         margin-left: 8px;
-        background-color: var(--button-bg) !important;
 
         svg {
           position: relative;

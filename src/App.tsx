@@ -20,7 +20,7 @@ const getTheme = (): ConfigProviderProps["theme"] => {
     token: {
       colorPrimary: "var(--primary-color)",
       fontSize: 14,
-      fontFamily: '"Geist", "Onest", sans-serif',
+      fontFamily: '"Geist", system-ui, sans-serif',
       colorText: "var(--primary-color)",
     },
     components: {
@@ -35,6 +35,7 @@ const getTheme = (): ConfigProviderProps["theme"] => {
       },
       Button: {
         primaryShadow: "none",
+        colorPrimary: "var(--button-bg)",
       },
       Timeline: {
         itemPaddingBottom: 36,

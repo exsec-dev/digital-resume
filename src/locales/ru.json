@@ -6,11 +6,11 @@
   "header.tooltip.theme": "Сменить тему",
   "header.tooltip.lang": "Перевести",
 
-  "home.scroll": "Листай дальше",
+  "home.scroll": "Контакты",
   "home.contact": "Всегда на связи",
   "home.name": "Екатерина Прожирко",
   "home.place": "г. Москва, Россия",
-  "home.status": "Доступность",
+  "home.status": "На данный момент",
   "home.status.available": "В поиске работы",
   "home.status.open": "Рассмотрю предложения",
   "home.status.employed": "Не ищу работу",
@@ -25,9 +25,14 @@
   "projects.utility": "Утилита",
 
   "expertise": "Навыки",
-  "expertise.title.web": "Веб-разработка",
+  "expertise.title.web": "Frontend-разработка",
+  "expertise.title.build": "Сборка и развертывание",
   "expertise.title.design": "Дизайн",
   "expertise.title.eng": "Английский язык",
+  "expertise.skills.performance": "Оптимизация производительности",
+  "expertise.skills.ui-ux": "UI/UX",
+  "expertise.skills.systems": "Дизайн-системы",
+  "expertise.skills.prototyping": "Прототипирование",
   "expertise.skills.color": "Композиция и колористика",
   "expertise.skills.typo": "Типографика",
 
@@ -51,8 +56,8 @@
   "experience.third.period": "Август 2024 – по настоящее время",
 
   "certificates": "Сертификаты",
-  "certificates.open": "Источник",
-  "certificates.list": "ЛЦТ 2023. Выход в финал конкурса Мэра Москвы по задаче «Рекомендательный сервис формирования персонализированных туристических пакетов»|Защита проектной работы в рамках «Астра-Стипендия» 2022, 2023, 2024|ALSE-1602 «Базовое администрирование ОС Astra Linux Special Edition»|Курс «Практики системной инженерии», УрФУ|Курс «Управление проектами в современной компании», МИСИС|English Language Test – CEFR level B2",
+  "certificates.open": "Открыть",
+  "certificates.list": "ЛЦТ 2023. Финалист конкурса Мэра Москвы по задаче «Рекомендательный сервис формирования персонализированных туристических пакетов»|ALSE-1703 «Расширенное администрирование ОС Astra Linux Special Edition 1.7»|Успешная защита проектной работы в рамках «Астра-Стипендия» 2022-2024|Курс «Практики системной инженерии», УрФУ|Курс «Управление проектами в современной компании», МИСИС|English Language Test – CEFR level B2",
 
   "contacts.title": "Связаться со мной",
   "contacts.updated": "Обновлено",

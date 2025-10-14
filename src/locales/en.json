@@ -25,10 +25,15 @@
   "projects.utility": "Utility",
 
   "expertise": "Expertise",
-  "expertise.title.web": "Web Development",
+  "expertise.title.web": "Frontend Development",
+  "expertise.title.build": "Build & Deployment",
   "expertise.title.design": "Design",
   "expertise.title.eng": "English Proficiency",
-  "expertise.skills.color": "Composition and Color Theory",
+  "expertise.skills.performance": "Performance Optimization",
+  "expertise.skills.ui-ux": "UI/UX",
+  "expertise.skills.systems": "Design Systems",
+  "expertise.skills.prototyping": "Prototyping & Wireframes",
+  "expertise.skills.color": "Composition & Color Theory",
   "expertise.skills.typo": "Typography",
 
   "education": "Education",
@@ -52,7 +57,7 @@
 
   "certificates": "Certificates",
   "certificates.open": "View Source",
-  "certificates.list": "LCT 2023. Finalist in the Moscow Mayor’s Competition «Recommender System for Personalized Tourist Packages»|Project work defense within the «Astra-Scholarship» program 2022, 2023, 2024|ALSE-1602 «Astra Linux Special Edition Administration Basics»|Course «System Engineering Practices», UrFU|Course «Project Management in a Modern Company», MISIS|English Language Test – CEFR level B2",
+  "certificates.list": "LCT 2023. Finalist in the Moscow Mayor’s Competition «Recommender System for Personalized Tourist Packages»|ALSE-1703 «Advanced Administration of Astra Linux Special Edition 1.7»|Project work defense within the «Astra-Scholarship» program 2022-2024|Course «System Engineering Practices», UrFU|Course «Project Management in a Modern Company», MISIS|English Language Test – CEFR level B2",
 
   "contacts.title": "Get in Touch",
   "contacts.updated": "Last Updated",

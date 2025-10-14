@@ -40,7 +40,8 @@ export const ThemeSwitcher = () => {
       destroyTooltipOnHide
     >
       <Button
-        type="primary"
+        variant="filled"
+        color="default"
         shape="circle"
         onClick={() => toggleScheme(scheme === "light" ? "dark" : "light")}
       >

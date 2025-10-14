@@ -58,14 +58,19 @@ export const Header = () => {
             targetOffset={100}
             direction="horizontal"
           />
-          <Flex className="button-container">
+          <Flex className="button-container" gap={2}>
             <ThemeSwitcher />
             <Tooltip
               title={t("header.tooltip.lang")}
               placement="bottom"
               destroyTooltipOnHide
             >
-              <Button type="primary" shape="circle" onClick={changeLanguage}>
+              <Button
+                variant="filled"
+                color="default"
+                shape="circle"
+                onClick={changeLanguage}
+              >
                 <PublicRounded />
               </Button>
             </Tooltip>

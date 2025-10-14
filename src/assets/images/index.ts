@@ -7,7 +7,7 @@ import astrabot from "./astrabot.webp";
 import idle from "./idle.webp";
 import generator from "./generator.webp";
 
-export default {
+const images = {
   avatar,
   astradu,
   wordle,
@@ -17,3 +17,5 @@ export default {
   idle,
   generator,
 };
+
+export default images;

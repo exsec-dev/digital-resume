@@ -27,6 +27,7 @@ export const Contacts = () => {
               type="primary"
               href="mailto:exsec.b@gmail.com"
               target="_blank"
+              rel="noopener noreferrer"
               icon={<ArrowOutwardRounded />}
               iconPosition="end"
             >
@@ -36,12 +37,14 @@ export const Contacts = () => {
               type="primary"
               href="https://t.me/exsec2"
               target="_blank"
+              rel="noopener noreferrer"
               icon={<Telegram style={{ top: "1px", right: "1px" }} />}
             />
             <Button
               type="primary"
               href="https://github.com/exsec-dev"
               target="_blank"
+              rel="noopener noreferrer"
               icon={<GitHub />}
             />
           </Space>

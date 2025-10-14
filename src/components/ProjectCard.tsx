@@ -18,38 +18,41 @@ export const ProjectCard = ({ src, url, title, text }: ProjectCardProps) => {
 
   return (
     <Space direction="vertical" size={16}>
-      <Image
-        src={src}
-        placeholder
-        fallback={FALLBACK_IMAGE}
-        preview={{
-          onVisibleChange: () =>
-            window.open(url, "_blank", "noopener,noreferrer"),
-          visible: false,
-          maskClassName: "preview-mask",
-          mask: (
-            <Space size={0} align="start">
-              <Typography.Text
-                style={{
-                  color: "#fffcfa",
-                  fontWeight: 500,
-                  letterSpacing: "0.01rem",
-                }}
-              >
-                {t("certificates.open")}
-              </Typography.Text>
-              <ArrowOutwardRounded
-                style={{ fontSize: "18px", marginTop: "2px" }}
-              />
-            </Space>
-          ),
-        }}
-        style={{
-          border: "1px solid var(--secondary-color)",
-          borderRadius: "26px",
-          transition: "border-color 0.4s var(--bezier-animation)",
-        }}
-      />
+      <a href={url} target="_blank" rel="noopener noreferrer">
+        <Image
+          src={src}
+          placeholder
+          fallback={FALLBACK_IMAGE}
+          loading="lazy"
+          alt={title}
+          preview={{
+            visible: false,
+            maskClassName: "preview-mask",
+            mask: (
+              <Space size={0} align="start">
+                <Typography.Text
+                  style={{
+                    color: "#fffcfa",
+                    fontWeight: 500,
+                    letterSpacing: "0.01rem",
+                  }}
+                >
+                  {t("certificates.open")}
+                </Typography.Text>
+                <ArrowOutwardRounded
+                  style={{ fontSize: "18px", marginTop: "2px" }}
+                />
+              </Space>
+            ),
+          }}
+          style={{
+            color: "var(--secondary-color)",
+            border: "1px solid var(--secondary-color)",
+            borderRadius: "26px",
+            transition: "border-color 0.4s var(--bezier-animation)",
+          }}
+        />
+      </a>
       <Space direction="vertical" size={0}>
         <Typography.Title
           level={5}

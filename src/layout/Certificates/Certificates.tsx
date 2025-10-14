@@ -15,9 +15,9 @@ export const Certificates = () => {
           <a
             className="icon-link"
             title={t("certificates.open")}
-            href="https://drive.google.com/file/d/1IJn4ojU6juA5ZcrYcb8wbnsB8bsUzdMj/view"
+            href="/assets/files/Certificates.pdf"
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
           >
             <OpenInNewRounded />
           </a>

@@ -1,11 +1,16 @@
-@font-face {
-  font-family: "Defectica";
-  src: url("./assets/fonts/Defectica.otf") format("opentype");
-  font-weight: 400;
-  font-style: normal;
-}
-
 :root {
+  --primary-color: #181614;
+  --bg-color: #f8f6f0;
+  --header-color: rgb(239 237 233 / 80%);
+  --noise-bg: #ebebeb;
+  --mobile-header-color: #f8f6f0a6;
+  --icon-color: #262626;
+  --text-weight: 350;
+  --header-weight: 525;
+  --button-bg: #1f1c19;
+  --secondary-color: #e1e1e1;
+  --pop-color: #f8f7f4;
+  --light-grey: #dbdbdb;
   --light-opacity: 0.6;
   --bezier-animation: cubic-bezier(0.645, 0.045, 0.355, 1);
 }
