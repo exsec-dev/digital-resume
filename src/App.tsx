@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Layout, ConfigProvider, Flex } from "antd";
 import type { GetProps } from "antd";
-import { MainContext, Scheme } from "MainContext";
 import { RunningLine } from "components";
 import {
   Header,
@@ -13,6 +12,7 @@ import {
   Certificates,
   Contacts,
 } from "layout";
+import { MainContext, Scheme } from "MainContext";
 
 type ConfigProviderProps = GetProps<typeof ConfigProvider>;
 const getTheme = (): ConfigProviderProps["theme"] => {

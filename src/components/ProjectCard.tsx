@@ -1,6 +1,6 @@
 import React from "react";
-import { Typography, Image, Space } from "antd";
 import { ArrowOutwardRounded } from "@mui/icons-material";
+import { Typography, Image, Space } from "antd";
 import { useTranslation } from "react-i18next";
 
 export const FALLBACK_IMAGE =

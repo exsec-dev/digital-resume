@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react";
-import { MainContext } from "MainContext";
-import { Button, Tooltip } from "antd";
 import { DarkModeRounded } from "@mui/icons-material";
+import { Button, Tooltip } from "antd";
+import { MainContext } from "MainContext";
 import { useTranslation } from "react-i18next";
 
 const variables = {
@@ -37,7 +37,7 @@ export const ThemeSwitcher = () => {
     <Tooltip
       title={t("header.tooltip.theme")}
       placement="bottom"
-      destroyTooltipOnHide
+      destroyOnHidden
     >
       <Button
         variant="filled"

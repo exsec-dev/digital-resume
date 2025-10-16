@@ -1,8 +1,8 @@
 import React from "react";
-import { Space, Typography } from "antd";
-import { useTranslation } from "react-i18next";
 import { OpenInNewRounded, Add } from "@mui/icons-material";
+import { Space, Typography } from "antd";
 import { CollapsePanel } from "components";
+import { useTranslation } from "react-i18next";
 import "./index.scss";
 
 export const Certificates = () => {

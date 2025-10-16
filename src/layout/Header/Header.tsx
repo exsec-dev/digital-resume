@@ -1,8 +1,8 @@
 import React, { useMemo } from "react";
-import { useTranslation } from "react-i18next";
+import { DownloadRounded, PublicRounded } from "@mui/icons-material";
 import { Layout, Anchor, Flex, Tooltip, Button } from "antd";
 import { Logo, ThemeSwitcher } from "components";
-import { DownloadRounded, PublicRounded } from "@mui/icons-material";
+import { useTranslation } from "react-i18next";
 import "./index.scss";
 
 export const Header = () => {
@@ -63,7 +63,7 @@ export const Header = () => {
             <Tooltip
               title={t("header.tooltip.lang")}
               placement="bottom"
-              destroyTooltipOnHide
+              destroyOnHidden
             >
               <Button
                 variant="filled"

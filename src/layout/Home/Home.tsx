@@ -1,5 +1,10 @@
 import React from "react";
 import {
+  ArrowDownwardRounded,
+  BadgeOutlined,
+  LocationOnOutlined,
+} from "@mui/icons-material";
+import {
   Typography,
   Flex,
   Button,
@@ -9,13 +14,8 @@ import {
   Popover,
   Image,
 } from "antd";
-import { useTranslation } from "react-i18next";
-import {
-  ArrowDownwardRounded,
-  BadgeOutlined,
-  LocationOnOutlined,
-} from "@mui/icons-material";
 import images from "assets/images";
+import { useTranslation } from "react-i18next";
 import "./index.scss";
 
 const { useToken } = theme;
@@ -71,7 +71,7 @@ export const Home = () => {
               <Popover
                 placement="rightTop"
                 trigger="hover"
-                destroyTooltipOnHide
+                destroyOnHidden
                 classNames={{
                   body: "image-popover",
                 }}

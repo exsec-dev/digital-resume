@@ -1,6 +1,6 @@
 import React from "react";
-import { Typography, Space, Divider, Flex, Popover, Button } from "antd";
 import { InfoCircleOutlined } from "@ant-design/icons";
+import { Typography, Space, Divider, Flex, Popover, Button } from "antd";
 
 export const TimePeriodPanel = ({
   title,
@@ -36,7 +36,7 @@ export const TimePeriodPanel = ({
             <Popover
               placement="leftTop"
               trigger="hover"
-              destroyTooltipOnHide
+              destroyOnHidden
               classNames={{
                 body: "info-popover",
               }}

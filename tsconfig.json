@@ -8,16 +8,9 @@
     "strict": true,
     "skipLibCheck": true,
     "paths": {
-      "components/*": [
-        "components/*"
-      ],
-      "layout/*": [
-        "layout/*"
-      ]
+      "components/*": ["components/*"],
+      "layout/*": ["layout/*"]
     }
   },
-  "include": [
-    "src",
-    "declarations.d.ts"
-  ]
+  "include": ["src"]
 }

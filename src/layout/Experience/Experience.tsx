@@ -1,9 +1,9 @@
 import React from "react";
-import { Timeline } from "antd";
-import { FiberManualRecord } from "@mui/icons-material";
 import { LoadingOutlined } from "@ant-design/icons";
-import { useTranslation } from "react-i18next";
+import { FiberManualRecord } from "@mui/icons-material";
+import { Timeline } from "antd";
 import { TimePeriodPanel, CollapsePanel } from "components";
+import { useTranslation } from "react-i18next";
 import "./index.scss";
 
 export const Experience = () => {

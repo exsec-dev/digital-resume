@@ -1,11 +1,13 @@
 import React from "react";
+import { ArrowOutwardRounded, Telegram, GitHub } from "@mui/icons-material";
 import { Layout, Flex, Space, Typography, Button } from "antd";
 import { useTranslation } from "react-i18next";
-import { ArrowOutwardRounded, Telegram, GitHub } from "@mui/icons-material";
 import "./index.scss";
 
 export const Contacts = () => {
   const { t } = useTranslation();
+  const buildDate = import.meta.env.VITE_BUILD_DATE;
+
   return (
     <Layout.Footer id="contact">
       <Flex
@@ -51,7 +53,7 @@ export const Contacts = () => {
         </Space>
         <Flex className="copyright" justify="space-between" align="end">
           <Typography.Text>
-            {`${t("contacts.updated")}: ${process.env.REACT_APP_BUILD_DATE}`}
+            {`${t("contacts.updated")}: ${buildDate}`}
           </Typography.Text>
           <Typography.Text>{t("contacts.author")} Exsec ©</Typography.Text>
         </Flex>

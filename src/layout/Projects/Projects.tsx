@@ -1,9 +1,9 @@
 import React, { useMemo, useState } from "react";
-import { Typography, Flex, Col, Row, Collapse } from "antd";
 import { FolderOpenFilled, FolderFilled } from "@ant-design/icons";
+import { Typography, Flex, Col, Row, Collapse } from "antd";
+import images from "assets/images";
 import { ProjectCard } from "components";
 import { useTranslation } from "react-i18next";
-import images from "assets/images";
 
 export const Projects = () => {
   const { t } = useTranslation();
