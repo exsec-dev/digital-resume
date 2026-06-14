@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { FolderOpenFilled, FolderFilled } from "@ant-design/icons";
 import { Typography, Flex, Col, Row, Collapse } from "antd";
 import images from "assets/images";
@@ -18,7 +18,7 @@ export const Projects = () => {
         text: t("projects.utility"),
       },
       {
-        src: images.astradu,
+        src: images.astraedu,
         url: "https://exsec.dev/astraedu",
         title: "AstraEdu",
         text: t("projects.edu"),

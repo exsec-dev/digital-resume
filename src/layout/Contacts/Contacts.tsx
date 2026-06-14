@@ -1,6 +1,5 @@
-import React from "react";
-import { ArrowOutwardRounded, Telegram, GitHub } from "@mui/icons-material";
 import { Layout, Flex, Space, Typography, Button } from "antd";
+import { ArrowOutwardRounded, Telegram, GitHub } from "components/icons";
 import { useTranslation } from "react-i18next";
 import "./index.scss";
 

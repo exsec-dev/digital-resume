@@ -1,9 +1,3 @@
-import React from "react";
-import {
-  ArrowDownwardRounded,
-  BadgeOutlined,
-  LocationOnOutlined,
-} from "@mui/icons-material";
 import {
   Typography,
   Flex,
@@ -15,6 +9,11 @@ import {
   Image,
 } from "antd";
 import images from "assets/images";
+import {
+  ArrowDownwardRounded,
+  BadgeOutlined,
+  LocationOnOutlined,
+} from "components/icons";
 import { useTranslation } from "react-i18next";
 import "./index.scss";
 

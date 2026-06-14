@@ -13,9 +13,10 @@ i18n
       ru: { translation: ru },
     },
     detection: {
-      order: ["localStorage", "htmlTag"],
+      order: ["localStorage", "navigator", "htmlTag"],
       caches: ["localStorage"],
     },
+    load: "languageOnly",
     fallbackLng: "en",
     interpolation: { escapeValue: false },
   });

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Layout, ConfigProvider, Flex } from "antd";
 import type { GetProps } from "antd";
 import { RunningLine } from "components";
@@ -56,7 +56,7 @@ const getTheme = (): ConfigProviderProps["theme"] => {
 
 function App() {
   const [scheme, setScheme] = useState<Scheme>(
-    (localStorage.getItem("scheme") as Scheme) || "light",
+    localStorage.getItem("scheme") === "dark" ? "dark" : "light",
   );
 
   return (

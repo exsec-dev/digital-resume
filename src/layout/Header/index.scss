@@ -17,9 +17,8 @@
   .button-container {
     gap: 4px;
 
-    button {
+    .ant-btn {
       color: var(--bg-color);
-      border-radius: 8px;
       transition:
         background-color 0.4s var(--bezier-animation),
         color 0.4s var(--bezier-animation);
@@ -36,6 +35,7 @@
       &.download {
         width: 120px;
         margin-left: 8px;
+        border-radius: 8px;
 
         svg {
           position: relative;

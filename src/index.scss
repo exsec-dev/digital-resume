@@ -15,6 +15,30 @@
   --bezier-animation: cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
+[data-theme="dark"] {
+  --primary-color: #f8f6f0;
+  --bg-color: #121212;
+  --header-color: rgba(10, 10, 10, 0.8);
+  --noise-bg: #161616;
+  --mobile-header-color: #121212a6;
+  --icon-color: #fffcfa;
+  --text-weight: 450;
+  --header-weight: 400;
+  --button-bg: #ebeae4;
+  --secondary-color: #2a2a2a;
+  --pop-color: #1b1b1b;
+  --light-grey: #4e4e4e;
+}
+
+.icon {
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  flex-shrink: 0;
+  fill: currentColor;
+  user-select: none;
+}
+
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -202,5 +226,16 @@ svg {
 @media (min-width: 1440px) {
   .layout {
     padding: 130px 100px 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

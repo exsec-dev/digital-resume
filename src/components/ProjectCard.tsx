@@ -1,6 +1,5 @@
-import React from "react";
-import { ArrowOutwardRounded } from "@mui/icons-material";
 import { Typography, Image, Space } from "antd";
+import { ArrowOutwardRounded } from "components/icons";
 import { useTranslation } from "react-i18next";
 
 export const FALLBACK_IMAGE =
@@ -27,6 +26,7 @@ export const ProjectCard = ({ src, url, title, text }: ProjectCardProps) => {
           alt={title}
           preview={{
             visible: false,
+            onVisibleChange: () => {},
             maskClassName: "preview-mask",
             mask: (
               <Space size={0} align="start">

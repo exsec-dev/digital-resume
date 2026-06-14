@@ -1,21 +1,12 @@
-import React, { useMemo } from "react";
-import { DownloadRounded, PublicRounded } from "@mui/icons-material";
+import { useMemo } from "react";
 import { Layout, Anchor, Flex, Tooltip, Button } from "antd";
 import { Logo, ThemeSwitcher } from "components";
+import { DownloadRounded, PublicRounded } from "components/icons";
 import { useTranslation } from "react-i18next";
 import "./index.scss";
 
 export const Header = () => {
   const { t, i18n } = useTranslation();
-
-  const downloadFile = () => {
-    const link = document.createElement("a");
-    link.href = "/assets/files/CV.pdf";
-    link.download = "Prozhirko_CV.pdf";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
 
   const changeLanguage = () => {
     if (i18n.language === "ru") {
@@ -69,6 +60,7 @@ export const Header = () => {
                 variant="filled"
                 color="default"
                 shape="circle"
+                aria-label={t("header.tooltip.lang")}
                 onClick={changeLanguage}
               >
                 <PublicRounded />
@@ -77,7 +69,8 @@ export const Header = () => {
             <Button
               className="download"
               type="primary"
-              onClick={downloadFile}
+              href="/assets/files/CV.pdf"
+              download="Prozhirko_CV.pdf"
               iconPosition="end"
               icon={<DownloadRounded />}
             >

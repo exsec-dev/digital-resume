@@ -4,15 +4,25 @@
     <meta charset="utf-8" />
     <meta name="robots" content="noindex, nofollow" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script>
+      (function () {
+        try {
+          if (localStorage.getItem("scheme") === "dark") {
+            document.documentElement.setAttribute("data-theme", "dark");
+          }
+        } catch (e) {}
+      })();
+    </script>
+    <style>
+      html {
+        background-color: #f8f6f0;
+      }
+      html[data-theme="dark"] {
+        background-color: #121212;
+      }
+    </style>
     <link rel="icon" href="/favicon.svg" />
-    <link rel="stylesheet" href="https://marksheet.io/css/reset.css" />
-    <link
-      rel="preload"
-      href="/assets/fonts/Defectica.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
+    <link rel="stylesheet" href="/reset.css" />
     <link rel="stylesheet" href="/fonts.css" />
     <meta
       name="theme-color"

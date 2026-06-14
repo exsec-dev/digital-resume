@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import { useMemo } from "react";
 import { Typography, Flex, Space, Divider } from "antd";
 import { useTranslation } from "react-i18next";
 import "./index.scss";

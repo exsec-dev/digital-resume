@@ -1,4 +1,3 @@
-import React from "react";
 import { Space } from "antd";
 import { TimePeriodPanel, CollapsePanel } from "components";
 import { useTranslation } from "react-i18next";

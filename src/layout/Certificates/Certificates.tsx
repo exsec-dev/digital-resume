@@ -1,7 +1,6 @@
-import React from "react";
-import { OpenInNewRounded, Add } from "@mui/icons-material";
 import { Space, Typography } from "antd";
 import { CollapsePanel } from "components";
+import { OpenInNewRounded, Add } from "components/icons";
 import { useTranslation } from "react-i18next";
 import "./index.scss";
 

@@ -1,4 +1,3 @@
-import React from "react";
 import { InfoCircleOutlined } from "@ant-design/icons";
 import { Typography, Space, Divider, Flex, Popover, Button } from "antd";
 
