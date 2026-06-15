@@ -1,23 +1,24 @@
-.ant-timeline-item-tail {
-  opacity: 0.1;
-}
+@use "styles/mixins" as *;
 
 .icon-link {
-  svg {
+  .icon {
     fill: var(--primary-color);
     font-size: 22px;
     opacity: 0.5;
     position: relative;
     top: 4px;
     left: 6px;
+    @include theme-transition(fill);
   }
 }
 
 .list-item {
-  svg {
+  .icon {
+    fill: var(--primary-color);
     font-size: 18px;
     opacity: 0.2;
     position: relative;
     top: 2px;
+    @include theme-transition(fill);
   }
 }

@@ -1,0 +1,93 @@
+@use "styles/mixins" as *;
+
+.timeperiod {
+  width: 100%;
+
+  &-data {
+    width: 100%;
+
+    &-title {
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 24px;
+    }
+
+    &-additional {
+      letter-spacing: 0.01rem;
+      line-height: 20px;
+    }
+
+    svg {
+      opacity: 0.4;
+      font-size: 16px;
+      padding: 1px;
+    }
+  }
+
+  .ant-divider-horizontal.ant-divider {
+    margin: 0;
+    opacity: 0.2;
+    border-block-start: 0.1rem solid var(--primary-color);
+    @include theme-transition(border-block-start-color);
+  }
+
+  &-period {
+    font-size: 14px;
+    opacity: var(--light-opacity);
+  }
+
+  &--small {
+    .timeperiod-data-title {
+      font-size: 15px;
+    }
+
+    .timeperiod-period {
+      font-size: 13px;
+    }
+  }
+}
+
+.info-popover.ant-popover-inner-content {
+  padding: 12px 18px 14px;
+}
+
+.popover-container {
+  max-width: 275px;
+
+  h5 {
+    font-weight: 475;
+    font-size: 14px;
+    letter-spacing: 0.02rem;
+  }
+
+  span {
+    font-size: 12px;
+    letter-spacing: 0.02rem;
+    opacity: 0.7;
+    display: inline-block;
+  }
+}
+
+@media (min-width: 600px) {
+  .popover-container {
+    max-width: 325px;
+  }
+}
+
+@media (min-width: 768px) {
+  .popover-container {
+    max-width: 350px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .popover-container {
+    max-width: 375px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .popover-container {
+    max-width: 400px;
+  }
+}

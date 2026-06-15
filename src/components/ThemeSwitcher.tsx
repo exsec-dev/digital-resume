@@ -14,7 +14,11 @@ export const ThemeSwitcher = () => {
     } else {
       document.documentElement.removeAttribute("data-theme");
     }
-    localStorage.setItem("scheme", scheme);
+    try {
+      localStorage.setItem("scheme", scheme);
+    } catch {
+      // UI should still switch even if storage is blocked
+    }
   }, [scheme]);
 
   return (

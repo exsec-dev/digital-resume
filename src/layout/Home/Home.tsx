@@ -1,13 +1,5 @@
-import {
-  Typography,
-  Flex,
-  Button,
-  Space,
-  Tag,
-  theme,
-  Popover,
-  Image,
-} from "antd";
+import type { CSSProperties } from "react";
+import { Typography, Flex, Button, Space, Tag, theme, Popover } from "antd";
 import images from "assets/images";
 import {
   ArrowDownwardRounded,
@@ -18,17 +10,73 @@ import { useTranslation } from "react-i18next";
 import "./index.scss";
 
 const { useToken } = theme;
-const CURRENT_STATUS: number = 2;
+
+type AvailabilityStatus = "available" | "open" | "employed";
+
+const CURRENT_STATUS: AvailabilityStatus = "employed";
+const SCROLL_DURATION_MS = 900;
+let scrollAnimationFrameId: number | undefined;
+
+const easeInOutCubic = (value: number) =>
+  value < 0.5 ? 4 * value * value * value : 1 - (-2 * value + 2) ** 3 / 2;
+
+const scrollToElement = (element: HTMLElement) => {
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+  if (reduceMotion.matches) {
+    element.scrollIntoView();
+    return;
+  }
+
+  const startY = window.scrollY;
+  const targetY = element.getBoundingClientRect().top + startY;
+  const distance = targetY - startY;
+  const startedAt = performance.now();
+
+  if (scrollAnimationFrameId) {
+    cancelAnimationFrame(scrollAnimationFrameId);
+  }
+
+  const step = (currentTime: number) => {
+    const progress = Math.min((currentTime - startedAt) / SCROLL_DURATION_MS, 1);
+
+    window.scrollTo(0, startY + distance * easeInOutCubic(progress));
+
+    if (progress < 1) {
+      scrollAnimationFrameId = requestAnimationFrame(step);
+    } else {
+      scrollAnimationFrameId = undefined;
+    }
+  };
+
+  scrollAnimationFrameId = requestAnimationFrame(step);
+};
 
 export const Home = () => {
   const { token } = useToken();
   const { t } = useTranslation();
 
-  const statusMap = [
-    ["home.status.available", token.colorSuccess],
-    ["home.status.open", token.colorWarning],
-    ["home.status.employed", token.colorError],
-  ];
+  const statusConfig: Record<
+    AvailabilityStatus,
+    { labelKey: string; color: string; opacity: number }
+  > = {
+    available: {
+      labelKey: "home.status.available",
+      color: token.colorSuccess,
+      opacity: 0.9,
+    },
+    open: {
+      labelKey: "home.status.open",
+      color: token.colorWarning,
+      opacity: 1,
+    },
+    employed: {
+      labelKey: "home.status.employed",
+      color: token.colorError,
+      opacity: 0.9,
+    },
+  };
+  const { labelKey, color, opacity } = statusConfig[CURRENT_STATUS];
 
   return (
     <Flex id="home" vertical gap={48}>
@@ -41,6 +89,7 @@ export const Home = () => {
           RESUME
         </Typography.Title>
         <Button
+          className="scroll-button"
           color="default"
           variant="filled"
           shape="round"
@@ -49,20 +98,15 @@ export const Home = () => {
           onClick={() => {
             const element = document.getElementById("contact");
             if (element) {
-              element.scrollIntoView({ behavior: "smooth" });
+              scrollToElement(element);
             }
-          }}
-          style={{
-            textTransform: "uppercase",
-            transition:
-              "border-color 0.4s var(--bezier-animation), color 0.4s var(--bezier-animation), background-color 0.2s var(--bezier-animation)",
           }}
         >
           {t("home.scroll")}
         </Button>
       </Flex>
       <Flex className="description" justify="space-between" align="start">
-        <Space direction="vertical" size={0} style={{ whiteSpace: "nowrap" }}>
+        <Space className="home-contact" direction="vertical" size={0}>
           <Typography.Title level={5}>{t("home.contact")}</Typography.Title>
           <Typography.Text>
             <Space size={4}>
@@ -79,62 +123,49 @@ export const Home = () => {
                     className="avatar-container"
                     direction="vertical"
                     size={2}
-                    style={{ justifyContent: "flex-end" }}
                   >
-                    <Image
+                    <img
                       src={images.avatar}
-                      preview={false}
-                      placeholder
                       loading="lazy"
-                      alt="Avatar"
+                      alt={t("home.name")}
                     />
-                    <Space
-                      size={2}
-                      style={{ width: "100%", justifyContent: "center" }}
-                    >
+                    <Space className="avatar-location" size={2}>
                       <Typography.Text>{t("home.place")}</Typography.Text>
                       <LocationOnOutlined />
                     </Space>
                   </Space>
                 }
               >
-                <Button type="text" style={{ padding: "2px", height: 25 }}>
-                  <BadgeOutlined
-                    style={{
-                      fontSize: "21px",
-                      opacity: "var(--light-opacity)",
-                      fill: "var(--primary-color)",
-                    }}
-                  />
+                <Button
+                  className="contact-badge-button"
+                  type="text"
+                  aria-label={t("home.place")}
+                >
+                  <BadgeOutlined className="contact-badge-icon" />
                 </Button>
               </Popover>
             </Space>
             <br />
             <Typography.Link
+              className="home-email"
               href="mailto:exsec.b@gmail.com"
-              style={{ transition: "color 0.4s var(--bezier-animation)" }}
             >
               exsec.b@gmail.com
             </Typography.Link>
           </Typography.Text>
         </Space>
-        <Space
-          direction="vertical"
-          size={4}
-          style={{ minWidth: "300px", maxWidth: "600px" }}
-        >
-          <Space size={10}>
+        <Space className="status-column" direction="vertical" size={4}>
+          <Space className="status-row" size={10}>
             <Typography.Title level={5}>{t("home.status")}:</Typography.Title>
             <Tag
+              className="availability-tag"
               style={{
-                padding: "0 10px",
-                background: statusMap[CURRENT_STATUS][1] + "15",
-                color: statusMap[CURRENT_STATUS][1],
-                borderColor: statusMap[CURRENT_STATUS][1],
-                opacity: CURRENT_STATUS !== 1 ? 0.9 : 1,
-              }}
+                "--status-bg": `${color}15`,
+                "--status-color": color,
+                "--status-opacity": opacity,
+              } as CSSProperties}
             >
-              {t(statusMap[CURRENT_STATUS][0])}
+              {t(labelKey)}
             </Tag>
           </Space>
           <Typography.Text>{t("home.description")}</Typography.Text>

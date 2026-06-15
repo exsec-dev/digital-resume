@@ -1,4 +1,5 @@
-import { Typography, Image, Space } from "antd";
+import { useState } from "react";
+import { Typography, Space } from "antd";
 import { ArrowOutwardRounded } from "components/icons";
 import { useTranslation } from "react-i18next";
 
@@ -14,59 +15,34 @@ interface ProjectCardProps {
 
 export const ProjectCard = ({ src, url, title, text }: ProjectCardProps) => {
   const { t } = useTranslation();
+  const [imgSrc, setImgSrc] = useState(src);
 
   return (
-    <Space direction="vertical" size={16}>
-      <a href={url} target="_blank" rel="noopener noreferrer">
-        <Image
-          src={src}
-          placeholder
-          fallback={FALLBACK_IMAGE}
-          loading="lazy"
+    <Space className="project-card" direction="vertical" size={16}>
+      <a
+        href={url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="project-image"
+      >
+        <img
+          src={imgSrc}
           alt={title}
-          preview={{
-            visible: false,
-            onVisibleChange: () => {},
-            maskClassName: "preview-mask",
-            mask: (
-              <Space size={0} align="start">
-                <Typography.Text
-                  style={{
-                    color: "#fffcfa",
-                    fontWeight: 500,
-                    letterSpacing: "0.01rem",
-                  }}
-                >
-                  {t("certificates.open")}
-                </Typography.Text>
-                <ArrowOutwardRounded
-                  style={{ fontSize: "18px", marginTop: "2px" }}
-                />
-              </Space>
-            ),
-          }}
-          style={{
-            color: "var(--secondary-color)",
-            border: "1px solid var(--secondary-color)",
-            borderRadius: "26px",
-            transition: "border-color 0.4s var(--bezier-animation)",
-          }}
+          loading="lazy"
+          onError={() => setImgSrc(FALLBACK_IMAGE)}
         />
+        <Space size={0} align="start" className="project-image-mask">
+          <Typography.Text className="project-image-label">
+            {t("certificates.open")}
+          </Typography.Text>
+          <ArrowOutwardRounded className="project-image-icon" />
+        </Space>
       </a>
       <Space direction="vertical" size={0}>
-        <Typography.Title
-          level={5}
-          style={{
-            margin: 0,
-          }}
-        >
+        <Typography.Title className="project-card-title" level={5}>
           {title}
         </Typography.Title>
-        <Typography.Text
-          style={{
-            opacity: "var(--light-opacity)",
-          }}
-        >
+        <Typography.Text className="project-card-text">
           {text}
         </Typography.Text>
       </Space>

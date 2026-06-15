@@ -1,0 +1,20 @@
+.error-fallback {
+  width: 100vw;
+  height: 100vh;
+  padding: 24px;
+  text-align: center;
+  background: var(--bg-color);
+  color: var(--primary-color);
+
+  p {
+    max-width: 420px;
+  }
+}
+
+.error-fallback-title.ant-typography {
+  margin: 0;
+}
+
+.error-fallback-description {
+  opacity: var(--light-opacity);
+}

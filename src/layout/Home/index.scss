@@ -1,3 +1,5 @@
+@use "styles/mixins" as *;
+
 .title-container {
   flex-direction: column;
   align-items: flex-end;
@@ -28,11 +30,21 @@
       }
     }
   }
+}
 
-  button {
-    border: 0.1rem solid var(--secondary-color) !important;
+.scroll-button {
+  text-transform: uppercase;
+  transition:
+    border-color 0.4s var(--bezier-animation),
+    color 0.4s var(--bezier-animation),
+    background-color 0.4s var(--bezier-animation);
+}
+
+.title-container {
+  .scroll-button.ant-btn {
     height: 48px;
-    padding: 16px 20px !important;
+    padding: 16px 20px;
+    border: 0.1rem solid var(--secondary-color);
 
     span {
       font-weight: 500;
@@ -52,11 +64,49 @@
     margin: 0;
   }
 
-  a {
+  .home-email.ant-typography {
     letter-spacing: 0.02rem;
-    color: var(--primary-color) !important;
+    color: var(--primary-color);
     opacity: var(--light-opacity);
   }
+}
+
+.home-contact {
+  white-space: nowrap;
+}
+
+.home-email {
+  transition: color 0.4s var(--bezier-animation);
+}
+
+.contact-badge-button.ant-btn {
+  height: 25px;
+  padding: 2px;
+}
+
+.contact-badge-button .contact-badge-icon.icon {
+  color: var(--primary-color);
+  fill: currentColor;
+  font-size: 21px;
+  opacity: var(--light-opacity);
+  @include theme-transition(fill, color);
+}
+
+.status-column {
+  width: 100%;
+  max-width: 600px;
+}
+
+.status-row {
+  align-items: center;
+}
+
+.availability-tag {
+  padding: 0 10px;
+  color: var(--status-color);
+  border-color: var(--status-color);
+  background: var(--status-bg);
+  opacity: var(--status-opacity);
 }
 
 .image-popover {
@@ -65,19 +115,31 @@
   .avatar-container {
     width: 144px;
     height: calc(144px * 1.225 + 24px);
+    justify-content: flex-end;
 
-    span {
+    img {
+      @include fill-image;
+    }
+
+    span,
+    .ant-typography {
       font-size: 10px;
       opacity: var(--light-opacity);
       letter-spacing: 0.02rem;
       font-weight: 450;
     }
 
-    svg {
+    svg,
+    .icon {
       font-size: 14px;
       position: relative;
       top: 2px;
       opacity: var(--light-opacity);
+    }
+
+    .avatar-location {
+      width: 100%;
+      justify-content: center;
     }
   }
 }
@@ -156,6 +218,10 @@
     h5.ant-typography {
       font-size: 18px;
     }
+  }
+
+  .status-column {
+    min-width: 300px;
   }
 
   .image-popover .avatar-container {

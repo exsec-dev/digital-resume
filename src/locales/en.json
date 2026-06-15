@@ -47,12 +47,15 @@
   "experience": "Experience",
   "experience.tooltip": "Responsibilities",
   "experience.first.title": "Startup Project: Tourism Service for Personalized Accommodation Selection",
+  "experience.first.subtitle": "Lead Technical Manager",
   "experience.first.period": "Oct 2022 – Sep 2023",
   "experience.first.tooltip": "Development and debugging of the service architecture using React and Python|Task planning and distribution|Collaboration with external technical partners",
   "experience.second.title": "Department of Information Technologies of Moscow",
+  "experience.second.subtitle": "Junior Frontend Developer",
   "experience.second.period": "Feb 2024 – Jul 2024",
   "experience.second.tooltip": "Development of React components for automation tools|Code refactoring and optimization|User interface issue resolution|Creation of technical documentation and operational guidelines",
   "experience.third.title": "Astra Group of Companies",
+  "experience.third.subtitle": "Frontend Developer",
   "experience.third.period": "Aug 2024 – Present",
 
   "certificates": "Certificates",
@@ -61,5 +64,9 @@
 
   "contacts.title": "Get in Touch",
   "contacts.updated": "Last Updated",
-  "contacts.author": "Made by"
+  "contacts.author": "Made by",
+
+  "error.title": "Something went wrong",
+  "error.description": "An unexpected error occurred while rendering this page. Try reloading it.",
+  "error.reload": "Reload page"
 }

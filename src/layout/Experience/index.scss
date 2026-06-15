@@ -1,15 +1,37 @@
-.ant-timeline {
-  .ant-timeline-item-tail {
-    opacity: 0.1;
-  }
+@use "styles/mixins" as *;
+
+.experience-timeline {
+  margin-top: 16px;
 
   svg {
     fill: var(--primary-color);
   }
+
+  li:last-child {
+    padding-bottom: 0;
+  }
+
+  .ant-timeline-item-tail {
+    opacity: 0.1;
+    border-inline-start-color: var(--primary-color);
+    @include theme-transition(border-inline-start-color);
+  }
 }
 
-.ant-collapse-content-box {
-  li:last-child {
-    padding-bottom: 0px;
+.experience-dot {
+  font-size: 13px;
+  opacity: 0.2;
+}
+
+.experience-current-dot {
+  opacity: 0.3;
+  animation: experience-current-dot-spin 1s linear infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+@keyframes experience-current-dot-spin {
+  to {
+    transform: rotate(360deg);
   }
 }

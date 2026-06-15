@@ -10,7 +10,7 @@ export const Education = () => {
     <CollapsePanel
       title={t("education")}
       content={
-        <Space direction="vertical" size={36} style={{ width: "100%" }}>
+        <Space className="education-list" direction="vertical" size={36}>
           <TimePeriodPanel
             title={t("education.title.master")}
             subtitle={t("education.subtitle.master")}

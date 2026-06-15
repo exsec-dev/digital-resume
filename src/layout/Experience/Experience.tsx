@@ -1,7 +1,6 @@
-import { LoadingOutlined } from "@ant-design/icons";
 import { Timeline } from "antd";
 import { TimePeriodPanel, CollapsePanel } from "components";
-import { FiberManualRecord } from "components/icons";
+import { FiberManualRecord, LoadingOutlined } from "components/icons";
 import { useTranslation } from "react-i18next";
 import "./index.scss";
 
@@ -13,27 +12,25 @@ export const Experience = () => {
       title={t("experience")}
       content={
         <Timeline
-          style={{ marginTop: "16px" }}
+          className="experience-timeline"
           pending={
             <TimePeriodPanel
               title={t("experience.third.title")}
-              subtitle="Frontend Developer"
+              subtitle={t("experience.third.subtitle")}
               period={t("experience.third.period")}
               isSmall
             />
           }
-          pendingDot={<LoadingOutlined style={{ opacity: 0.3 }} />}
+          pendingDot={<LoadingOutlined className="experience-current-dot" />}
           reverse
           items={[
             {
-              dot: (
-                <FiberManualRecord style={{ fontSize: "13px", opacity: 0.2 }} />
-              ),
+              dot: <FiberManualRecord className="experience-dot" />,
               color: "var(--primary-color)",
               children: (
                 <TimePeriodPanel
                   title={t("experience.first.title")}
-                  subtitle="Lead Technical Manager"
+                  subtitle={t("experience.first.subtitle")}
                   period={t("experience.first.period")}
                   info={{
                     title: t("experience.tooltip"),
@@ -44,14 +41,12 @@ export const Experience = () => {
               ),
             },
             {
-              dot: (
-                <FiberManualRecord style={{ fontSize: "13px", opacity: 0.2 }} />
-              ),
+              dot: <FiberManualRecord className="experience-dot" />,
               color: "var(--primary-color)",
               children: (
                 <TimePeriodPanel
                   title={t("experience.second.title")}
-                  subtitle="Junior Frontend Developer"
+                  subtitle={t("experience.second.subtitle")}
                   period={t("experience.second.period")}
                   info={{
                     title: t("experience.tooltip"),

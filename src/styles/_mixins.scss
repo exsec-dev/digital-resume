@@ -1,0 +1,22 @@
+@use "sass:list";
+
+@mixin theme-transition($properties...) {
+  $transitions: ();
+
+  @each $property in $properties {
+    $transitions: list.append(
+      $transitions,
+      #{$property} 0.4s var(--bezier-animation),
+      comma
+    );
+  }
+
+  transition: $transitions;
+}
+
+@mixin fill-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  vertical-align: middle;
+}

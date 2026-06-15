@@ -8,12 +8,12 @@ export const Contacts = () => {
   const buildDate = import.meta.env.VITE_BUILD_DATE;
 
   return (
-    <Layout.Footer id="contact">
+    <Layout.Footer id="contact" className="footer">
       <Flex
+        className="footer-content"
         vertical
         align="center"
         gap={64}
-        style={{ padding: "48px 0px 24px" }}
       >
         <Space
           className="contacts"
@@ -24,7 +24,7 @@ export const Contacts = () => {
           <Typography.Title level={2}>{t("contacts.title")}</Typography.Title>
           <Space>
             <Button
-              className="mail-link"
+              className="contact-link mail-link"
               type="primary"
               href="mailto:exsec.b@gmail.com"
               target="_blank"
@@ -35,17 +35,21 @@ export const Contacts = () => {
               exsec.b@gmail.com
             </Button>
             <Button
+              className="contact-link telegram-link"
               type="primary"
               href="https://t.me/exsec2"
               target="_blank"
               rel="noopener noreferrer"
-              icon={<Telegram style={{ top: "1px", right: "1px" }} />}
+              aria-label="Telegram"
+              icon={<Telegram />}
             />
             <Button
+              className="contact-link"
               type="primary"
               href="https://github.com/exsec-dev"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="GitHub"
               icon={<GitHub />}
             />
           </Space>

@@ -2,7 +2,7 @@ const Logo = () => (
   <svg
     className="logo"
     viewBox="0 0 88 26"
-    fill="var(--primary-color)"
+    fill="currentColor"
     xmlns="http://www.w3.org/2000/svg"
     shapeRendering="geometricPrecision"
     aria-hidden="true"

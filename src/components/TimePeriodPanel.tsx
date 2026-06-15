@@ -1,13 +1,8 @@
-import { InfoCircleOutlined } from "@ant-design/icons";
 import { Typography, Space, Divider, Flex, Popover, Button } from "antd";
+import { InfoCircleOutlined } from "components/icons";
+import "./TimePeriodPanel.scss";
 
-export const TimePeriodPanel = ({
-  title,
-  subtitle,
-  period,
-  isSmall,
-  info,
-}: {
+interface TimePeriodPanelProps {
   title: string;
   subtitle: string;
   period: string;
@@ -16,19 +11,30 @@ export const TimePeriodPanel = ({
     title: string;
     text: string[];
   };
-}) => {
+}
+
+export const TimePeriodPanel = ({
+  title,
+  subtitle,
+  period,
+  isSmall,
+  info,
+}: TimePeriodPanelProps) => {
   return (
-    <Space className="timeperiod" direction="vertical" size={isSmall ? 6 : 8}>
+    <Space
+      className={["timeperiod", isSmall ? "timeperiod--small" : ""]
+        .filter(Boolean)
+        .join(" ")}
+      direction="vertical"
+      size={isSmall ? 6 : 8}
+    >
       <Space
         className="timeperiod-data"
         direction="vertical"
         size={isSmall ? 0 : 4}
       >
         <Flex justify="space-between" align="start" gap={6}>
-          <Typography.Text
-            className="timeperiod-data-title"
-            style={{ fontSize: isSmall ? 15 : 16 }}
-          >
+          <Typography.Text className="timeperiod-data-title">
             {title}
           </Typography.Text>
           {info ? (
@@ -65,11 +71,7 @@ export const TimePeriodPanel = ({
         </Typography.Text>
       </Space>
       <Divider />
-      <Typography.Text
-        italic
-        className="timeperiod-period"
-        style={{ fontSize: isSmall ? 13 : 14 }}
-      >
+      <Typography.Text italic className="timeperiod-period">
         {period}
       </Typography.Text>
     </Space>

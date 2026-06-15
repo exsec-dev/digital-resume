@@ -1,15 +1,17 @@
-import React from "react";
+import { type ReactNode } from "react";
 import { Typography, Collapse } from "antd";
+
+interface CollapsePanelProps {
+  title: ReactNode;
+  content: ReactNode;
+  defaultClosed?: boolean;
+}
 
 export const CollapsePanel = ({
   title,
   content,
   defaultClosed,
-}: {
-  title: React.ReactNode;
-  content: React.ReactNode;
-  defaultClosed?: boolean;
-}) => {
+}: CollapsePanelProps) => {
   return (
     <Collapse
       className="collapse-panel"
@@ -20,7 +22,7 @@ export const CollapsePanel = ({
         {
           key: "1",
           label: (
-            <Typography.Title level={3} style={{ width: "fit-content" }}>
+            <Typography.Title className="collapse-panel-title" level={3}>
               {title}
             </Typography.Title>
           ),

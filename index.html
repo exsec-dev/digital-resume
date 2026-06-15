@@ -7,6 +7,18 @@
     <script>
       (function () {
         try {
+          var platform =
+            (navigator.userAgentData && navigator.userAgentData.platform) ||
+            navigator.platform ||
+            "";
+          var isMacOS =
+            /mac/i.test(platform) &&
+            !(navigator.maxTouchPoints && navigator.maxTouchPoints > 1);
+
+          if (isMacOS) {
+            document.documentElement.setAttribute("data-scrollbar", "native");
+          }
+
           if (localStorage.getItem("scheme") === "dark") {
             document.documentElement.setAttribute("data-theme", "dark");
           }
@@ -21,7 +33,9 @@
         background-color: #121212;
       }
     </style>
-    <link rel="icon" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="alternate icon" href="/favicon-48x48.png" type="image/png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="stylesheet" href="/reset.css" />
     <link rel="stylesheet" href="/fonts.css" />
     <meta

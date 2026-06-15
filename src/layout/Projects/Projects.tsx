@@ -1,9 +1,17 @@
 import { useMemo, useState } from "react";
-import { FolderOpenFilled, FolderFilled } from "@ant-design/icons";
 import { Typography, Flex, Col, Row, Collapse } from "antd";
 import images from "assets/images";
 import { ProjectCard } from "components";
+import { FolderOpenFilled, FolderFilled } from "components/icons";
 import { useTranslation } from "react-i18next";
+import "./index.scss";
+
+const PROJECT_CARD_COL_PROPS = {
+  xs: { flex: "100%" },
+  md: { flex: "46%" },
+  lg: { flex: "45%" },
+  xl: { flex: "30%" },
+} as const;
 
 export const Projects = () => {
   const { t } = useTranslation();
@@ -68,58 +76,41 @@ export const Projects = () => {
       <Typography.Title level={3}>{t("projects")}</Typography.Title>
       <Row gutter={[0, 40]} justify="space-between" wrap>
         {previews.map((preview) => (
-          <Col
-            key={preview.title}
-            xs={{ flex: "100%" }}
-            md={{ flex: "46%" }}
-            lg={{ flex: "45%" }}
-            xl={{ flex: "30%" }}
-          >
+          <Col key={preview.title} {...PROJECT_CARD_COL_PROPS}>
             <ProjectCard {...preview} />
           </Col>
         ))}
       </Row>
       <Collapse
-        className="collapse-panel--small"
+        className="projects-archive collapse-panel collapse-panel--small"
         activeKey={isArchiveOpened ? "archive" : undefined}
-        onChange={() => setIsArchiveOpened(!isArchiveOpened)}
+        onChange={(key) => {
+          setIsArchiveOpened(
+            Array.isArray(key) ? key.includes("archive") : key === "archive",
+          );
+        }}
         items={[
           {
             key: "archive",
             label: (
-              <Typography.Title
-                level={5}
-                style={{
-                  opacity: 0.7,
-                  marginBottom: 0,
-                  fontSize: "15px",
-                  padding: "8px 16px",
-                  width: "fit-content",
-                }}
-              >
+              <Typography.Title className="projects-archive-title" level={5}>
                 {isArchiveOpened ? (
-                  <FolderOpenFilled style={{ marginRight: 8 }} />
+                  <FolderOpenFilled className="projects-archive-icon" />
                 ) : (
-                  <FolderFilled style={{ marginRight: 8 }} />
+                  <FolderFilled className="projects-archive-icon" />
                 )}
                 {t("projects.archive")}
               </Typography.Title>
             ),
             children: (
               <Row
+                className="projects-archive-grid"
                 gutter={[0, 40]}
                 justify="space-between"
                 wrap
-                style={{ padding: "20px 28px 24px" }}
               >
                 {previewsArchive.map((preview) => (
-                  <Col
-                    key={preview.title}
-                    xs={{ flex: "100%" }}
-                    md={{ flex: "46%" }}
-                    lg={{ flex: "45%" }}
-                    xl={{ flex: "30%" }}
-                  >
+                  <Col key={preview.title} {...PROJECT_CARD_COL_PROPS}>
                     <ProjectCard {...preview} />
                   </Col>
                 ))}
@@ -129,10 +120,6 @@ export const Projects = () => {
         ]}
         size="small"
         expandIconPosition="end"
-        style={{
-          marginTop: 32,
-          backgroundColor: "var(--pop-color)",
-        }}
       />
     </Flex>
   );

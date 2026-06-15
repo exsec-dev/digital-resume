@@ -9,8 +9,8 @@
   "home.scroll": "Контакты",
   "home.contact": "Всегда на связи",
   "home.name": "Екатерина Прожирко",
-  "home.place": "г. Москва, Россия",
-  "home.status": "На данный момент",
+  "home.place": "Москва, Россия",
+  "home.status": "На текущий момент",
   "home.status.available": "В поиске работы",
   "home.status.open": "Рассмотрю предложения",
   "home.status.employed": "Не ищу работу",
@@ -47,12 +47,15 @@
   "experience": "Коммерческий опыт",
   "experience.tooltip": "Ключевые обязанности",
   "experience.first.title": "Стартап-проект: туристический сервис персонализированного подбора жилья",
+  "experience.first.subtitle": "Lead Technical Manager",
   "experience.first.period": "Октябрь 2022 – Сентябрь 2023",
   "experience.first.tooltip": "Разработка и отладка архитектуры сервиса на React и Python|Планирование и распределение задач|Взаимодействие с внешними техническими партнерами",
   "experience.second.title": "Департамент информационных технологий города Москвы",
+  "experience.second.subtitle": "Junior Frontend-разработчик",
   "experience.second.period": "Февраль 2024 – Июль 2024",
   "experience.second.tooltip": "Разработка React-компонентов в средствах автоматизации|Рефакторинг и поддержка кода|Устранение дефектов пользовательского интерфейса|Составление технической документации и регламентов работы",
   "experience.third.title": "Группа Астра",
+  "experience.third.subtitle": "Frontend-разработчик",
   "experience.third.period": "Август 2024 – по настоящее время",
 
   "certificates": "Сертификаты",
@@ -61,5 +64,9 @@
 
   "contacts.title": "Связаться со мной",
   "contacts.updated": "Обновлено",
-  "contacts.author": "Сделано"
+  "contacts.author": "Сделано",
+
+  "error.title": "Что-то пошло не так",
+  "error.description": "При отображении страницы произошла непредвиденная ошибка. Попробуйте перезагрузить страницу.",
+  "error.reload": "Обновить страницу"
 }

@@ -57,32 +57,26 @@ export const Expertise = () => {
   );
 
   return (
-    <Flex id="about" vertical gap={16}>
+    <Flex id="about" className="expertise" vertical gap={16}>
       <Typography.Title level={3}>{t("expertise")}</Typography.Title>
       <Space direction="vertical" size={42}>
         {content.map((chapter) => {
           return (
             <Space
+              className="expertise-section"
               key={chapter.title}
               direction="vertical"
-              style={{ width: "100%" }}
             >
               <Typography.Title level={4}>{chapter.title}</Typography.Title>
-              <Divider
-                style={{
-                  margin: 0,
-                  opacity: 0.2,
-                  borderBlockStart: "0.1rem solid var(--primary-color)",
-                }}
-              />
-              <Flex wrap gap={6} style={{ marginTop: "8px" }}>
+              <Divider className="expertise-divider" />
+              <Flex className="expertise-skills" wrap gap={6}>
                 {chapter.skills?.map((item) => (
                   <div key={item} className="skill-container">
                     {item}
                   </div>
                 ))}
               </Flex>
-              <Typography.Text style={{ letterSpacing: "0.02rem" }}>
+              <Typography.Text className="expertise-text">
                 {chapter.text}
               </Typography.Text>
             </Space>

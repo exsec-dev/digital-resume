@@ -1,3 +1,5 @@
+@use "styles/mixins" as *;
+
 .header {
   position: fixed;
   z-index: 2;
@@ -8,10 +10,16 @@
   padding: 10px 28px;
   backdrop-filter: blur(8px);
   background-color: var(--mobile-header-color);
-  transition: background-color 0.4s var(--bezier-animation);
+  @include theme-transition(background-color);
+
+  .header-inner {
+    height: 100%;
+  }
 
   .logo {
     width: 3.5rem;
+    fill: var(--primary-color);
+    @include theme-transition(fill);
   }
 
   .button-container {
@@ -19,17 +27,16 @@
 
     .ant-btn {
       color: var(--bg-color);
-      transition:
-        background-color 0.4s var(--bezier-animation),
-        color 0.4s var(--bezier-animation);
+      @include theme-transition(background-color, color);
 
       &:not(.ant-btn-primary) {
-        background: none !important;
+        background: transparent;
       }
 
       svg {
         fill: var(--button-bg);
         font-size: 22px;
+        @include theme-transition(fill);
       }
 
       &.download {
@@ -64,9 +71,7 @@
       .ant-anchor-link-title {
         opacity: 0.4;
         color: var(--primary-color);
-        transition:
-          color 0.4s var(--bezier-animation),
-          font-weight 0.4s var(--bezier-animation);
+        @include theme-transition(color, font-weight);
       }
     }
 

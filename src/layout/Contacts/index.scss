@@ -1,5 +1,11 @@
-footer {
-  padding: 0 !important;
+@use "styles/mixins" as *;
+
+.footer.ant-layout-footer {
+  padding: 0;
+
+  .footer-content {
+    padding: 48px 0 24px;
+  }
 
   .contacts {
     h2 {
@@ -7,30 +13,34 @@ footer {
       font-size: 52px;
     }
 
-    a {
-      padding: 24px !important;
+    .contact-link.ant-btn {
+      padding: 24px;
       border-radius: 48px;
       background-color: var(--primary-color);
       letter-spacing: 0.02rem;
       font-size: 0.85rem;
       color: var(--bg-color);
-      transition:
-        background-color 0.4s var(--bezier-animation),
-        color 0.4s var(--bezier-animation);
+      @include theme-transition(background-color, color);
 
       &:hover {
-        background-color: var(--primary-color) !important;
-        color: var(--bg-color) !important;
+        background-color: var(--primary-color);
+        color: var(--bg-color);
       }
 
       svg {
         font-size: 20px;
-        color: var(--bg-color);
+        fill: var(--bg-color);
         position: relative;
+        @include theme-transition(fill);
+      }
+
+      &.telegram-link svg {
+        top: 1px;
+        right: 1px;
       }
 
       &.mail-link {
-        padding: 24px 30px !important;
+        padding: 24px 30px;
 
         svg {
           font-size: 16px;

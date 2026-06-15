@@ -39,7 +39,7 @@ export const Header = () => {
 
   return (
     <Layout.Header className="header">
-      <Flex justify="space-between" align="center" style={{ height: "100%" }}>
+      <Flex className="header-inner" justify="space-between" align="center">
         <Logo />
         <Flex gap={18}>
           <Anchor
