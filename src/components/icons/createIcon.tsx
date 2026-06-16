@@ -1,4 +1,5 @@
 import { ReactNode, SVGProps } from "react";
+import clsx from "clsx";
 
 export const createIcon = (path: ReactNode, viewBox = "0 0 24 24") => {
   const IconComponent = ({ className, ...props }: SVGProps<SVGSVGElement>) => (
@@ -6,7 +7,7 @@ export const createIcon = (path: ReactNode, viewBox = "0 0 24 24") => {
       viewBox={viewBox}
       focusable="false"
       aria-hidden="true"
-      className={["icon", className].filter(Boolean).join(" ")}
+      className={clsx("icon", className)}
       {...props}
     >
       {path}

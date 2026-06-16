@@ -1,9 +1,10 @@
 import { useMemo, useState } from "react";
 import { Typography, Flex, Col, Row, Collapse } from "antd";
-import images from "assets/images";
+import { useTranslation } from "react-i18next";
 import { ProjectCard } from "components";
 import { FolderOpenFilled, FolderFilled } from "components/icons";
-import { useTranslation } from "react-i18next";
+import { SECTION_ID } from "config/sections";
+import { PROJECTS, PROJECTS_ARCHIVE, type ProjectPreview } from "./projects.data";
 import "./index.scss";
 
 const PROJECT_CARD_COL_PROPS = {
@@ -17,63 +18,16 @@ export const Projects = () => {
   const { t } = useTranslation();
   const [isArchiveOpened, setIsArchiveOpened] = useState<boolean>(false);
 
-  const previews = useMemo(
-    () => [
-      {
-        src: images.generator,
-        url: "https://exsec.dev/password-generator",
-        title: "Password Generator",
-        text: t("projects.utility"),
-      },
-      {
-        src: images.astraedu,
-        url: "https://exsec.dev/astraedu",
-        title: "AstraEdu",
-        text: t("projects.edu"),
-      },
-      {
-        src: images.wordle,
-        url: "https://exsec.dev/wordle",
-        title: "Wordle",
-        text: t("projects.browser"),
-      },
-    ],
-    [t],
-  );
-
-  const previewsArchive = useMemo(
-    () => [
-      {
-        src: images.gameOfLife,
-        url: "https://exsec.dev/game-of-life",
-        title: "Game of Life",
-        text: t("projects.browser"),
-      },
-      {
-        src: images.pixelCat,
-        url: "https://exsec.dev/pixel-cat",
-        title: "Pixel Cat",
-        text: t("projects.browser"),
-      },
-      {
-        src: images.astrabot,
-        url: "https://t.me/AstraEdu_bot",
-        title: "AstraBot",
-        text: t("projects.bot"),
-      },
-      {
-        src: images.idle,
-        url: "https://exsec.dev/idlebot",
-        title: "Idle Project",
-        text: t("projects.service"),
-      },
-    ],
-    [t],
-  );
+  const [previews, previewsArchive] = useMemo(() => {
+    const toCard = ({ textKey, ...rest }: ProjectPreview) => ({ ...rest, text: t(textKey) });
+    return [PROJECTS.map(toCard), PROJECTS_ARCHIVE.map(toCard)];
+  }, [t]);
 
   return (
-    <Flex id="projects" vertical gap={16}>
-      <Typography.Title level={3}>{t("projects")}</Typography.Title>
+    <Flex id={SECTION_ID.projects} vertical gap={16}>
+      <Typography.Title level={2} className="section-title">
+        {t("projects")}
+      </Typography.Title>
       <Row gutter={[0, 40]} justify="space-between" wrap>
         {previews.map((preview) => (
           <Col key={preview.title} {...PROJECT_CARD_COL_PROPS}>
@@ -84,16 +38,12 @@ export const Projects = () => {
       <Collapse
         className="projects-archive collapse-panel collapse-panel--small"
         activeKey={isArchiveOpened ? "archive" : undefined}
-        onChange={(key) => {
-          setIsArchiveOpened(
-            Array.isArray(key) ? key.includes("archive") : key === "archive",
-          );
-        }}
+        onChange={(keys) => setIsArchiveOpened([keys].flat().includes("archive"))}
         items={[
           {
             key: "archive",
             label: (
-              <Typography.Title className="projects-archive-title" level={5}>
+              <Typography.Title className="projects-archive-title" level={3}>
                 {isArchiveOpened ? (
                   <FolderOpenFilled className="projects-archive-icon" />
                 ) : (

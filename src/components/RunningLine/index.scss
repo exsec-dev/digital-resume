@@ -1,0 +1,40 @@
+@use "styles/mixins" as *;
+
+.running-container {
+  width: 100vw;
+  height: 120px;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  background-color: var(--primary-color);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  @include theme-transition(background-color);
+  user-select: none;
+
+  .line {
+    color: var(--bg-color);
+    font-size: 64px;
+    white-space: nowrap;
+    display: inline-block;
+    animation: run 20s linear infinite;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .line.ant-typography {
+    margin: 0 96px 0 0;
+  }
+}
+
+@keyframes run {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-100% - 96px));
+  }
+}

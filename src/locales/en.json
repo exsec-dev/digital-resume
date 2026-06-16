@@ -1,4 +1,6 @@
 {
+  "a11y.skipToContent": "Skip to content",
+
   "header.menu.home": "Home",
   "header.menu.projects": "Projects",
   "header.menu.about": "About",
@@ -35,6 +37,7 @@
   "expertise.skills.prototyping": "Prototyping & Wireframes",
   "expertise.skills.color": "Composition & Color Theory",
   "expertise.skills.typo": "Typography",
+  "expertise.eng.text": "English Language Test – CEFR level B2 (Upper Intermediate)",
 
   "education": "Education",
   "education.title.master": "Master's Degree: National University of Science and Technology MISIS",
@@ -49,18 +52,34 @@
   "experience.first.title": "Startup Project: Tourism Service for Personalized Accommodation Selection",
   "experience.first.subtitle": "Lead Technical Manager",
   "experience.first.period": "Oct 2022 – Sep 2023",
-  "experience.first.tooltip": "Development and debugging of the service architecture using React and Python|Task planning and distribution|Collaboration with external technical partners",
+  "experience.first.tooltip": [
+    "Development and debugging of the service architecture using React and Python",
+    "Task planning and distribution",
+    "Collaboration with external technical partners"
+  ],
   "experience.second.title": "Department of Information Technologies of Moscow",
   "experience.second.subtitle": "Junior Frontend Developer",
   "experience.second.period": "Feb 2024 – Jul 2024",
-  "experience.second.tooltip": "Development of React components for automation tools|Code refactoring and optimization|User interface issue resolution|Creation of technical documentation and operational guidelines",
+  "experience.second.tooltip": [
+    "Development of React components for automation tools",
+    "Code refactoring and optimization",
+    "User interface issue resolution",
+    "Creation of technical documentation and operational guidelines"
+  ],
   "experience.third.title": "Astra Group of Companies",
   "experience.third.subtitle": "Frontend Developer",
   "experience.third.period": "Aug 2024 – Present",
 
   "certificates": "Certificates",
   "certificates.open": "View Source",
-  "certificates.list": "LCT 2023. Finalist in the Moscow Mayor’s Competition «Recommender System for Personalized Tourist Packages»|ALSE-1703 «Advanced Administration of Astra Linux Special Edition 1.7»|Project work defense within the «Astra-Scholarship» program 2022-2024|Course «System Engineering Practices», UrFU|Course «Project Management in a Modern Company», MISIS|English Language Test – CEFR level B2",
+  "certificates.list": [
+    "LCT 2023. Finalist in the Moscow Mayor’s Competition «Recommender System for Personalized Tourist Packages»",
+    "ALSE-1703 «Advanced Administration of Astra Linux Special Edition 1.7»",
+    "Project work defense within the «Astra-Scholarship» program 2022-2024",
+    "Course «System Engineering Practices», UrFU",
+    "Course «Project Management in a Modern Company», MISIS",
+    "English Language Test – CEFR level B2"
+  ],
 
   "contacts.title": "Get in Touch",
   "contacts.updated": "Last Updated",

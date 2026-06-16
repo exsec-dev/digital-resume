@@ -1,9 +1,11 @@
 @use "styles/mixins" as *;
 
 .expertise {
-  h4.ant-typography {
+  .expertise-chapter-title.ant-typography {
     margin: 0 0 8px;
     font-weight: 500;
+    font-size: 20px;
+    line-height: 1.4;
   }
 }
 

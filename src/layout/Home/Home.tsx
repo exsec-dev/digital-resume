@@ -1,85 +1,39 @@
 import type { CSSProperties } from "react";
+import { useMemo } from "react";
 import { Typography, Flex, Button, Space, Tag, theme, Popover } from "antd";
+import { useTranslation } from "react-i18next";
 import images from "assets/images";
 import {
   ArrowDownwardRounded,
   BadgeOutlined,
   LocationOnOutlined,
 } from "components/icons";
-import { useTranslation } from "react-i18next";
+import { EMAIL } from "config/contacts";
+import { CURRENT_STATUS, type AvailabilityStatus } from "config/profile";
+import { SECTION_ID } from "config/sections";
+import { scrollToElement } from "utils/scrollToElement";
 import "./index.scss";
 
 const { useToken } = theme;
 
-type AvailabilityStatus = "available" | "open" | "employed";
-
-const CURRENT_STATUS: AvailabilityStatus = "employed";
-const SCROLL_DURATION_MS = 900;
-let scrollAnimationFrameId: number | undefined;
-
-const easeInOutCubic = (value: number) =>
-  value < 0.5 ? 4 * value * value * value : 1 - (-2 * value + 2) ** 3 / 2;
-
-const scrollToElement = (element: HTMLElement) => {
-  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-
-  if (reduceMotion.matches) {
-    element.scrollIntoView();
-    return;
-  }
-
-  const startY = window.scrollY;
-  const targetY = element.getBoundingClientRect().top + startY;
-  const distance = targetY - startY;
-  const startedAt = performance.now();
-
-  if (scrollAnimationFrameId) {
-    cancelAnimationFrame(scrollAnimationFrameId);
-  }
-
-  const step = (currentTime: number) => {
-    const progress = Math.min((currentTime - startedAt) / SCROLL_DURATION_MS, 1);
-
-    window.scrollTo(0, startY + distance * easeInOutCubic(progress));
-
-    if (progress < 1) {
-      scrollAnimationFrameId = requestAnimationFrame(step);
-    } else {
-      scrollAnimationFrameId = undefined;
-    }
-  };
-
-  scrollAnimationFrameId = requestAnimationFrame(step);
-};
+type StatusLabelKey = `home.status.${AvailabilityStatus}`;
 
 export const Home = () => {
   const { token } = useToken();
   const { t } = useTranslation();
 
-  const statusConfig: Record<
-    AvailabilityStatus,
-    { labelKey: string; color: string; opacity: number }
-  > = {
-    available: {
-      labelKey: "home.status.available",
-      color: token.colorSuccess,
-      opacity: 0.9,
-    },
-    open: {
-      labelKey: "home.status.open",
-      color: token.colorWarning,
-      opacity: 1,
-    },
-    employed: {
-      labelKey: "home.status.employed",
-      color: token.colorError,
-      opacity: 0.9,
-    },
-  };
-  const { labelKey, color, opacity } = statusConfig[CURRENT_STATUS];
+  const { color, opacity } = useMemo(
+    () => ({
+      available: { color: token.colorSuccess, opacity: 0.9 },
+      open: { color: token.colorWarning, opacity: 1 },
+      employed: { color: token.colorError, opacity: 0.9 },
+    })[CURRENT_STATUS],
+    [token],
+  );
+  const labelKey: StatusLabelKey = `home.status.${CURRENT_STATUS}`;
 
   return (
-    <Flex id="home" vertical gap={48}>
+    <Flex id={SECTION_ID.home} tabIndex={-1} vertical gap={48}>
       <Flex className="title-container" justify="space-between">
         <Typography.Title>
           D<span>I</span>
@@ -96,7 +50,7 @@ export const Home = () => {
           iconPosition="end"
           icon={<ArrowDownwardRounded />}
           onClick={() => {
-            const element = document.getElementById("contact");
+            const element = document.getElementById(SECTION_ID.contact);
             if (element) {
               scrollToElement(element);
             }
@@ -107,7 +61,9 @@ export const Home = () => {
       </Flex>
       <Flex className="description" justify="space-between" align="start">
         <Space className="home-contact" direction="vertical" size={0}>
-          <Typography.Title level={5}>{t("home.contact")}</Typography.Title>
+          <Typography.Text strong className="home-label">
+            {t("home.contact")}
+          </Typography.Text>
           <Typography.Text>
             <Space size={4}>
               {t("home.name")}
@@ -128,6 +84,8 @@ export const Home = () => {
                       src={images.avatar}
                       loading="lazy"
                       alt={t("home.name")}
+                      width={467}
+                      height={572}
                     />
                     <Space className="avatar-location" size={2}>
                       <Typography.Text>{t("home.place")}</Typography.Text>
@@ -146,17 +104,16 @@ export const Home = () => {
               </Popover>
             </Space>
             <br />
-            <Typography.Link
-              className="home-email"
-              href="mailto:exsec.b@gmail.com"
-            >
-              exsec.b@gmail.com
+            <Typography.Link className="home-email" href={`mailto:${EMAIL}`}>
+              {EMAIL}
             </Typography.Link>
           </Typography.Text>
         </Space>
         <Space className="status-column" direction="vertical" size={4}>
           <Space className="status-row" size={10}>
-            <Typography.Title level={5}>{t("home.status")}:</Typography.Title>
+            <Typography.Text strong className="home-label">
+              {t("home.status")}:
+            </Typography.Text>
             <Tag
               className="availability-tag"
               style={{

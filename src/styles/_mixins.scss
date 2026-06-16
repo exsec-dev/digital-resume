@@ -1,4 +1,19 @@
 @use "sass:list";
+@use "sass:map";
+
+$breakpoints: (
+  xs: 400px,
+  sm: 600px,
+  md: 768px,
+  lg: 1024px,
+  xl: 1440px,
+);
+
+@mixin breakpoint($name) {
+  @media (min-width: map.get($breakpoints, $name)) {
+    @content;
+  }
+}
 
 @mixin theme-transition($properties...) {
   $transitions: ();

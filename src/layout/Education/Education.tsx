@@ -1,6 +1,6 @@
 import { Space } from "antd";
-import { TimePeriodPanel, CollapsePanel } from "components";
 import { useTranslation } from "react-i18next";
+import { TimePeriodPanel, CollapsePanel } from "components";
 import "./index.scss";
 
 export const Education = () => {

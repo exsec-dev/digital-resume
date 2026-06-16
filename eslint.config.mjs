@@ -1,35 +1,45 @@
 import js from "@eslint/js";
-import globals from "globals";
-import tseslint from "typescript-eslint";
+import importPlugin from "eslint-plugin-import";
+import jsxA11y from "eslint-plugin-jsx-a11y";
 import react from "eslint-plugin-react";
 import reactHooks from "eslint-plugin-react-hooks";
-import jsxA11y from "eslint-plugin-jsx-a11y";
-import importPlugin from "eslint-plugin-import";
+import reactRefresh from "eslint-plugin-react-refresh";
+import globals from "globals";
+import tseslint from "typescript-eslint";
 
 export default [
   { ignores: ["node_modules", "dist", "build", "coverage", "public"] },
 
   js.configs.recommended,
   ...tseslint.configs.recommended,
+  react.configs.flat.recommended,
+  react.configs.flat["jsx-runtime"],
+  jsxA11y.flatConfigs.recommended,
 
   {
-    files: ["**/*.{ts,tsx,js,jsx}"],
+    files: ["**/*.{ts,tsx,js,jsx,mts,mjs}"],
     languageOptions: {
       ecmaVersion: 2023,
       sourceType: "module",
       globals: { ...globals.browser, ...globals.node },
     },
     plugins: {
-      react,
       "react-hooks": reactHooks,
-      "jsx-a11y": jsxA11y,
+      "react-refresh": reactRefresh,
       import: importPlugin,
     },
-    settings: { react: { version: "detect" } },
+    settings: {
+      react: { version: "detect" },
+      "import/internal-regex":
+        "^(assets|components|config|hooks|layout|locales|providers|styles|types|utils)(/|$)",
+    },
     rules: {
       "react-hooks/rules-of-hooks": "error",
       "react-hooks/exhaustive-deps": "warn",
-      "jsx-a11y/alt-text": "warn",
+      "react-refresh/only-export-components": [
+        "warn",
+        { allowConstantExport: true },
+      ],
       "import/order": [
         "warn",
         {

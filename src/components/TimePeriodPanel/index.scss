@@ -68,25 +68,25 @@
   }
 }
 
-@media (min-width: 600px) {
+@include breakpoint(sm) {
   .popover-container {
     max-width: 325px;
   }
 }
 
-@media (min-width: 768px) {
+@include breakpoint(md) {
   .popover-container {
     max-width: 350px;
   }
 }
 
-@media (min-width: 1024px) {
+@include breakpoint(lg) {
   .popover-container {
     max-width: 375px;
   }
 }
 
-@media (min-width: 1440px) {
+@include breakpoint(xl) {
   .popover-container {
     max-width: 400px;
   }

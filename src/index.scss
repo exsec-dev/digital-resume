@@ -14,6 +14,8 @@
   --light-grey: #dbdbdb;
   --light-opacity: 0.6;
   --bezier-animation: cubic-bezier(0.645, 0.045, 0.355, 1);
+  --scrollbar-thumb-color: #212121;
+  --overlay-text-color: #fffcfa;
 }
 
 [data-theme="dark"] {
@@ -28,6 +30,22 @@
   --secondary-color: #2a2a2a;
   --pop-color: #1b1b1b;
   --light-grey: #4e4e4e;
+}
+
+.skip-link {
+  position: absolute;
+  top: 0;
+  left: 8px;
+  z-index: 4000;
+  padding: 8px 16px;
+  border-radius: 8px;
+  background: var(--bg-color);
+  color: var(--primary-color);
+  transform: translateY(-150%);
+
+  &:focus-visible {
+    transform: translateY(0);
+  }
 }
 
 .icon {
@@ -50,7 +68,7 @@ html:not([data-scrollbar="native"]) ::-webkit-scrollbar-track {
 }
 
 html:not([data-scrollbar="native"]) ::-webkit-scrollbar-thumb {
-  background: #212121;
+  background: var(--scrollbar-thumb-color);
 }
 
 body {
@@ -95,180 +113,9 @@ body {
   }
 }
 
-.running-container {
-  width: 100vw;
-  height: 120px;
-  position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
-  background-color: var(--primary-color);
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-  @include theme-transition(background-color);
-  user-select: none;
-
-  .line {
-    color: var(--bg-color);
-    font-size: 64px;
-    white-space: nowrap;
-    display: inline-block;
-    animation: run 20s linear infinite;
-    text-transform: uppercase;
-    font-weight: 600;
-  }
-
-  .line.ant-typography {
-    margin: 0 96px 0 0;
-  }
-}
-
-.project-image {
-  position: relative;
-  display: block;
-  overflow: hidden;
-  border: 1px solid var(--secondary-color);
-  border-radius: 26px;
-  @include theme-transition(border-color);
-
-  img {
-    @include fill-image;
-  }
-
-  .project-image-mask {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fffcfa;
-    background: rgba(0, 0, 0, 0.5);
-    opacity: 0;
-    cursor: pointer;
-    transition: opacity 0.3s;
-  }
-
-  .project-image-label {
-    color: #fffcfa;
-    font-weight: 500;
-    letter-spacing: 0.01rem;
-  }
-
-  .project-image-icon {
-    margin-top: 2px;
-    font-size: 18px;
-  }
-
-  &:hover .project-image-mask {
-    opacity: 1;
-  }
-}
-
-.project-card-title.ant-typography {
-  margin: 0;
-}
-
-.project-card-text {
-  opacity: var(--light-opacity);
-}
-
-@keyframes run {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(calc(-100% - 96px));
-  }
-}
-
-.collapse-panel {
-  &.ant-collapse,
-  .ant-collapse-content.ant-collapse-content-active,
-  .ant-collapse-content.ant-collapse-content-inactive {
-    border-color: var(--light-grey);
-    @include theme-transition(border-color);
-  }
-
-  &.ant-collapse > .ant-collapse-item > .ant-collapse-header {
-    align-items: center;
-    margin-bottom: 12px;
-
-    h3 {
-      width: fit-content;
-      margin: 0;
-    }
-  }
-
-  &.ant-collapse .ant-collapse-expand-icon .ant-collapse-arrow {
-    font-size: 16px;
-    opacity: var(--light-opacity);
-    transition:
-      opacity 0.4s var(--bezier-animation),
-      color 0.4s var(--bezier-animation),
-      fill 0.4s var(--bezier-animation),
-      transform 0.4s var(--bezier-animation) !important;
-    transition-duration: 0.4s !important;
-    transition-timing-function: var(--bezier-animation) !important;
-
-    svg {
-      fill: var(--primary-color);
-      transition:
-        color 0.4s var(--bezier-animation),
-        fill 0.4s var(--bezier-animation),
-        transform 0.4s var(--bezier-animation) !important;
-      transition-duration: 0.4s !important;
-      transition-timing-function: var(--bezier-animation) !important;
-
-      path {
-        fill: var(--primary-color);
-        transition:
-          color 0.4s var(--bezier-animation),
-          fill 0.4s var(--bezier-animation),
-          transform 0.4s var(--bezier-animation) !important;
-        transition-duration: 0.4s !important;
-        transition-timing-function: var(--bezier-animation) !important;
-      }
-    }
-  }
-
-  &.ant-collapse
-    > .ant-collapse-item-active
-    > .ant-collapse-header
-    .ant-collapse-arrow,
-  &.ant-collapse
-    > .ant-collapse-item-active
-    > .ant-collapse-header
-    .ant-collapse-arrow
-    svg,
-  &.ant-collapse
-    > .ant-collapse-item-active
-    > .ant-collapse-header
-    .ant-collapse-arrow
-    path {
-    transition-duration: 0.4s !important;
-    transition-timing-function: var(--bezier-animation) !important;
-  }
-
-  &--small {
-    &.ant-collapse > .ant-collapse-item > .ant-collapse-header {
-      align-items: center;
-
-      .ant-collapse-expand-icon {
-        margin-right: 12px;
-      }
-
-      .ant-collapse-arrow {
-        font-size: 14px;
-      }
-
-      .ant-collapse-arrow svg {
-        font-size: 14px;
-        opacity: var(--light-opacity);
-      }
-    }
-  }
+.section-title.ant-typography {
+  font-size: 24px;
+  line-height: 1.3333333;
 }
 
 .layout .ant-divider {
@@ -282,13 +129,13 @@ body {
   @include theme-transition(color);
 }
 
-@media (min-width: 600px) {
+@include breakpoint(sm) {
   .layout {
     padding: 130px 32px 0;
   }
 }
 
-@media (min-width: 768px) {
+@include breakpoint(md) {
   .layout {
     padding: 130px 50px 0;
     gap: 30px;
@@ -299,7 +146,7 @@ body {
   }
 }
 
-@media (min-width: 1024px) {
+@include breakpoint(lg) {
   .layout {
     padding: 130px 80px 0;
 
@@ -309,7 +156,7 @@ body {
   }
 }
 
-@media (min-width: 1440px) {
+@include breakpoint(xl) {
   .layout {
     padding: 130px 100px 0;
   }

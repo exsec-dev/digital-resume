@@ -1,5 +1,5 @@
 import { Component, type ErrorInfo, type ReactNode } from "react";
-import { ErrorFallback } from "./ErrorFallback";
+import { ErrorFallback } from "components/ErrorFallback";
 
 const CHUNK_LOAD_ERROR_REGEX =
   /Failed to fetch dynamically imported module|error loading dynamically imported module|importing a module script failed/i;

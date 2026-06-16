@@ -1,15 +1,26 @@
 {
   "compilerOptions": {
     "baseUrl": "src",
-    "target": "ES2020",
+    "target": "ES2022",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
     "module": "ESNext",
     "moduleResolution": "Bundler",
     "jsx": "react-jsx",
     "strict": true,
     "skipLibCheck": true,
+    "isolatedModules": true,
+    "forceConsistentCasingInFileNames": true,
     "paths": {
+      "assets/*": ["assets/*"],
       "components/*": ["components/*"],
-      "layout/*": ["layout/*"]
+      "config/*": ["config/*"],
+      "hooks/*": ["hooks/*"],
+      "layout/*": ["layout/*"],
+      "locales/*": ["locales/*"],
+      "providers/*": ["providers/*"],
+      "styles/*": ["styles/*"],
+      "types/*": ["types/*"],
+      "utils/*": ["utils/*"]
     }
   },
   "include": ["src"]

@@ -1,7 +1,8 @@
 import { Timeline } from "antd";
+import { useTranslation } from "react-i18next";
 import { TimePeriodPanel, CollapsePanel } from "components";
 import { FiberManualRecord, LoadingOutlined } from "components/icons";
-import { useTranslation } from "react-i18next";
+import { getTranslationList } from "utils/i18n";
 import "./index.scss";
 
 export const Experience = () => {
@@ -34,7 +35,7 @@ export const Experience = () => {
                   period={t("experience.first.period")}
                   info={{
                     title: t("experience.tooltip"),
-                    text: t("experience.first.tooltip").split("|"),
+                    text: getTranslationList(t, "experience.first.tooltip"),
                   }}
                   isSmall
                 />
@@ -50,7 +51,7 @@ export const Experience = () => {
                   period={t("experience.second.period")}
                   info={{
                     title: t("experience.tooltip"),
-                    text: t("experience.second.tooltip").split("|"),
+                    text: getTranslationList(t, "experience.second.tooltip"),
                   }}
                   isSmall
                 />

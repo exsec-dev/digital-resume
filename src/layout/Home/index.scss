@@ -30,17 +30,7 @@
       }
     }
   }
-}
 
-.scroll-button {
-  text-transform: uppercase;
-  transition:
-    border-color 0.4s var(--bezier-animation),
-    color 0.4s var(--bezier-animation),
-    background-color 0.4s var(--bezier-animation);
-}
-
-.title-container {
   .scroll-button.ant-btn {
     height: 48px;
     padding: 16px 20px;
@@ -56,19 +46,28 @@
   }
 }
 
+.scroll-button {
+  text-transform: uppercase;
+  transition:
+    border-color 0.4s var(--bezier-animation),
+    color 0.4s var(--bezier-animation),
+    background-color 0.4s var(--bezier-animation);
+}
+
 .description {
   flex-direction: column;
   gap: 24px;
-
-  h5 {
-    margin: 0;
-  }
 
   .home-email.ant-typography {
     letter-spacing: 0.02rem;
     color: var(--primary-color);
     opacity: var(--light-opacity);
   }
+}
+
+.home-label.ant-typography {
+  font-size: 16px;
+  line-height: 1.5;
 }
 
 .home-contact {
@@ -144,7 +143,7 @@
   }
 }
 
-@media (min-width: 400px) {
+@include breakpoint(xs) {
   .title-container h1 {
     font-size: 82px;
 
@@ -165,7 +164,7 @@
   }
 }
 
-@media (min-width: 600px) {
+@include breakpoint(sm) {
   .title-container {
     flex-direction: row;
 
@@ -191,7 +190,7 @@
   }
 }
 
-@media (min-width: 768px) {
+@include breakpoint(md) {
   .title-container h1 {
     font-size: 120px;
     width: unset;
@@ -215,7 +214,7 @@
       font-size: 16px;
     }
 
-    h5.ant-typography {
+    .home-label.ant-typography {
       font-size: 18px;
     }
   }
@@ -230,7 +229,7 @@
   }
 }
 
-@media (min-width: 1024px) {
+@include breakpoint(lg) {
   .title-container h1 {
     font-size: 150px;
     width: unset;
@@ -251,7 +250,7 @@
   }
 }
 
-@media (min-width: 1440px) {
+@include breakpoint(xl) {
   .title-container h1 {
     font-size: 172px;
 

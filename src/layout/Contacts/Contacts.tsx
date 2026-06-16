@@ -1,6 +1,8 @@
 import { Layout, Flex, Space, Typography, Button } from "antd";
-import { ArrowOutwardRounded, Telegram, GitHub } from "components/icons";
 import { useTranslation } from "react-i18next";
+import { ArrowOutwardRounded, Telegram, GitHub } from "components/icons";
+import { EMAIL, TELEGRAM_URL, GITHUB_URL } from "config/contacts";
+import { SECTION_ID } from "config/sections";
 import "./index.scss";
 
 export const Contacts = () => {
@@ -8,7 +10,7 @@ export const Contacts = () => {
   const buildDate = import.meta.env.VITE_BUILD_DATE;
 
   return (
-    <Layout.Footer id="contact" className="footer">
+    <Layout.Footer id={SECTION_ID.contact} className="footer">
       <Flex
         className="footer-content"
         vertical
@@ -26,18 +28,18 @@ export const Contacts = () => {
             <Button
               className="contact-link mail-link"
               type="primary"
-              href="mailto:exsec.b@gmail.com"
+              href={`mailto:${EMAIL}`}
               target="_blank"
               rel="noopener noreferrer"
               icon={<ArrowOutwardRounded />}
               iconPosition="end"
             >
-              exsec.b@gmail.com
+              {EMAIL}
             </Button>
             <Button
               className="contact-link telegram-link"
               type="primary"
-              href="https://t.me/exsec2"
+              href={TELEGRAM_URL}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Telegram"
@@ -46,7 +48,7 @@ export const Contacts = () => {
             <Button
               className="contact-link"
               type="primary"
-              href="https://github.com/exsec-dev"
+              href={GITHUB_URL}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub"

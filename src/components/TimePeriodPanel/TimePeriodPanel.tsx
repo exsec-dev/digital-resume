@@ -1,6 +1,7 @@
 import { Typography, Space, Divider, Flex, Popover, Button } from "antd";
+import clsx from "clsx";
 import { InfoCircleOutlined } from "components/icons";
-import "./TimePeriodPanel.scss";
+import "./index.scss";
 
 interface TimePeriodPanelProps {
   title: string;
@@ -22,9 +23,7 @@ export const TimePeriodPanel = ({
 }: TimePeriodPanelProps) => {
   return (
     <Space
-      className={["timeperiod", isSmall ? "timeperiod--small" : ""]
-        .filter(Boolean)
-        .join(" ")}
+      className={clsx("timeperiod", isSmall && "timeperiod--small")}
       direction="vertical"
       size={isSmall ? 6 : 8}
     >

@@ -1,12 +1,15 @@
 import { createContext } from "react";
 
+export const SCHEME_STORAGE_KEY = "scheme";
+
 export type Scheme = "light" | "dark";
+
 interface MainContextProps {
   scheme: Scheme;
-  toggleScheme: (value: Scheme) => void;
+  setScheme: (value: Scheme) => void;
 }
 
 export const MainContext = createContext<MainContextProps>({
   scheme: "light",
-  toggleScheme: () => {},
+  setScheme: () => {},
 });

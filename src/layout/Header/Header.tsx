@@ -1,15 +1,17 @@
 import { useMemo } from "react";
 import { Layout, Anchor, Flex, Tooltip, Button } from "antd";
+import { useTranslation } from "react-i18next";
 import { Logo, ThemeSwitcher } from "components";
 import { DownloadRounded, PublicRounded } from "components/icons";
-import { useTranslation } from "react-i18next";
+import { CV_PATH } from "config/contacts";
+import { SECTION_ID } from "config/sections";
 import "./index.scss";
 
 export const Header = () => {
   const { t, i18n } = useTranslation();
 
   const changeLanguage = () => {
-    if (i18n.language === "ru") {
+    if (i18n.resolvedLanguage === "ru") {
       i18n.changeLanguage("en");
     } else {
       i18n.changeLanguage("ru");
@@ -20,17 +22,17 @@ export const Header = () => {
     () => [
       {
         key: "home",
-        href: "#home",
+        href: `#${SECTION_ID.home}`,
         title: t("header.menu.home"),
       },
       {
         key: "projects",
-        href: "#projects",
+        href: `#${SECTION_ID.projects}`,
         title: t("header.menu.projects"),
       },
       {
         key: "about",
-        href: "#about",
+        href: `#${SECTION_ID.about}`,
         title: t("header.menu.about"),
       },
     ],
@@ -69,7 +71,7 @@ export const Header = () => {
             <Button
               className="download"
               type="primary"
-              href="/assets/files/CV.pdf"
+              href={CV_PATH}
               download="Prozhirko_CV.pdf"
               iconPosition="end"
               icon={<DownloadRounded />}

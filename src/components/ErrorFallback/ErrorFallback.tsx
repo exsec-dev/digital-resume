@@ -1,6 +1,6 @@
 import { Typography, Flex, Button } from "antd";
 import { useTranslation } from "react-i18next";
-import "./ErrorFallback.scss";
+import "./index.scss";
 
 interface ErrorFallbackProps {
   onReload: () => void;

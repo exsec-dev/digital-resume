@@ -1,9 +1,12 @@
-import { lazy, Suspense, useState } from "react";
+import { lazy, Suspense } from "react";
 import { Layout, ConfigProvider, Flex } from "antd";
 import type { GetProps } from "antd";
+import { useTranslation } from "react-i18next";
 import { RunningLine } from "components";
-import { Header, Home } from "layout";
-import { MainContext, Scheme } from "MainContext";
+import { SECTION_ID } from "config/sections";
+import { Header } from "layout/Header";
+import { Home } from "layout/Home";
+import { ThemeProvider } from "providers/ThemeProvider";
 
 const Projects = lazy(() =>
   import("layout/Projects").then((module) => ({ default: module.Projects })),
@@ -71,28 +74,16 @@ const themeConfig: ConfigProviderProps["theme"] = {
   },
 };
 
-const getInitialScheme = (): Scheme => {
-  try {
-    return localStorage.getItem("scheme") === "dark" ? "dark" : "light";
-  } catch {
-    return "light";
-  }
-};
-
 function App() {
-  const [scheme, setScheme] = useState<Scheme>(getInitialScheme);
+  const { t } = useTranslation();
 
   return (
     <ConfigProvider theme={themeConfig}>
-      <MainContext.Provider
-        value={{
-          scheme,
-          toggleScheme: (value: Scheme) => {
-            setScheme(value);
-          },
-        }}
-      >
+      <ThemeProvider>
         <Layout className="layout">
+          <a href={`#${SECTION_ID.home}`} className="skip-link">
+            {t("a11y.skipToContent")}
+          </a>
           <Header />
           <Layout.Content>
             <Flex vertical className="chapters">
@@ -111,7 +102,7 @@ function App() {
             <Contacts />
           </Suspense>
         </Layout>
-      </MainContext.Provider>
+      </ThemeProvider>
     </ConfigProvider>
   );
 }

@@ -1,6 +1,7 @@
 import { useMemo } from "react";
 import { Typography, Flex, Space, Divider } from "antd";
 import { useTranslation } from "react-i18next";
+import { SECTION_ID } from "config/sections";
 import "./index.scss";
 
 export const Expertise = () => {
@@ -50,38 +51,40 @@ export const Expertise = () => {
       },
       {
         title: t("expertise.title.eng"),
-        text: "English Language Test – CEFR level B2 (Upper Intermediate)",
+        text: t("expertise.eng.text"),
       },
     ],
     [t],
   );
 
   return (
-    <Flex id="about" className="expertise" vertical gap={16}>
-      <Typography.Title level={3}>{t("expertise")}</Typography.Title>
+    <Flex id={SECTION_ID.about} className="expertise" vertical gap={16}>
+      <Typography.Title level={2} className="section-title">
+        {t("expertise")}
+      </Typography.Title>
       <Space direction="vertical" size={42}>
-        {content.map((chapter) => {
-          return (
-            <Space
-              className="expertise-section"
-              key={chapter.title}
-              direction="vertical"
-            >
-              <Typography.Title level={4}>{chapter.title}</Typography.Title>
-              <Divider className="expertise-divider" />
-              <Flex className="expertise-skills" wrap gap={6}>
-                {chapter.skills?.map((item) => (
-                  <div key={item} className="skill-container">
-                    {item}
-                  </div>
-                ))}
-              </Flex>
-              <Typography.Text className="expertise-text">
-                {chapter.text}
-              </Typography.Text>
-            </Space>
-          );
-        })}
+        {content.map((chapter) => (
+          <Space
+            className="expertise-section"
+            key={chapter.title}
+            direction="vertical"
+          >
+            <Typography.Title level={3} className="expertise-chapter-title">
+              {chapter.title}
+            </Typography.Title>
+            <Divider className="expertise-divider" />
+            <Flex className="expertise-skills" wrap gap={6}>
+              {chapter.skills?.map((item) => (
+                <div key={item} className="skill-container">
+                  {item}
+                </div>
+              ))}
+            </Flex>
+            <Typography.Text className="expertise-text">
+              {chapter.text}
+            </Typography.Text>
+          </Space>
+        ))}
       </Space>
     </Flex>
   );

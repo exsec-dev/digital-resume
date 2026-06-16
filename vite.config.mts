@@ -1,7 +1,7 @@
-import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
-import tsconfigPaths from "vite-tsconfig-paths";
+import { defineConfig } from "vite";
 import { compression } from "vite-plugin-compression2";
+import tsconfigPaths from "vite-tsconfig-paths";
 
 export default defineConfig({
   plugins: [
@@ -9,6 +9,11 @@ export default defineConfig({
     tsconfigPaths(),
     compression({ algorithms: ["gzip", "brotliCompress"] }),
   ],
+  optimizeDeps: {
+    esbuildOptions: {
+      target: "es2022",
+    },
+  },
   css: {
     preprocessorOptions: {
       scss: {

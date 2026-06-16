@@ -1,0 +1,52 @@
+@use "styles/mixins" as *;
+
+.project-image {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border: 1px solid var(--secondary-color);
+  border-radius: 26px;
+  @include theme-transition(border-color);
+
+  img {
+    @include fill-image;
+  }
+
+  .project-image-mask {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--overlay-text-color);
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    cursor: pointer;
+    transition: opacity 0.3s;
+  }
+
+  .project-image-label {
+    color: var(--overlay-text-color);
+    font-weight: 500;
+    letter-spacing: 0.01rem;
+  }
+
+  .project-image-icon {
+    margin-top: 2px;
+    font-size: 18px;
+  }
+
+  &:hover .project-image-mask {
+    opacity: 1;
+  }
+}
+
+.project-card-title.ant-typography {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.project-card-text {
+  opacity: var(--light-opacity);
+}

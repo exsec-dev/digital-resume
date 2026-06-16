@@ -1,5 +1,6 @@
 import { type ReactNode } from "react";
 import { Typography, Collapse } from "antd";
+import "./index.scss";
 
 interface CollapsePanelProps {
   title: ReactNode;
@@ -22,7 +23,10 @@ export const CollapsePanel = ({
         {
           key: "1",
           label: (
-            <Typography.Title className="collapse-panel-title" level={3}>
+            <Typography.Title
+              className="collapse-panel-title section-title"
+              level={2}
+            >
               {title}
             </Typography.Title>
           ),
