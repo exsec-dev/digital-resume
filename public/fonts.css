@@ -38,3 +38,11 @@
   font-style: normal;
   font-display: swap;
 }
+
+@font-face {
+  font-family: "Defectica-VF";
+  src: url("assets/fonts/Defectica-modified.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}

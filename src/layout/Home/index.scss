@@ -6,16 +6,25 @@
   gap: 24px;
 
   h1 {
-    font-family: "Defectica", system-ui, sans-serif;
+    font-family: "Defectica-VF", "Defectica", system-ui, sans-serif;
     line-height: 90%;
     margin-bottom: 0;
     white-space: nowrap;
     font-size: 72px;
     font-weight: 400;
     width: 100%;
+    font-variation-settings: "BRKS" 1;
+    user-select: none;
+    -webkit-user-select: none;
+
+    &.ant-typography {
+      transition:
+        font-variation-settings 0.5s var(--bezier-animation),
+        color 0.4s var(--bezier-animation);
+    }
 
     &:hover {
-      text-transform: lowercase;
+      font-variation-settings: "BRKS" 0;
     }
 
     span {
