@@ -26,8 +26,6 @@
       color 0.4s var(--bezier-animation),
       fill 0.4s var(--bezier-animation),
       transform 0.4s var(--bezier-animation) !important;
-    transition-duration: 0.4s !important;
-    transition-timing-function: var(--bezier-animation) !important;
 
     svg {
       fill: var(--primary-color);
@@ -35,8 +33,6 @@
         color 0.4s var(--bezier-animation),
         fill 0.4s var(--bezier-animation),
         transform 0.4s var(--bezier-animation) !important;
-      transition-duration: 0.4s !important;
-      transition-timing-function: var(--bezier-animation) !important;
 
       path {
         fill: var(--primary-color);
@@ -44,28 +40,8 @@
           color 0.4s var(--bezier-animation),
           fill 0.4s var(--bezier-animation),
           transform 0.4s var(--bezier-animation) !important;
-        transition-duration: 0.4s !important;
-        transition-timing-function: var(--bezier-animation) !important;
       }
     }
-  }
-
-  &.ant-collapse
-    > .ant-collapse-item-active
-    > .ant-collapse-header
-    .ant-collapse-arrow,
-  &.ant-collapse
-    > .ant-collapse-item-active
-    > .ant-collapse-header
-    .ant-collapse-arrow
-    svg,
-  &.ant-collapse
-    > .ant-collapse-item-active
-    > .ant-collapse-header
-    .ant-collapse-arrow
-    path {
-    transition-duration: 0.4s !important;
-    transition-timing-function: var(--bezier-animation) !important;
   }
 
   &--small {

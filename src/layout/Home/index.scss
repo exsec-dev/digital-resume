@@ -57,10 +57,7 @@
 
 .scroll-button {
   text-transform: uppercase;
-  transition:
-    border-color 0.4s var(--bezier-animation),
-    color 0.4s var(--bezier-animation),
-    background-color 0.4s var(--bezier-animation);
+  @include theme-transition(border-color, color, background-color);
 }
 
 .description {
@@ -84,7 +81,7 @@
 }
 
 .home-email {
-  transition: color 0.4s var(--bezier-animation);
+  @include theme-transition(color);
 }
 
 .contact-badge-button.ant-btn {
@@ -94,7 +91,6 @@
 
 .contact-badge-button .contact-badge-icon.icon {
   color: var(--primary-color);
-  fill: currentColor;
   font-size: 21px;
   opacity: var(--light-opacity);
   @include theme-transition(fill, color);

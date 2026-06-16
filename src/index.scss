@@ -63,7 +63,7 @@
   display: inline-block;
   flex-shrink: 0;
   fill: currentColor;
-  transition: fill 0.4s var(--bezier-animation);
+  @include theme-transition(fill);
   user-select: none;
   -webkit-user-select: none;
 }
