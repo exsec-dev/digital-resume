@@ -56,6 +56,7 @@
   fill: currentColor;
   transition: fill 0.4s var(--bezier-animation);
   user-select: none;
+  -webkit-user-select: none;
 }
 
 html:not([data-scrollbar="native"]) ::-webkit-scrollbar {

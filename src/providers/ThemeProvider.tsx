@@ -1,14 +1,26 @@
 import { useEffect, useState, type ReactNode } from "react";
 import { MainContext, SCHEME_STORAGE_KEY, type Scheme } from "./ThemeContext";
 
-const getInitialScheme = (): Scheme => {
-  try {
-    return localStorage.getItem(SCHEME_STORAGE_KEY) === "dark"
-      ? "dark"
-      : "light";
-  } catch {
+const getPreferredScheme = (): Scheme => {
+  if (typeof window === "undefined" || !window.matchMedia) {
     return "light";
   }
+  return window.matchMedia("(prefers-color-scheme: dark)").matches
+    ? "dark"
+    : "light";
+};
+
+const getStoredScheme = (): Scheme | null => {
+  try {
+    const scheme = localStorage.getItem(SCHEME_STORAGE_KEY);
+    return scheme === "light" || scheme === "dark" ? scheme : null;
+  } catch {
+    return null;
+  }
+};
+
+const getInitialScheme = (): Scheme => {
+  return getStoredScheme() ?? getPreferredScheme();
 };
 
 interface ThemeProviderProps {

@@ -19,7 +19,14 @@
             document.documentElement.setAttribute("data-scrollbar", "native");
           }
 
-          if (localStorage.getItem("scheme") === "dark") {
+          var savedScheme = localStorage.getItem("scheme");
+          var hasSavedScheme =
+            savedScheme === "light" || savedScheme === "dark";
+          var prefersDark =
+            window.matchMedia &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+          if (savedScheme === "dark" || (!hasSavedScheme && prefersDark)) {
             document.documentElement.setAttribute("data-theme", "dark");
           }
         } catch (e) {}

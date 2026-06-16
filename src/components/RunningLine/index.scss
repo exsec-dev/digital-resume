@@ -1,6 +1,8 @@
 @use "styles/mixins" as *;
 
 .running-container {
+  --line-gap: 96px;
+
   width: 100vw;
   height: 120px;
   position: relative;
@@ -14,27 +16,39 @@
   overflow: hidden;
   @include theme-transition(background-color);
   user-select: none;
+  -webkit-user-select: none;
+
+  .running-track,
+  .running-group {
+    display: flex;
+    align-items: center;
+    flex: 0 0 auto;
+  }
+
+  .running-track {
+    animation: run 300s linear infinite;
+    will-change: transform;
+  }
 
   .line {
     color: var(--bg-color);
     font-size: 64px;
     white-space: nowrap;
     display: inline-block;
-    animation: run 20s linear infinite;
+    flex: 0 0 auto;
     text-transform: uppercase;
     font-weight: 600;
-  }
-
-  .line.ant-typography {
-    margin: 0 96px 0 0;
+    line-height: 1.35;
+    margin: 0 var(--line-gap) 0 0;
+    @include theme-transition(color);
   }
 }
 
 @keyframes run {
   0% {
-    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
   }
   100% {
-    transform: translateX(calc(-100% - 96px));
+    transform: translate3d(-50%, 0, 0);
   }
 }
