@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "baseUrl": "src",
     "target": "ES2022",
     "lib": ["ES2022", "DOM", "DOM.Iterable"],
     "module": "ESNext",
@@ -11,16 +10,17 @@
     "isolatedModules": true,
     "forceConsistentCasingInFileNames": true,
     "paths": {
-      "assets/*": ["assets/*"],
-      "components/*": ["components/*"],
-      "config/*": ["config/*"],
-      "hooks/*": ["hooks/*"],
-      "layout/*": ["layout/*"],
-      "locales/*": ["locales/*"],
-      "providers/*": ["providers/*"],
-      "styles/*": ["styles/*"],
-      "types/*": ["types/*"],
-      "utils/*": ["utils/*"]
+      "assets/*": ["./src/assets/*"],
+      "components": ["./src/components"],
+      "components/*": ["./src/components/*"],
+      "config/*": ["./src/config/*"],
+      "hooks/*": ["./src/hooks/*"],
+      "layout/*": ["./src/layout/*"],
+      "locales/*": ["./src/locales/*"],
+      "providers/*": ["./src/providers/*"],
+      "styles/*": ["./src/styles/*"],
+      "types/*": ["./src/types/*"],
+      "utils/*": ["./src/utils/*"]
     }
   },
   "include": ["src"]

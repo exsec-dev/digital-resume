@@ -1,4 +1,3 @@
-import { lazy, Suspense } from "react";
 import { Layout, ConfigProvider, Flex } from "antd";
 import type { GetProps } from "antd";
 import { useTranslation } from "react-i18next";
@@ -6,34 +5,13 @@ import { RunningLine } from "components";
 import { SECTION_ID } from "config/sections";
 import { Header } from "layout/Header";
 import { Home } from "layout/Home";
+import { Projects } from "layout/Projects";
+import { Expertise } from "layout/Expertise";
+import { Education } from "layout/Education";
+import { Experience } from "layout/Experience";
+import { Certificates } from "layout/Certificates";
+import { Contacts } from "layout/Contacts";
 import { ThemeProvider } from "providers/ThemeProvider";
-
-const Projects = lazy(() =>
-  import("layout/Projects").then((module) => ({ default: module.Projects })),
-);
-const Expertise = lazy(() =>
-  import("layout/Expertise").then((module) => ({
-    default: module.Expertise,
-  })),
-);
-const Education = lazy(() =>
-  import("layout/Education").then((module) => ({
-    default: module.Education,
-  })),
-);
-const Experience = lazy(() =>
-  import("layout/Experience").then((module) => ({
-    default: module.Experience,
-  })),
-);
-const Certificates = lazy(() =>
-  import("layout/Certificates").then((module) => ({
-    default: module.Certificates,
-  })),
-);
-const Contacts = lazy(() =>
-  import("layout/Contacts").then((module) => ({ default: module.Contacts })),
-);
 
 type ConfigProviderProps = GetProps<typeof ConfigProvider>;
 
@@ -88,19 +66,15 @@ function App() {
           <Layout.Content>
             <Flex vertical className="chapters">
               <Home />
-              <Suspense fallback={null}>
-                <Projects />
-                <Expertise />
-                <Education />
-                <Experience />
-                <Certificates />
-              </Suspense>
+              <Projects />
+              <Expertise />
+              <Education />
+              <Experience />
+              <Certificates />
               <RunningLine />
             </Flex>
           </Layout.Content>
-          <Suspense fallback={null}>
-            <Contacts />
-          </Suspense>
+          <Contacts />
         </Layout>
       </ThemeProvider>
     </ConfigProvider>
