@@ -69,7 +69,7 @@ export const Home = () => {
               {t("home.name")}
               <Popover
                 placement="rightTop"
-                trigger="hover"
+                trigger={["hover", "focus"]}
                 destroyOnHidden
                 classNames={{
                   body: "image-popover",

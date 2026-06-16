@@ -1,5 +1,9 @@
 {
   "a11y.skipToContent": "Skip to content",
+  "a11y.theme.dark": "Switch to dark theme",
+  "a11y.theme.light": "Switch to light theme",
+  "a11y.lang.en": "Switch language to English",
+  "a11y.lang.ru": "Switch language to Russian",
 
   "header.menu.home": "Home",
   "header.menu.projects": "Projects",

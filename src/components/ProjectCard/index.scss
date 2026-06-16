@@ -36,8 +36,14 @@
     font-size: 18px;
   }
 
-  &:hover .project-image-mask {
+  &:hover .project-image-mask,
+  &:focus-visible .project-image-mask {
     opacity: 1;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 4px;
   }
 }
 

@@ -12,7 +12,20 @@
   }
 }
 
+.certificates-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
 .list-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+
   .icon {
     fill: var(--primary-color);
     font-size: 18px;

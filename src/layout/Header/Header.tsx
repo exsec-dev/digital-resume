@@ -9,13 +9,11 @@ import "./index.scss";
 
 export const Header = () => {
   const { t, i18n } = useTranslation();
+  const targetLanguage = i18n.resolvedLanguage === "ru" ? "en" : "ru";
+  const languageLabel = t(`a11y.lang.${targetLanguage}`);
 
   const changeLanguage = () => {
-    if (i18n.resolvedLanguage === "ru") {
-      i18n.changeLanguage("en");
-    } else {
-      i18n.changeLanguage("ru");
-    }
+    i18n.changeLanguage(targetLanguage);
   };
 
   const items = useMemo(
@@ -62,7 +60,7 @@ export const Header = () => {
                 variant="filled"
                 color="default"
                 shape="circle"
-                aria-label={t("header.tooltip.lang")}
+                aria-label={languageLabel}
                 onClick={changeLanguage}
               >
                 <PublicRounded />

@@ -39,7 +39,7 @@ export const TimePeriodPanel = ({
           {info ? (
             <Popover
               placement="leftTop"
-              trigger="hover"
+              trigger={["hover", "focus"]}
               destroyOnHidden
               classNames={{
                 body: "info-popover",
@@ -59,7 +59,12 @@ export const TimePeriodPanel = ({
                 </Space>
               }
             >
-              <Button type="text" shape="circle" size="small">
+              <Button
+                type="text"
+                shape="circle"
+                size="small"
+                aria-label={info.title}
+              >
                 <InfoCircleOutlined />
               </Button>
             </Popover>

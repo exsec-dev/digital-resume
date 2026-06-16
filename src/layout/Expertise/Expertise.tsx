@@ -73,13 +73,13 @@ export const Expertise = () => {
               {chapter.title}
             </Typography.Title>
             <Divider className="expertise-divider" />
-            <Flex className="expertise-skills" wrap gap={6}>
+            <ul className="expertise-skills">
               {chapter.skills?.map((item) => (
-                <div key={item} className="skill-container">
+                <li key={item} className="skill-container">
                   {item}
-                </div>
+                </li>
               ))}
-            </Flex>
+            </ul>
             <Typography.Text className="expertise-text">
               {chapter.text}
             </Typography.Text>

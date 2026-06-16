@@ -1,4 +1,4 @@
-import { Space, Typography } from "antd";
+import { Typography } from "antd";
 import { useTranslation } from "react-i18next";
 import { CollapsePanel } from "components";
 import { OpenInNewRounded, Add } from "components/icons";
@@ -26,14 +26,14 @@ export const Certificates = () => {
         </>
       }
       content={
-        <Space direction="vertical" size={8}>
+        <ul className="certificates-list">
           {getTranslationList(t, "certificates.list").map((item, i) => (
-            <Space key={i} className="list-item" size={8} align="start">
+            <li key={i} className="list-item">
               <Add />
               <Typography.Text>{item}</Typography.Text>
-            </Space>
+            </li>
           ))}
-        </Space>
+        </ul>
       }
       defaultClosed
     />

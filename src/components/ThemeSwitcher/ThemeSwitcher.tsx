@@ -6,6 +6,10 @@ import { useScheme } from "hooks/useScheme";
 export const ThemeSwitcher = () => {
   const { t } = useTranslation();
   const { scheme, setScheme } = useScheme();
+  const isDark = scheme === "dark";
+  const ariaLabel = isDark
+    ? t("a11y.theme.light")
+    : t("a11y.theme.dark");
 
   return (
     <Tooltip
@@ -17,8 +21,9 @@ export const ThemeSwitcher = () => {
         variant="filled"
         color="default"
         shape="circle"
-        aria-label={t("header.tooltip.theme")}
-        onClick={() => setScheme(scheme === "light" ? "dark" : "light")}
+        aria-label={ariaLabel}
+        aria-pressed={isDark}
+        onClick={() => setScheme(isDark ? "light" : "dark")}
       >
         <DarkModeRounded />
       </Button>
