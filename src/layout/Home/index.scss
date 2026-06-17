@@ -13,30 +13,11 @@
     font-size: 72px;
     font-weight: 400;
     width: 100%;
-    font-variation-settings: "BRKS" 1;
     user-select: none;
     -webkit-user-select: none;
 
     &.ant-typography {
-      transition:
-        font-variation-settings 0.5s var(--bezier-animation),
-        color 0.4s var(--bezier-animation);
-    }
-
-    &:hover {
-      font-variation-settings: "BRKS" 0;
-    }
-
-    span {
-      display: inline-flex;
-
-      &:nth-child(odd) {
-        width: 16px;
-      }
-
-      &:nth-child(even) {
-        width: 53px;
-      }
+      transition: color 0.4s var(--bezier-animation);
     }
   }
 
@@ -151,16 +132,6 @@
 @include breakpoint(xs) {
   .title-container h1 {
     font-size: 82px;
-
-    span {
-      &:nth-child(odd) {
-        width: 20px;
-      }
-
-      &:nth-child(even) {
-        width: 60px;
-      }
-    }
   }
 
   .image-popover .avatar-container {
@@ -176,16 +147,6 @@
     h1 {
       font-size: 100px;
       width: unset;
-
-      span {
-        &:nth-child(odd) {
-          width: 20px;
-        }
-
-        &:nth-child(even) {
-          width: 73px;
-        }
-      }
     }
   }
 
@@ -199,16 +160,6 @@
   .title-container h1 {
     font-size: 120px;
     width: unset;
-
-    span {
-      &:nth-child(odd) {
-        width: 25px;
-      }
-
-      &:nth-child(even) {
-        width: 88px;
-      }
-    }
   }
 
   .description {
@@ -238,16 +189,6 @@
   .title-container h1 {
     font-size: 150px;
     width: unset;
-
-    span {
-      &:nth-child(odd) {
-        width: 34px;
-      }
-
-      &:nth-child(even) {
-        width: 110px;
-      }
-    }
   }
 
   .description {
@@ -258,15 +199,5 @@
 @include breakpoint(xl) {
   .title-container h1 {
     font-size: 172px;
-
-    span {
-      &:nth-child(odd) {
-        width: 40px;
-      }
-
-      &:nth-child(even) {
-        width: 126px;
-      }
-    }
   }
 }

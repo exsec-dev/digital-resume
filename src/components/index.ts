@@ -1,4 +1,5 @@
 export { Logo } from "./Logo";
+export { KineticTitle } from "./KineticTitle";
 export { TimePeriodPanel } from "./TimePeriodPanel";
 export { ProjectCard } from "./ProjectCard";
 export { CollapsePanel } from "./CollapsePanel";

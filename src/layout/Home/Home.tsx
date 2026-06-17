@@ -3,6 +3,7 @@ import { useMemo } from "react";
 import { Typography, Flex, Button, Space, Tag, theme, Popover } from "antd";
 import { useTranslation } from "react-i18next";
 import images from "assets/images";
+import { KineticTitle } from "components";
 import {
   ArrowDownwardRounded,
   BadgeOutlined,
@@ -35,13 +36,7 @@ export const Home = () => {
   return (
     <Flex id={SECTION_ID.home} tabIndex={-1} vertical gap={48}>
       <Flex className="title-container" justify="space-between">
-        <Typography.Title>
-          D<span>I</span>
-          <span>G</span>
-          <span>I</span>TAL
-          <br />
-          RESUME
-        </Typography.Title>
+        <KineticTitle text={"DIGITAL\nRESUME"} />
         <Button
           className="scroll-button"
           color="default"
