@@ -11,12 +11,7 @@ export const Contacts = () => {
 
   return (
     <Layout.Footer id={SECTION_ID.contact} className="footer">
-      <Flex
-        className="footer-content"
-        vertical
-        align="center"
-        gap={64}
-      >
+      <Flex className="footer-content" vertical align="center" gap={64}>
         <Space
           className="contacts"
           direction="vertical"

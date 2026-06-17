@@ -7,9 +7,7 @@ export const ThemeSwitcher = () => {
   const { t } = useTranslation();
   const { scheme, setScheme } = useScheme();
   const isDark = scheme === "dark";
-  const ariaLabel = isDark
-    ? t("a11y.theme.light")
-    : t("a11y.theme.dark");
+  const ariaLabel = isDark ? t("a11y.theme.light") : t("a11y.theme.dark");
 
   return (
     <Tooltip

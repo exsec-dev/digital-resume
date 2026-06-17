@@ -49,10 +49,7 @@ export class ErrorBoundary extends Component<
   }
 
   componentDidCatch(error: Error, info: ErrorInfo): void {
-    if (
-      CHUNK_LOAD_ERROR_REGEX.test(error.message) &&
-      !getReloadAttempt()
-    ) {
+    if (CHUNK_LOAD_ERROR_REGEX.test(error.message) && !getReloadAttempt()) {
       setReloadAttempt();
       window.location.reload();
       return;

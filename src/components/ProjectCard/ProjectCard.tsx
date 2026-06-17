@@ -43,9 +43,7 @@ export const ProjectCard = ({ src, url, title, text }: ProjectCardProps) => {
         <Typography.Title className="project-card-title" level={3}>
           {title}
         </Typography.Title>
-        <Typography.Text className="project-card-text">
-          {text}
-        </Typography.Text>
+        <Typography.Text className="project-card-text">{text}</Typography.Text>
       </Space>
     </Space>
   );

@@ -24,11 +24,12 @@ export const Home = () => {
   const { t } = useTranslation();
 
   const { color, opacity } = useMemo(
-    () => ({
-      available: { color: token.colorSuccess, opacity: 0.9 },
-      open: { color: token.colorWarning, opacity: 1 },
-      employed: { color: token.colorError, opacity: 0.9 },
-    })[CURRENT_STATUS],
+    () =>
+      ({
+        available: { color: token.colorSuccess, opacity: 0.9 },
+        open: { color: token.colorWarning, opacity: 1 },
+        employed: { color: token.colorError, opacity: 0.9 },
+      })[CURRENT_STATUS],
     [token],
   );
   const labelKey: StatusLabelKey = `home.status.${CURRENT_STATUS}`;
@@ -98,28 +99,27 @@ export const Home = () => {
                 </Button>
               </Popover>
             </Space>
-            <br />
-            <Typography.Link className="home-email" href={`mailto:${EMAIL}`}>
-              {EMAIL}
-            </Typography.Link>
           </Typography.Text>
-        </Space>
-        <Space className="status-column" direction="vertical" size={4}>
-          <Space className="status-row" size={10}>
-            <Typography.Text strong className="home-label">
-              {t("home.status")}:
-            </Typography.Text>
-            <Tag
-              className="availability-tag"
-              style={{
+          <Typography.Link className="home-email" href={`mailto:${EMAIL}`}>
+            {EMAIL}
+          </Typography.Link>
+          <Tag
+            className="availability-tag home-availability-tag"
+            style={
+              {
                 "--status-bg": `${color}15`,
                 "--status-color": color,
                 "--status-opacity": opacity,
-              } as CSSProperties}
-            >
-              {t(labelKey)}
-            </Tag>
-          </Space>
+              } as CSSProperties
+            }
+          >
+            {t(labelKey)}
+          </Tag>
+        </Space>
+        <Space className="about-column" direction="vertical" size={4}>
+          <Typography.Text strong className="home-label">
+            {t("home.about")}
+          </Typography.Text>
           <Typography.Text>{t("home.description")}</Typography.Text>
         </Space>
       </Flex>

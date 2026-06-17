@@ -4,7 +4,11 @@ import { useTranslation } from "react-i18next";
 import { ProjectCard } from "components";
 import { FolderOpenFilled, FolderFilled } from "components/icons";
 import { SECTION_ID } from "config/sections";
-import { PROJECTS, PROJECTS_ARCHIVE, type ProjectPreview } from "./projects.data";
+import {
+  PROJECTS,
+  PROJECTS_ARCHIVE,
+  type ProjectPreview,
+} from "./projects.data";
 import "./index.scss";
 
 const PROJECT_CARD_COL_PROPS = {
@@ -19,7 +23,10 @@ export const Projects = () => {
   const [isArchiveOpened, setIsArchiveOpened] = useState<boolean>(false);
 
   const [previews, previewsArchive] = useMemo(() => {
-    const toCard = ({ textKey, ...rest }: ProjectPreview) => ({ ...rest, text: t(textKey) });
+    const toCard = ({ textKey, ...rest }: ProjectPreview) => ({
+      ...rest,
+      text: t(textKey),
+    });
     return [PROJECTS.map(toCard), PROJECTS_ARCHIVE.map(toCard)];
   }, [t]);
 
@@ -38,7 +45,9 @@ export const Projects = () => {
       <Collapse
         className="projects-archive collapse-panel collapse-panel--small"
         activeKey={isArchiveOpened ? "archive" : undefined}
-        onChange={(keys) => setIsArchiveOpened([keys].flat().includes("archive"))}
+        onChange={(keys) =>
+          setIsArchiveOpened([keys].flat().includes("archive"))
+        }
         items={[
           {
             key: "archive",

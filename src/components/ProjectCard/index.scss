@@ -10,6 +10,8 @@
 
   img {
     @include fill-image;
+    filter: grayscale(0);
+    transition: filter 0.5s var(--bezier-animation);
   }
 
   .project-image-mask {
@@ -22,7 +24,7 @@
     background: rgba(0, 0, 0, 0.5);
     opacity: 0;
     cursor: pointer;
-    transition: opacity 0.3s;
+    transition: opacity 0.5s var(--bezier-animation);
   }
 
   .project-image-label {
@@ -34,6 +36,11 @@
   .project-image-icon {
     margin-top: 2px;
     font-size: 18px;
+  }
+
+  &:hover img,
+  &:focus-visible img {
+    filter: grayscale(1);
   }
 
   &:hover .project-image-mask,

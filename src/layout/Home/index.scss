@@ -77,13 +77,9 @@
   @include theme-transition(fill, color);
 }
 
-.status-column {
+.about-column {
   width: 100%;
   max-width: 600px;
-}
-
-.status-row {
-  align-items: center;
 }
 
 .availability-tag {
@@ -92,6 +88,11 @@
   border-color: var(--status-color);
   background: var(--status-bg);
   opacity: var(--status-opacity);
+}
+
+.home-availability-tag {
+  width: fit-content;
+  margin-top: 8px;
 }
 
 .image-popover {
@@ -175,7 +176,7 @@
     }
   }
 
-  .status-column {
+  .about-column {
     min-width: 300px;
   }
 
