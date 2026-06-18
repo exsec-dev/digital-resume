@@ -1,38 +1,15 @@
-import type { CSSProperties } from "react";
-import { useMemo } from "react";
-import { Typography, Flex, Button, Space, Tag, theme, Popover } from "antd";
+import { Typography, Flex, Button, Space, Popover } from "antd";
 import { useTranslation } from "react-i18next";
 import images from "assets/images";
 import { KineticTitle } from "components";
-import {
-  ArrowDownwardRounded,
-  BadgeOutlined,
-  LocationOnOutlined,
-} from "components/icons";
+import { ArrowDownwardRounded, BadgeOutlined } from "components/icons";
 import { EMAIL } from "config/contacts";
-import { CURRENT_STATUS, type AvailabilityStatus } from "config/profile";
 import { SECTION_ID } from "config/sections";
 import { scrollToElement } from "utils/scrollToElement";
 import "./index.scss";
 
-const { useToken } = theme;
-
-type StatusLabelKey = `home.status.${AvailabilityStatus}`;
-
 export const Home = () => {
-  const { token } = useToken();
   const { t } = useTranslation();
-
-  const { color, opacity } = useMemo(
-    () =>
-      ({
-        available: { color: token.colorSuccess, opacity: 0.9 },
-        open: { color: token.colorWarning, opacity: 1 },
-        employed: { color: token.colorError, opacity: 0.9 },
-      })[CURRENT_STATUS],
-    [token],
-  );
-  const labelKey: StatusLabelKey = `home.status.${CURRENT_STATUS}`;
 
   return (
     <Flex id={SECTION_ID.home} tabIndex={-1} vertical gap={48}>
@@ -71,11 +48,7 @@ export const Home = () => {
                   body: "image-popover",
                 }}
                 content={
-                  <Space
-                    className="avatar-container"
-                    direction="vertical"
-                    size={2}
-                  >
+                  <div className="avatar-container">
                     <img
                       src={images.avatar}
                       loading="lazy"
@@ -83,17 +56,13 @@ export const Home = () => {
                       width={467}
                       height={572}
                     />
-                    <Space className="avatar-location" size={2}>
-                      <Typography.Text>{t("home.place")}</Typography.Text>
-                      <LocationOnOutlined />
-                    </Space>
-                  </Space>
+                  </div>
                 }
               >
                 <Button
                   className="contact-badge-button"
                   type="text"
-                  aria-label={t("home.place")}
+                  aria-label={t("home.name")}
                 >
                   <BadgeOutlined className="contact-badge-icon" />
                 </Button>
@@ -103,18 +72,6 @@ export const Home = () => {
           <Typography.Link className="home-email" href={`mailto:${EMAIL}`}>
             {EMAIL}
           </Typography.Link>
-          <Tag
-            className="availability-tag home-availability-tag"
-            style={
-              {
-                "--status-bg": `${color}15`,
-                "--status-color": color,
-                "--status-opacity": opacity,
-              } as CSSProperties
-            }
-          >
-            {t(labelKey)}
-          </Tag>
         </Space>
         <Space className="about-column" direction="vertical" size={4}>
           <Typography.Text strong className="home-label">

@@ -2,7 +2,7 @@ import { useLayoutEffect, useRef } from "react";
 import { Typography } from "antd";
 import "./index.scss";
 
-const FALLOFF = 600;
+const FALLOFF = 400;
 const LERP = 0.15;
 
 export const KineticTitle = ({ text }: { text: string }) => {
@@ -70,28 +70,25 @@ export const KineticTitle = ({ text }: { text: string }) => {
       px = py = -9999;
       updateTarget();
     };
+    const onViewChange = () => {
+      rect = root.getBoundingClientRect();
+    };
 
     window.addEventListener("pointermove", onMove, { passive: true });
     window.addEventListener("pointerdown", onMove, { passive: true });
     document.addEventListener("mouseleave", onLeave);
-    window.addEventListener(
-      "scroll",
-      () => {
-        rect = root.getBoundingClientRect();
-      },
-      { passive: true },
-    );
-    window.addEventListener("resize", () => {
-      rect = root.getBoundingClientRect();
-    });
+    window.addEventListener("scroll", onViewChange, { passive: true });
+    window.addEventListener("resize", onViewChange);
 
     return () => {
       if (raf) cancelAnimationFrame(raf);
       window.removeEventListener("pointermove", onMove);
       window.removeEventListener("pointerdown", onMove);
       document.removeEventListener("mouseleave", onLeave);
+      window.removeEventListener("scroll", onViewChange);
+      window.removeEventListener("resize", onViewChange);
     };
-  }, [text]);
+  }, []);
 
   return (
     <Typography.Title

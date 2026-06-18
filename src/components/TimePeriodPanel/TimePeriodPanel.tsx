@@ -32,9 +32,12 @@ export const TimePeriodPanel = ({
         direction="vertical"
         size={isSmall ? 0 : 4}
       >
-        <Flex justify="space-between" align="start" gap={6}>
-          <Typography.Text className="timeperiod-data-title">
-            {title}
+        <Typography.Text className="timeperiod-data-title">
+          {title}
+        </Typography.Text>
+        <Flex align="center" gap={2}>
+          <Typography.Text className="timeperiod-data-additional">
+            {subtitle}
           </Typography.Text>
           {info ? (
             <Popover
@@ -70,9 +73,6 @@ export const TimePeriodPanel = ({
             </Popover>
           ) : null}
         </Flex>
-        <Typography.Text className="timeperiod-data-additional">
-          {subtitle}
-        </Typography.Text>
       </Space>
       <Divider />
       <Typography.Text italic className="timeperiod-period">

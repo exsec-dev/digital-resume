@@ -82,50 +82,15 @@
   max-width: 600px;
 }
 
-.availability-tag {
-  padding: 0 10px;
-  color: var(--status-color);
-  border-color: var(--status-color);
-  background: var(--status-bg);
-  opacity: var(--status-opacity);
-}
-
-.home-availability-tag {
-  width: fit-content;
-  margin-top: 8px;
-}
-
 .image-popover {
   padding: 8px !important;
 
   .avatar-container {
     width: 144px;
-    height: calc(144px * 1.225 + 24px);
-    justify-content: flex-end;
+    line-height: 0;
 
     img {
       @include fill-image;
-    }
-
-    span,
-    .ant-typography {
-      font-size: 10px;
-      opacity: var(--light-opacity);
-      letter-spacing: 0.02rem;
-      font-weight: 450;
-    }
-
-    svg,
-    .icon {
-      font-size: 14px;
-      position: relative;
-      top: 2px;
-      opacity: var(--light-opacity);
-    }
-
-    .avatar-location {
-      width: 100%;
-      justify-content: center;
     }
   }
 }
@@ -137,7 +102,6 @@
 
   .image-popover .avatar-container {
     width: 150px;
-    height: calc(150px * 1.225 + 24px);
   }
 }
 
@@ -153,7 +117,6 @@
 
   .image-popover .avatar-container {
     width: 160px;
-    height: calc(160px * 1.225 + 24px);
   }
 }
 
@@ -182,7 +145,6 @@
 
   .image-popover .avatar-container {
     width: 180px;
-    height: calc(180px * 1.225 + 24px);
   }
 }
 
