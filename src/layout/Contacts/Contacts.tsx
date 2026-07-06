@@ -7,7 +7,8 @@ import "./index.scss";
 
 export const Contacts = () => {
   const { t } = useTranslation();
-  const buildDate = import.meta.env.VITE_BUILD_DATE;
+  const [year, month, day] = __BUILD_DATE__.split("-");
+  const formattedBuildDate = `${day}.${month}.${year}`;
 
   return (
     <Layout.Footer id={SECTION_ID.contact} className="footer">
@@ -24,8 +25,6 @@ export const Contacts = () => {
               className="contact-link mail-link"
               type="primary"
               href={`mailto:${EMAIL}`}
-              target="_blank"
-              rel="noopener noreferrer"
               icon={<ArrowOutwardRounded />}
               iconPosition="end"
             >
@@ -53,9 +52,9 @@ export const Contacts = () => {
         </Space>
         <Flex className="copyright" justify="space-between" align="end">
           <Typography.Text>
-            {`${t("contacts.updated")}: ${buildDate}`}
+            {`${t("contacts.updated")}: ${formattedBuildDate}`}
           </Typography.Text>
-          <Typography.Text>{t("contacts.author")} Exsec ©</Typography.Text>
+          <Typography.Text>{`© ${year} Exsec`}</Typography.Text>
         </Flex>
       </Flex>
     </Layout.Footer>

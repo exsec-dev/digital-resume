@@ -6,12 +6,13 @@
   --bg-color: #f8f6f0;
   --header-color: rgb(239 237 233 / 80%);
   --noise-bg: #ebebeb;
-  --mobile-header-color: #f8f6f0a6;
+  --mobile-header-color: rgb(248 246 240 / 65%);
   --header-weight: 525;
   --button-bg: #1f1c19;
   --secondary-color: #e1e1e1;
   --pop-color: #f8f7f4;
   --light-grey: #dbdbdb;
+  --skill-bg: rgb(0 0 0 / 4%);
   --light-opacity: 0.6;
   --bezier-animation: cubic-bezier(0.645, 0.045, 0.355, 1);
   --scrollbar-thumb-color: #212121;
@@ -22,14 +23,16 @@
   color-scheme: dark;
   --primary-color: #f8f6f0;
   --bg-color: #121212;
-  --header-color: rgba(10, 10, 10, 0.8);
+  --header-color: rgb(10 10 10 / 80%);
   --noise-bg: #161616;
-  --mobile-header-color: #121212a6;
+  --mobile-header-color: rgb(18 18 18 / 65%);
   --header-weight: 400;
   --button-bg: #ebeae4;
   --secondary-color: #2a2a2a;
   --pop-color: #1b1b1b;
   --light-grey: #4e4e4e;
+  --skill-bg: rgb(255 255 255 / 5%);
+  --scrollbar-thumb-color: #4e4e4e;
 }
 
 .skip-link {

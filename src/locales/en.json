@@ -25,6 +25,7 @@
   "projects.bot": "Telegram Bot",
   "projects.service": "Tourist Service",
   "projects.utility": "Utility",
+  "projects.open": "View Project",
 
   "expertise": "Expertise",
   "expertise.title.web": "Frontend Development",
@@ -32,14 +33,47 @@
   "expertise.title.design": "Design",
   "expertise.title.process": "Systems Engineering",
   "expertise.title.eng": "English Proficiency",
-  "expertise.skills.techdoc": "Technical Documentation",
-  "expertise.skills.requirements": "Requirements Analysis",
-  "expertise.skills.risk": "Risk Assessment",
-  "expertise.skills.ui-ux": "UI/UX",
-  "expertise.skills.systems": "Design Systems",
-  "expertise.skills.prototyping": "Prototyping & Wireframes",
-  "expertise.skills.color": "Composition & Color Theory",
-  "expertise.skills.typo": "Typography",
+  "expertise.skills.web": [
+    "TypeScript",
+    "JavaScript",
+    "React",
+    "React Router",
+    "React Query",
+    "Redux",
+    "React Hook Form",
+    "CSS / SCSS",
+    "Ant Design / Material UI",
+    "i18next",
+    "Accessibility (a11y)"
+  ],
+  "expertise.skills.build": [
+    "Git",
+    "ESLint / Prettier",
+    "Webpack / Vite",
+    "Node.js",
+    "SQL",
+    "Docker",
+    "Linux",
+    "Nginx"
+  ],
+  "expertise.skills.process": [
+    "Code Review",
+    "Requirements Analysis",
+    "Technical Documentation",
+    "UML / System Modeling",
+    "BPMN",
+    "Risk Assessment",
+    "Agile / Scrum"
+  ],
+  "expertise.skills.design": [
+    "UI/UX",
+    "Prototyping & Wireframes",
+    "Composition & Color Theory",
+    "Typography",
+    "Figma",
+    "Pixso",
+    "Adobe Illustrator"
+  ],
   "expertise.eng.text": "English Language Test – CEFR level B2 (Upper Intermediate)",
 
   "education": "Education",
@@ -87,7 +121,6 @@
 
   "contacts.title": "Get in Touch",
   "contacts.updated": "Last Updated",
-  "contacts.author": "Made by",
 
   "error.title": "Something went wrong",
   "error.description": "An unexpected error occurred while rendering this page. Try reloading it.",

@@ -1,4 +1,4 @@
-import { ReactNode, SVGProps } from "react";
+import type { ReactNode, SVGProps } from "react";
 import clsx from "clsx";
 
 export const createIcon = (path: ReactNode, viewBox = "0 0 24 24") => {

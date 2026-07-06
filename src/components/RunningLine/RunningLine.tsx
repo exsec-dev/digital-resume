@@ -1,24 +1,20 @@
 import "./index.scss";
 
 const SLOGAN = "quality-focused web development";
+const LINES_PER_GROUP = 5;
 
-export const RunningLine = () => {
-  const renderLines = (groupIndex: number) =>
-    Array.from({ length: 5 }, (_, index) => (
-      <span key={`${groupIndex}-${index}`} className="line">
-        {SLOGAN}
-      </span>
-    ));
+const lines = Array.from({ length: LINES_PER_GROUP }, (_, index) => (
+  <span key={index} className="line">
+    {SLOGAN}
+  </span>
+));
 
-  return (
-    <div className="running-container" aria-hidden="true">
-      <div className="running-track">
-        {Array.from({ length: 5 }, (_, groupIndex) => (
-          <div key={groupIndex} className="running-group">
-            {renderLines(groupIndex)}
-          </div>
-        ))}
-      </div>
+export const RunningLine = () => (
+  <div className="running-container" aria-hidden="true">
+    <div className="running-track">
+      {/* the second copy makes the -50% keyframe loop seamless */}
+      <div className="running-group">{lines}</div>
+      <div className="running-group">{lines}</div>
     </div>
-  );
-};
+  </div>
+);

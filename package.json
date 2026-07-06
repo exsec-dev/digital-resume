@@ -1,11 +1,16 @@
 {
   "name": "resume",
+  "version": "1.0.0",
+  "description": "Personal digital resume — React, TypeScript, Vite",
   "author": "Exsec",
   "repository": {
     "type": "git",
-    "url": "https://github.com/exsec-dev/digital-resume/tree/dev"
+    "url": "git+https://github.com/exsec-dev/digital-resume.git"
   },
   "private": true,
+  "engines": {
+    "node": ">=20"
+  },
   "dependencies": {
     "@ant-design/v5-patch-for-react-19": "^1.0.3",
     "antd": "^5.24.0",
@@ -14,25 +19,15 @@
     "i18next-browser-languagedetector": "^8.0.4",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "react-i18next": "^15.2.0",
-    "sass": "^1.85.0"
+    "react-i18next": "^15.2.0"
   },
   "scripts": {
     "dev": "vite",
-    "prebuild": "node set-build-date.mjs",
     "build": "vite build",
     "preview": "vite preview",
-    "lint": "eslint .",
+    "lint": "eslint . --max-warnings 0",
     "lint:fix": "eslint . --fix",
     "typecheck": "tsc --noEmit && tsc --noEmit -p tsconfig.node.json"
-  },
-  "browserslist": {
-    "production": "defaults",
-    "development": [
-      "last 2 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
   },
   "overrides": {
     "esbuild": "^0.28.1"
@@ -50,6 +45,7 @@
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.5.3",
     "globals": "^15.15.0",
+    "sass": "^1.85.0",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.46.1",
     "vite": "^6.3.7",

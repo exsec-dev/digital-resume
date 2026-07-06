@@ -25,10 +25,7 @@
   }
 
   .ant-divider-horizontal.ant-divider {
-    margin: 0;
-    opacity: 0.2;
-    border-block-start: 0.1rem solid var(--primary-color);
-    @include theme-transition(border-block-start-color);
+    @include subtle-divider;
   }
 
   &-period {

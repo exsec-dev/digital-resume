@@ -5,6 +5,27 @@ import { FiberManualRecord, LoadingOutlined } from "components/icons";
 import { getTranslationList } from "utils/i18n";
 import "./index.scss";
 
+const EXPERIENCE_HISTORY = [
+  {
+    titleKey: "experience.first.title",
+    subtitleKey: "experience.first.subtitle",
+    periodKey: "experience.first.period",
+    tooltipKey: "experience.first.tooltip",
+  },
+  {
+    titleKey: "experience.second.title",
+    subtitleKey: "experience.second.subtitle",
+    periodKey: "experience.second.period",
+    tooltipKey: "experience.second.tooltip",
+  },
+] as const;
+
+const EXPERIENCE_CURRENT = {
+  titleKey: "experience.third.title",
+  subtitleKey: "experience.third.subtitle",
+  periodKey: "experience.third.period",
+} as const;
+
 export const Experience = () => {
   const { t } = useTranslation();
 
@@ -16,48 +37,30 @@ export const Experience = () => {
           className="experience-timeline"
           pending={
             <TimePeriodPanel
-              title={t("experience.third.title")}
-              subtitle={t("experience.third.subtitle")}
-              period={t("experience.third.period")}
+              title={t(EXPERIENCE_CURRENT.titleKey)}
+              subtitle={t(EXPERIENCE_CURRENT.subtitleKey)}
+              period={t(EXPERIENCE_CURRENT.periodKey)}
               isSmall
             />
           }
           pendingDot={<LoadingOutlined className="experience-current-dot" />}
           reverse
-          items={[
-            {
-              dot: <FiberManualRecord className="experience-dot" />,
-              color: "var(--primary-color)",
-              children: (
-                <TimePeriodPanel
-                  title={t("experience.first.title")}
-                  subtitle={t("experience.first.subtitle")}
-                  period={t("experience.first.period")}
-                  info={{
-                    title: t("experience.tooltip"),
-                    text: getTranslationList(t, "experience.first.tooltip"),
-                  }}
-                  isSmall
-                />
-              ),
-            },
-            {
-              dot: <FiberManualRecord className="experience-dot" />,
-              color: "var(--primary-color)",
-              children: (
-                <TimePeriodPanel
-                  title={t("experience.second.title")}
-                  subtitle={t("experience.second.subtitle")}
-                  period={t("experience.second.period")}
-                  info={{
-                    title: t("experience.tooltip"),
-                    text: getTranslationList(t, "experience.second.tooltip"),
-                  }}
-                  isSmall
-                />
-              ),
-            },
-          ]}
+          items={EXPERIENCE_HISTORY.map((entry) => ({
+            dot: <FiberManualRecord className="experience-dot" />,
+            color: "var(--primary-color)",
+            children: (
+              <TimePeriodPanel
+                title={t(entry.titleKey)}
+                subtitle={t(entry.subtitleKey)}
+                period={t(entry.periodKey)}
+                info={{
+                  title: t("experience.tooltip"),
+                  text: getTranslationList(t, entry.tooltipKey),
+                }}
+                isSmall
+              />
+            ),
+          }))}
         />
       }
     />

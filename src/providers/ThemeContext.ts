@@ -4,12 +4,9 @@ export const SCHEME_STORAGE_KEY = "scheme";
 
 export type Scheme = "light" | "dark";
 
-interface MainContextProps {
+interface ThemeContextValue {
   scheme: Scheme;
   setScheme: (value: Scheme) => void;
 }
 
-export const MainContext = createContext<MainContextProps>({
-  scheme: "light",
-  setScheme: () => {},
-});
+export const ThemeContext = createContext<ThemeContextValue | null>(null);

@@ -1,100 +1,121 @@
-import { useLayoutEffect, useRef } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Typography } from "antd";
 import "./index.scss";
 
-const FALLOFF = 400;
-const LERP = 0.15;
+const FALLOFF_PX = 400;
+const LERP_FACTOR = 0.15;
+const TAP_RESET_DELAY_MS = 300;
 
 export const KineticTitle = ({ text }: { text: string }) => {
   const rootRef = useRef<HTMLHeadingElement>(null);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(
+    () => window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+  );
+
+  useEffect(() => {
+    const query = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const onChange = (event: MediaQueryListEvent) => {
+      setPrefersReducedMotion(event.matches);
+    };
+    query.addEventListener("change", onChange);
+    return () => query.removeEventListener("change", onChange);
+  }, []);
 
   useLayoutEffect(() => {
     const root = rootRef.current;
     if (!root) return;
 
-    const setBrks = (v: number) =>
-      (root.style.fontVariationSettings = `"BRKS" ${v.toFixed(3)}`);
+    const setBreakage = (value: number) => {
+      root.style.fontVariationSettings = `"BRKS" ${value.toFixed(3)}`;
+    };
 
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setBrks(0);
+    if (prefersReducedMotion) {
+      setBreakage(0);
       return;
     }
 
     if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
       root.style.transition = "font-variation-settings 0.6s ease-in-out";
-      const io = new IntersectionObserver(
-        ([e]) => setBrks(e.isIntersecting ? 0 : 1),
+      const observer = new IntersectionObserver(
+        ([entry]) => setBreakage(entry.isIntersecting ? 0 : 1),
         { threshold: 0.5 },
       );
-      io.observe(root);
-      let t = 0;
+      observer.observe(root);
+
+      let tapTimeoutId = 0;
       const onTap = () => {
-        setBrks(1);
-        t = window.setTimeout(() => setBrks(0), 300);
+        clearTimeout(tapTimeoutId);
+        setBreakage(1);
+        tapTimeoutId = window.setTimeout(() => setBreakage(0), TAP_RESET_DELAY_MS);
       };
       root.addEventListener("click", onTap);
+
       return () => {
-        io.disconnect();
+        observer.disconnect();
         root.removeEventListener("click", onTap);
-        clearTimeout(t);
+        clearTimeout(tapTimeoutId);
       };
     }
 
     let rect = root.getBoundingClientRect();
-    let px = -9999,
-      py = -9999,
-      current = 1,
-      target = 1,
-      raf = 0;
+    let pointerX = -9999;
+    let pointerY = -9999;
+    let current = 1;
+    let target = 1;
+    let rafId = 0;
 
     const tick = () => {
-      current += (target - current) * LERP;
-      setBrks(current);
-      raf =
+      current += (target - current) * LERP_FACTOR;
+      setBreakage(current);
+      rafId =
         Math.abs(target - current) > 0.001 ? requestAnimationFrame(tick) : 0;
     };
 
     const updateTarget = () => {
-      const nearX = Math.max(rect.left, Math.min(rect.right, px));
-      const nearY = Math.max(rect.top, Math.min(rect.bottom, py));
-      target = Math.min(Math.hypot(px - nearX, py - nearY) / FALLOFF, 1);
-      if (!raf) raf = requestAnimationFrame(tick);
+      const nearestX = Math.max(rect.left, Math.min(rect.right, pointerX));
+      const nearestY = Math.max(rect.top, Math.min(rect.bottom, pointerY));
+      target = Math.min(
+        Math.hypot(pointerX - nearestX, pointerY - nearestY) / FALLOFF_PX,
+        1,
+      );
+      if (!rafId) rafId = requestAnimationFrame(tick);
     };
 
-    const onMove = (e: PointerEvent) => {
-      px = e.clientX;
-      py = e.clientY;
+    const onPointerMove = (event: PointerEvent) => {
+      pointerX = event.clientX;
+      pointerY = event.clientY;
       updateTarget();
     };
-    const onLeave = () => {
-      px = py = -9999;
+    const onPointerLeave = () => {
+      pointerX = -9999;
+      pointerY = -9999;
       updateTarget();
     };
-    const onViewChange = () => {
+    const onViewportChange = () => {
       rect = root.getBoundingClientRect();
     };
 
-    window.addEventListener("pointermove", onMove, { passive: true });
-    window.addEventListener("pointerdown", onMove, { passive: true });
-    document.addEventListener("mouseleave", onLeave);
-    window.addEventListener("scroll", onViewChange, { passive: true });
-    window.addEventListener("resize", onViewChange);
+    window.addEventListener("pointermove", onPointerMove, { passive: true });
+    window.addEventListener("pointerdown", onPointerMove, { passive: true });
+    document.addEventListener("mouseleave", onPointerLeave);
+    window.addEventListener("scroll", onViewportChange, { passive: true });
+    window.addEventListener("resize", onViewportChange);
 
     return () => {
-      if (raf) cancelAnimationFrame(raf);
-      window.removeEventListener("pointermove", onMove);
-      window.removeEventListener("pointerdown", onMove);
-      document.removeEventListener("mouseleave", onLeave);
-      window.removeEventListener("scroll", onViewChange);
-      window.removeEventListener("resize", onViewChange);
+      if (rafId) cancelAnimationFrame(rafId);
+      window.removeEventListener("pointermove", onPointerMove);
+      window.removeEventListener("pointerdown", onPointerMove);
+      document.removeEventListener("mouseleave", onPointerLeave);
+      window.removeEventListener("scroll", onViewportChange);
+      window.removeEventListener("resize", onViewportChange);
     };
-  }, []);
+  }, [prefersReducedMotion]);
 
   return (
     <Typography.Title
       ref={rootRef}
       className="kinetic-title"
-      aria-label={text.replace("\n", " ")}
+      aria-label={text.replaceAll("\n", " ")}
     >
       {text.split("\n").map((line, i) => (
         <span key={i} aria-hidden="true">

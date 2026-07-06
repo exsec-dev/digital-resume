@@ -1,9 +1,3 @@
 /// <reference types="vite/client" />
 
-interface ImportMetaEnv {
-  readonly VITE_BUILD_DATE: string;
-}
-
-interface ImportMeta {
-  readonly env: ImportMetaEnv;
-}
+declare const __BUILD_DATE__: string;
