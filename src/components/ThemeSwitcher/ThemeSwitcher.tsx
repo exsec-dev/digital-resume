@@ -1,7 +1,7 @@
 import { Button, Tooltip } from "antd";
 import { useTranslation } from "react-i18next";
 import { DarkModeRounded } from "components/icons";
-import { useScheme } from "hooks/useScheme";
+import { useScheme } from "providers/ThemeContext";
 
 export const ThemeSwitcher = () => {
   const { t } = useTranslation();

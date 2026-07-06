@@ -1,15 +1,11 @@
 import type { TFunction } from "i18next";
 import type en from "locales/en.json";
 
-type TranslationKey = keyof typeof en;
-
-type KeysWithValue<Value> = {
-  [Key in TranslationKey]: (typeof en)[Key] extends Value ? Key : never;
-}[TranslationKey];
-
-export type StringTranslationKey = KeysWithValue<string>;
-
-export type ListTranslationKey = KeysWithValue<readonly string[]>;
+type ListTranslationKey = {
+  [Key in keyof typeof en]: (typeof en)[Key] extends readonly string[]
+    ? Key
+    : never;
+}[keyof typeof en];
 
 export const getTranslationList = (
   t: TFunction<"translation">,

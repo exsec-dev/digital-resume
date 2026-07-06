@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import { SCHEME_STORAGE_KEY, ThemeContext, type Scheme } from "./ThemeContext";
 
 const getSystemScheme = (): Scheme =>
@@ -47,7 +47,7 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
     return () => query.removeEventListener("change", onChange);
   }, [followsSystem]);
 
-  const setScheme = useCallback((value: Scheme) => {
+  const setScheme = (value: Scheme) => {
     setFollowsSystem(false);
     setSchemeState(value);
     try {
@@ -55,7 +55,7 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
     } catch {
       // UI should still switch even if storage is blocked
     }
-  }, []);
+  };
 
   return (
     <ThemeContext.Provider value={{ scheme, setScheme }}>

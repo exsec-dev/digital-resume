@@ -18,12 +18,9 @@
       "components": ["./src/components"],
       "components/*": ["./src/components/*"],
       "config/*": ["./src/config/*"],
-      "hooks/*": ["./src/hooks/*"],
       "layout/*": ["./src/layout/*"],
       "locales/*": ["./src/locales/*"],
       "providers/*": ["./src/providers/*"],
-      "styles/*": ["./src/styles/*"],
-      "types/*": ["./src/types/*"],
       "utils/*": ["./src/utils/*"]
     }
   },

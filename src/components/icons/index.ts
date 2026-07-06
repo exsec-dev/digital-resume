@@ -10,7 +10,6 @@ export { FolderOpenFilled } from "./FolderOpenFilled";
 export { GitHub } from "./GitHub";
 export { InfoCircleOutlined } from "./InfoCircleOutlined";
 export { LoadingOutlined } from "./LoadingOutlined";
-export { LocationOnOutlined } from "./LocationOnOutlined";
 export { OpenInNewRounded } from "./OpenInNewRounded";
 export { PublicRounded } from "./PublicRounded";
 export { Telegram } from "./Telegram";

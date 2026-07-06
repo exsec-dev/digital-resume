@@ -77,9 +77,7 @@ export const Projects = () => {
 
   return (
     <Flex id={SECTION_ID.projects} vertical gap={16}>
-      <Typography.Title level={2} className="section-title">
-        {t("projects")}
-      </Typography.Title>
+      <Typography.Title level={2}>{t("projects")}</Typography.Title>
       <Row gutter={[0, 40]} justify="space-between" wrap>
         {renderProjectCards(PROJECTS)}
       </Row>

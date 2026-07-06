@@ -47,6 +47,9 @@ export const Home = () => {
                 classNames={{
                   body: "image-popover",
                 }}
+                styles={{
+                  body: { padding: 8 },
+                }}
                 content={
                   <div className="avatar-container">
                     <img

@@ -1,4 +1,3 @@
-import { useMemo } from "react";
 import { Layout, Anchor, Flex, Tooltip, Button } from "antd";
 import { useTranslation } from "react-i18next";
 import { Logo, ThemeSwitcher } from "components";
@@ -16,26 +15,23 @@ export const Header = () => {
     i18n.changeLanguage(targetLanguage);
   };
 
-  const items = useMemo(
-    () => [
-      {
-        key: "home",
-        href: `#${SECTION_ID.home}`,
-        title: t("header.menu.home"),
-      },
-      {
-        key: "projects",
-        href: `#${SECTION_ID.projects}`,
-        title: t("header.menu.projects"),
-      },
-      {
-        key: "about",
-        href: `#${SECTION_ID.about}`,
-        title: t("header.menu.about"),
-      },
-    ],
-    [t],
-  );
+  const items = [
+    {
+      key: "home",
+      href: `#${SECTION_ID.home}`,
+      title: t("header.menu.home"),
+    },
+    {
+      key: "projects",
+      href: `#${SECTION_ID.projects}`,
+      title: t("header.menu.projects"),
+    },
+    {
+      key: "about",
+      href: `#${SECTION_ID.about}`,
+      title: t("header.menu.about"),
+    },
+  ];
 
   return (
     <Layout.Header className="header">

@@ -31,7 +31,7 @@ export default [
     settings: {
       react: { version: "detect" },
       "import/internal-regex":
-        "^(assets|components|config|hooks|layout|locales|providers|styles|types|utils)(/|$)",
+        "^(assets|components|config|layout|locales|providers|utils)(/|$)",
     },
     rules: {
       "react-hooks/rules-of-hooks": "error",

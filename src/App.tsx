@@ -1,5 +1,5 @@
 import { Layout, ConfigProvider, Flex } from "antd";
-import type { GetProps } from "antd";
+import type { ThemeConfig } from "antd";
 import { useTranslation } from "react-i18next";
 import { RunningLine } from "components";
 import { SECTION_ID } from "config/sections";
@@ -13,14 +13,14 @@ import { Home } from "layout/Home";
 import { Projects } from "layout/Projects";
 import { ThemeProvider } from "providers/ThemeProvider";
 
-type ConfigProviderProps = GetProps<typeof ConfigProvider>;
-
-const themeConfig: ConfigProviderProps["theme"] = {
+const themeConfig: ThemeConfig = {
   token: {
     colorPrimary: "var(--primary-color)",
     fontSize: 14,
     fontFamily: '"Geist", system-ui, sans-serif',
     colorText: "var(--primary-color)",
+    fontSizeHeading2: 24,
+    lineHeightHeading2: 1.3333333,
   },
   components: {
     Layout: {
@@ -29,7 +29,8 @@ const themeConfig: ConfigProviderProps["theme"] = {
       footerBg: "none",
     },
     Anchor: {
-      colorText: "var(--bg-color)",
+      colorPrimary: "var(--primary-color)",
+      colorText: "var(--primary-color)",
       linkPaddingInlineStart: 16,
     },
     Button: {

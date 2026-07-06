@@ -23,10 +23,7 @@ export const CollapsePanel = ({
         {
           key: "1",
           label: (
-            <Typography.Title
-              className="collapse-panel-title section-title"
-              level={2}
-            >
+            <Typography.Title className="collapse-panel-title" level={2}>
               {title}
             </Typography.Title>
           ),

@@ -70,7 +70,6 @@
 
       .ant-anchor-link-title {
         opacity: 0.4;
-        color: var(--primary-color);
         @include theme-transition(color, font-weight);
       }
     }

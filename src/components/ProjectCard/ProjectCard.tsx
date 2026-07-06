@@ -3,10 +3,12 @@ import { Typography, Space } from "antd";
 import { useTranslation } from "react-i18next";
 import fallbackImage from "assets/images/project-fallback.svg";
 import { ArrowOutwardRounded } from "components/icons";
-import type { ProjectSummary } from "types/project";
 import "./index.scss";
 
-interface ProjectCardProps extends ProjectSummary {
+interface ProjectCardProps {
+  src: string;
+  url: string;
+  title: string;
   text: string;
 }
 

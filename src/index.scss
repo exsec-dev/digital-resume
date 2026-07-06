@@ -126,11 +126,6 @@ body {
   }
 }
 
-.section-title.ant-typography {
-  font-size: 24px;
-  line-height: 1.3333333;
-}
-
 .layout .ant-divider {
   @include theme-transition(border-block-start-color, border-color);
 }

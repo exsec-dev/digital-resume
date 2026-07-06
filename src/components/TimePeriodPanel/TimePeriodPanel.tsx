@@ -47,6 +47,9 @@ export const TimePeriodPanel = ({
               classNames={{
                 body: "info-popover",
               }}
+              styles={{
+                body: { padding: "12px 18px 14px" },
+              }}
               content={
                 <Space
                   className="popover-container"
