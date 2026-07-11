@@ -9,7 +9,6 @@ export { FiberManualRecord } from "./FiberManualRecord";
 export { FolderFilled } from "./FolderFilled";
 export { FolderOpenFilled } from "./FolderOpenFilled";
 export { GitHub } from "./GitHub";
-export { InfoCircleOutlined } from "./InfoCircleOutlined";
 export { LoadingOutlined } from "./LoadingOutlined";
 export { OpenInNewRounded } from "./OpenInNewRounded";
 export { PublicRounded } from "./PublicRounded";

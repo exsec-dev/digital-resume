@@ -15,17 +15,20 @@ const getStoredScheme = (): Scheme | null => {
   }
 };
 
+const getInitialTheme = () => {
+  const storedScheme = getStoredScheme();
+  return {
+    scheme: storedScheme ?? getSystemScheme(),
+    followsSystem: storedScheme === null,
+  };
+};
+
 interface ThemeProviderProps {
   children: ReactNode;
 }
 
 export const ThemeProvider = ({ children }: ThemeProviderProps) => {
-  const [scheme, setSchemeState] = useState<Scheme>(
-    () => getStoredScheme() ?? getSystemScheme(),
-  );
-  const [followsSystem, setFollowsSystem] = useState(
-    () => getStoredScheme() === null,
-  );
+  const [{ scheme, followsSystem }, setTheme] = useState(getInitialTheme);
 
   useEffect(() => {
     if (scheme === "dark") {
@@ -41,7 +44,10 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
     }
     const query = window.matchMedia("(prefers-color-scheme: dark)");
     const onChange = (event: MediaQueryListEvent) => {
-      setSchemeState(event.matches ? "dark" : "light");
+      setTheme({
+        scheme: event.matches ? "dark" : "light",
+        followsSystem: true,
+      });
     };
     query.addEventListener("change", onChange);
     return () => query.removeEventListener("change", onChange);
@@ -55,8 +61,7 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
   }, []);
 
   const setScheme = (value: Scheme) => {
-    setFollowsSystem(false);
-    setSchemeState(value);
+    setTheme({ scheme: value, followsSystem: false });
     try {
       localStorage.setItem(SCHEME_STORAGE_KEY, value);
     } catch {

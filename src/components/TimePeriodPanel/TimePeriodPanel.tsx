@@ -46,11 +46,14 @@ export const TimePeriodPanel = ({
               {info.title}
               <Caret className="timeperiod-details-caret" />
             </button>
-            <div className="timeperiod-details-content" aria-hidden={!isOpen}>
+            <div
+              className="timeperiod-details-content"
+              aria-hidden={isOpen ? undefined : true}
+            >
               <div className="timeperiod-details-clip">
                 <ul id={detailsId} className="timeperiod-details-list">
-                  {info.text.map((item, i) => (
-                    <li key={i}>
+                  {info.text.map((item) => (
+                    <li key={item}>
                       <Add />
                       <span>{item}</span>
                     </li>

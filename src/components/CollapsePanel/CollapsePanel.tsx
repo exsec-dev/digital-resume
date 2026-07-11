@@ -53,7 +53,10 @@ export const CollapsePanel = ({
           <span className="collapse-panel-arrow" aria-hidden="true" />
         </button>
       </div>
-      <div className="collapse-panel-content" aria-hidden={!isOpen}>
+      <div
+        className="collapse-panel-content"
+        aria-hidden={isOpen ? undefined : true}
+      >
         <div className="collapse-panel-content-clip">
           <div id={contentId} className="collapse-panel-content-inner">
             {content}

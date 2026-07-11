@@ -78,8 +78,6 @@
     }
   }
 
-  // rotation lasts exactly as long as the list expansion below;
-  // scoped under the toggle to win over the base .icon transition
   &-toggle .timeperiod-details-caret {
     font-size: 10px;
     transition:

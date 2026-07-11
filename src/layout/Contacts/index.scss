@@ -1,71 +1,68 @@
 @use "styles/mixins" as *;
 
-.footer {
-  .footer-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 64px;
-    padding: 48px 0 24px;
-  }
+.footer .footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 64px;
+  padding: 48px 0 24px;
+}
 
-  .contacts {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.footer .contacts {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
-    h2 {
-      font-weight: 650;
-      font-size: 52px;
-    }
-
-    .contact-link {
-      height: 50px;
-      padding: 24px;
-      border-radius: 48px;
-      background-color: var(--primary-color);
-      letter-spacing: 0.02rem;
-      font-size: 0.85rem;
-      color: var(--bg-color);
-      @include theme-transition(background-color, color);
-
-      svg {
-        display: block;
-        font-size: 22px;
-        fill: var(--bg-color);
-        @include theme-transition(fill);
-      }
-
-      &.mail-link {
-        padding: 24px 30px;
-
-        svg {
-          font-size: 18px;
-        }
-      }
-
-      &:not(.mail-link) {
-        width: 50px;
-        padding: 0;
-      }
-    }
-  }
-
-  .copyright {
-    width: 100%;
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    letter-spacing: 0.01rem;
-    opacity: var(--light-opacity);
-
-    span {
-      font-size: 12px;
-    }
+  h2 {
+    font-weight: 650;
+    font-size: 52px;
   }
 }
 
-.contact-links {
+.footer .contact-link {
+  height: 50px;
+  padding: 24px;
+  border-radius: 48px;
+  background-color: var(--primary-color);
+  color: var(--bg-color);
+  font-size: 0.85rem;
+  letter-spacing: 0.02rem;
+  @include theme-transition(background-color, color);
+
+  svg {
+    display: block;
+    fill: var(--bg-color);
+    font-size: 22px;
+  }
+}
+
+.footer .contact-link.mail-link {
+  padding: 24px 30px;
+
+  svg {
+    font-size: 18px;
+  }
+}
+
+.footer .contact-link:not(.mail-link) {
+  width: 50px;
+  padding: 0;
+}
+
+.footer .copyright {
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  letter-spacing: 0.01rem;
+  opacity: var(--light-opacity);
+
+  span {
+    font-size: 12px;
+  }
+}
+
+.footer .contact-links {
   display: flex;
   gap: 8px;
 }

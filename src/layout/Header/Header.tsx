@@ -14,7 +14,6 @@ const NAVIGATION_IDS = [
   SECTION_ID.about,
 ] as const;
 
-// checked bottom-up so the lowest section that reached the header wins
 const SCROLL_CHECK_IDS = [...NAVIGATION_IDS].reverse();
 
 export const Header = () => {

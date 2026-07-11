@@ -31,33 +31,31 @@ export const Home = () => {
       <div className="description">
         <div className="home-contact">
           <strong className="home-label">{t("home.contact")}</strong>
-          <span>
-            <span className="home-name">
-              {t("home.name")}
-              <Tooltip
-                placement="right-top"
-                className="image-popover"
-                content={
-                  <div className="avatar-container">
-                    <img
-                      src={images.avatar}
-                      loading="lazy"
-                      alt={t("home.name")}
-                      width={467}
-                      height={572}
-                    />
-                  </div>
-                }
+          <span className="home-name">
+            {t("home.name")}
+            <Tooltip
+              placement="right-top"
+              className="image-popover"
+              content={
+                <div className="avatar-container">
+                  <img
+                    src={images.avatar}
+                    loading="lazy"
+                    alt={t("home.name")}
+                    width={467}
+                    height={572}
+                  />
+                </div>
+              }
+            >
+              <button
+                type="button"
+                className="contact-badge-button"
+                aria-label={t("home.name")}
               >
-                <button
-                  type="button"
-                  className="contact-badge-button"
-                  aria-label={t("home.name")}
-                >
-                  <BadgeOutlined />
-                </button>
-              </Tooltip>
-            </span>
+                <BadgeOutlined />
+              </button>
+            </Tooltip>
           </span>
           <a className="home-email" href={`mailto:${EMAIL}`}>
             {EMAIL}

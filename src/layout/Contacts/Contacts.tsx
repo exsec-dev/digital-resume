@@ -4,10 +4,11 @@ import { EMAIL, TELEGRAM_URL, GITHUB_URL } from "config/contacts";
 import { SECTION_ID } from "config/sections";
 import "./index.scss";
 
+const [buildYear, buildMonth, buildDay] = __BUILD_DATE__.split("-");
+const formattedBuildDate = `${buildDay}.${buildMonth}.${buildYear}`;
+
 export const Contacts = () => {
   const { t } = useTranslation();
-  const [year, month, day] = __BUILD_DATE__.split("-");
-  const formattedBuildDate = `${day}.${month}.${year}`;
 
   return (
     <footer id={SECTION_ID.contact} className="footer">
@@ -44,7 +45,7 @@ export const Contacts = () => {
         </div>
         <div className="copyright">
           <span>{`${t("contacts.updated")}: ${formattedBuildDate}`}</span>
-          <span>{`© ${year} Exsec`}</span>
+          <span>{`© ${buildYear} Exsec`}</span>
         </div>
       </div>
     </footer>

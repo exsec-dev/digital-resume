@@ -4,7 +4,6 @@ import { FiberManualRecord, LoadingOutlined } from "components/icons";
 import { getTranslationList } from "utils/i18n";
 import "./index.scss";
 
-// newest first, matching the timeline order on screen
 const EXPERIENCE_HISTORY = [
   {
     titleKey: "experience.second.title",

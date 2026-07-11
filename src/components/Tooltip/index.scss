@@ -11,8 +11,6 @@
   color: var(--primary-color);
   @include theme-transition(color, background-color);
 
-  // rotated square clipped to its outer half, so the arrow
-  // never overlaps a translucent overlay background
   &::before {
     content: "";
     position: absolute;

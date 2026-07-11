@@ -12,7 +12,7 @@ export const Certificates = () => {
       title={t("certificates")}
       headerAction={
         <a
-          className="icon-link"
+          className="certificates-link"
           title={t("certificates.open")}
           aria-label={t("certificates.open")}
           href={CERTIFICATES_PATH}
@@ -24,8 +24,8 @@ export const Certificates = () => {
       }
       content={
         <ul className="certificates-list">
-          {getTranslationList(t, "certificates.list").map((item, i) => (
-            <li key={i} className="list-item">
+          {getTranslationList(t, "certificates.list").map((item) => (
+            <li key={item} className="certificates-item">
               <Add />
               <span>{item}</span>
             </li>

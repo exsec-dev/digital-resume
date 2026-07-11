@@ -116,8 +116,8 @@ export const KineticTitle = ({ text }: { text: string }) => {
       className="kinetic-title"
       aria-label={text.replaceAll("\n", " ")}
     >
-      {text.split("\n").map((line, i) => (
-        <span key={i} aria-hidden="true">
+      {text.split("\n").map((line) => (
+        <span key={line} aria-hidden="true">
           {line}
         </span>
       ))}

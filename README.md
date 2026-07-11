@@ -12,7 +12,7 @@ Bilingual single-page resume. Live at [exsec.dev](https://exsec.dev).
 - **Theming** – light and dark schemes on CSS custom properties: system-preference sync, persisted user choice, FOUC-free first paint
 - **Accessibility** – skip link, focus-visible states, ARIA labels, `prefers-reduced-motion` support
 - **Kinetic typography** – hero title reacts to pointer proximity via a variable font axis, with an intersection-based fallback on touch devices
-- **Performance** – manual vendor chunking, critical font preload, gzip/brotli precompression, lazy images
+- **Performance** – gzip/brotli precompression, lazy images
 - **Resilience** – error boundary with a localized fallback screen
 
 ## Architecture Notes

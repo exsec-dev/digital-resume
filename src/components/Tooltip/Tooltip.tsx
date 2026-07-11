@@ -25,9 +25,7 @@ interface TooltipProps {
 
 const POINTER_DELAY_MS = 100;
 const VIEWPORT_PADDING = 8;
-// keeps the arrow clear of the overlay rounded corners
 const ARROW_INSET = 12;
-// distance from the overlay top to the arrow center for side placements
 const SIDE_ARROW_OFFSET = 16;
 
 const clamp = (value: number, min: number, max: number) =>
@@ -59,19 +57,12 @@ export const Tooltip = ({
     const overlay = overlayRef.current;
     if (!trigger || !overlay) return;
 
-    // anchor to the visible content, not the wrapper span, which can be
-    // stretched by the surrounding layout
     const anchor = trigger.firstElementChild ?? trigger;
     const rect = anchor.getBoundingClientRect();
-    // offsetWidth/offsetHeight ignore the enter animation transform
     const width = overlay.offsetWidth;
     const height = overlay.offsetHeight;
     const gap = variant === "tooltip" ? 8 : 12;
 
-    // everything is computed in page coordinates: the overlay is positioned
-    // absolutely, so it belongs to the page and pinch zoom cannot move it
-    // relative to the trigger; clientWidth/clientHeight describe the layout
-    // viewport, which is also unaffected by pinch zoom
     const { scrollX, scrollY } = window;
     const viewport = {
       left: scrollX + VIEWPORT_PADDING,
@@ -91,7 +82,6 @@ export const Tooltip = ({
       const fitsLeft = triggerLeft - gap - width >= viewport.left;
       const fitsRight = triggerRight + gap + width <= viewport.right;
       if (!fitsLeft && !fitsRight) {
-        // neither side has room (narrow screens): drop below the trigger
         actualPlacement = "bottom";
       } else if (actualPlacement === "left-top" && !fitsLeft) {
         actualPlacement = "right-top";
@@ -108,7 +98,6 @@ export const Tooltip = ({
         viewport.left,
         viewport.right - width,
       );
-      // never detach from the trigger: the arrow must stay inside the overlay
       left = clamp(
         left,
         triggerCenterX - width + ARROW_INSET,
@@ -125,7 +114,6 @@ export const Tooltip = ({
         viewport.top,
         viewport.bottom - height,
       );
-      // never detach from the trigger: the arrow must stay inside the overlay
       top = clamp(
         top,
         triggerCenterY - height + ARROW_INSET,
@@ -133,8 +121,16 @@ export const Tooltip = ({
       );
     }
 
-    const arrowX = clamp(triggerCenterX - left, ARROW_INSET, width - ARROW_INSET);
-    const arrowY = clamp(triggerCenterY - top, ARROW_INSET, height - ARROW_INSET);
+    const arrowX = clamp(
+      triggerCenterX - left,
+      ARROW_INSET,
+      width - ARROW_INSET,
+    );
+    const arrowY = clamp(
+      triggerCenterY - top,
+      ARROW_INSET,
+      height - ARROW_INSET,
+    );
     setLayout((prev) =>
       prev.left === left &&
       prev.top === top &&
@@ -146,17 +142,22 @@ export const Tooltip = ({
     );
   }, [placement, variant]);
 
-  // tracks the trigger every frame while open, so the overlay follows
-  // scrolling, zooming, content resizes and layout shifts alike
   useLayoutEffect(() => {
     if (!isOpen) return;
-    let frame = 0;
-    const tick = () => {
-      updatePosition();
-      frame = requestAnimationFrame(tick);
+
+    updatePosition();
+    const resizeObserver = new ResizeObserver(updatePosition);
+    if (triggerRef.current) resizeObserver.observe(triggerRef.current);
+    if (overlayRef.current) resizeObserver.observe(overlayRef.current);
+
+    window.addEventListener("resize", updatePosition);
+    window.addEventListener("scroll", updatePosition, true);
+
+    return () => {
+      resizeObserver.disconnect();
+      window.removeEventListener("resize", updatePosition);
+      window.removeEventListener("scroll", updatePosition, true);
     };
-    tick();
-    return () => cancelAnimationFrame(frame);
   }, [isOpen, updatePosition]);
 
   const clearTimers = () => {

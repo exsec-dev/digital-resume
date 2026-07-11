@@ -1,6 +1,4 @@
-@use "styles/mixins" as *;
-
-.icon-link {
+.certificates-link {
   display: inline-flex;
   margin-left: 6px;
 
@@ -8,7 +6,6 @@
     fill: var(--primary-color);
     font-size: 22px;
     opacity: 0.5;
-    @include theme-transition(fill);
   }
 }
 
@@ -21,7 +18,7 @@
   list-style: none;
 }
 
-.list-item {
+.certificates-item {
   display: flex;
   align-items: flex-start;
   gap: 8px;
@@ -32,6 +29,5 @@
     opacity: 0.2;
     position: relative;
     top: 2px;
-    @include theme-transition(fill);
   }
 }

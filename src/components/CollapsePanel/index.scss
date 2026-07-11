@@ -5,7 +5,6 @@
 
   &-header {
     position: relative;
-    width: 100%;
     display: grid;
     grid-template-columns: max-content max-content minmax(0, 1fr);
     align-items: center;
@@ -28,7 +27,7 @@
     background: transparent;
     color: var(--primary-color);
     text-align: left;
-    @include theme-transition(color, background-color);
+    @include theme-transition(color);
   }
 
   &-header-action {
@@ -46,9 +45,6 @@
     width: fit-content;
     margin: 0;
     pointer-events: none;
-    font-size: 24px;
-    font-weight: 600;
-    line-height: 1.3333333;
   }
 
   &-arrow {
