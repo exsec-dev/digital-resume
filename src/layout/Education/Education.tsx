@@ -1,4 +1,3 @@
-import { Space } from "antd";
 import { useTranslation } from "react-i18next";
 import { TimePeriodPanel, CollapsePanel } from "components";
 import "./index.scss";
@@ -23,7 +22,7 @@ export const Education = () => {
     <CollapsePanel
       title={t("education")}
       content={
-        <Space className="education-list" direction="vertical" size={36}>
+        <div className="education-list">
           {EDUCATION.map((entry) => (
             <TimePeriodPanel
               key={entry.titleKey}
@@ -32,7 +31,7 @@ export const Education = () => {
               period={t(entry.periodKey)}
             />
           ))}
-        </Space>
+        </div>
       }
     />
   );

@@ -6,3 +6,4 @@ export { CollapsePanel } from "./CollapsePanel";
 export { RunningLine } from "./RunningLine";
 export { ThemeSwitcher } from "./ThemeSwitcher";
 export { ErrorBoundary } from "./ErrorBoundary";
+export { Tooltip } from "./Tooltip";

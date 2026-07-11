@@ -1,0 +1,87 @@
+@use "styles/mixins" as *;
+
+.overlay-trigger {
+  display: inline-flex;
+  align-items: center;
+}
+
+.overlay {
+  position: absolute;
+  z-index: 1000;
+  color: var(--primary-color);
+  @include theme-transition(color, background-color);
+
+  // rotated square clipped to its outer half, so the arrow
+  // never overlaps a translucent overlay background
+  &::before {
+    content: "";
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: inherit;
+    transform: rotate(45deg);
+  }
+
+  &--bottom {
+    transform-origin: var(--arrow-x) top;
+
+    &::before {
+      top: -4px;
+      left: var(--arrow-x);
+      margin-left: -4px;
+      clip-path: polygon(0 0, 100% 0, 0 100%);
+    }
+  }
+
+  &--left-top {
+    transform-origin: right var(--arrow-y);
+
+    &::before {
+      top: var(--arrow-y);
+      right: -4px;
+      margin-top: -4px;
+      clip-path: polygon(0 0, 100% 0, 100% 100%);
+    }
+  }
+
+  &--right-top {
+    transform-origin: left var(--arrow-y);
+
+    &::before {
+      top: var(--arrow-y);
+      left: -4px;
+      margin-top: -4px;
+      clip-path: polygon(0 0, 0 100%, 100% 100%);
+    }
+  }
+
+  &--popover {
+    padding: 12px 18px 14px;
+    border-radius: 8px;
+    background-color: var(--pop-color);
+    box-shadow:
+      0 6px 16px rgb(0 0 0 / 8%),
+      0 3px 6px -4px rgb(0 0 0 / 12%),
+      0 9px 28px 8px rgb(0 0 0 / 5%);
+    animation: overlay-enter 0.2s cubic-bezier(0.08, 0.82, 0.17, 1);
+  }
+
+  &--tooltip {
+    max-width: 250px;
+    padding: 6px 8px;
+    border-radius: 6px;
+    background: rgb(0 0 0 / 85%);
+    color: #fff;
+    font-size: 14px;
+    line-height: 1.5;
+    pointer-events: none;
+    animation: overlay-enter 0.1s cubic-bezier(0.08, 0.82, 0.17, 1);
+  }
+}
+
+@keyframes overlay-enter {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+}

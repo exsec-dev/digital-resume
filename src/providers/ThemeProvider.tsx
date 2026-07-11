@@ -47,6 +47,13 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
     return () => query.removeEventListener("change", onChange);
   }, [followsSystem]);
 
+  useEffect(() => {
+    const frameId = requestAnimationFrame(() => {
+      document.documentElement.setAttribute("data-theme-ready", "");
+    });
+    return () => cancelAnimationFrame(frameId);
+  }, []);
+
   const setScheme = (value: Scheme) => {
     setFollowsSystem(false);
     setSchemeState(value);

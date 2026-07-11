@@ -71,31 +71,80 @@
   -webkit-user-select: none;
 }
 
-html:not([data-scrollbar="native"]) ::-webkit-scrollbar {
-  width: 8px;
-}
+html:not([data-scrollbar="native"]) {
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
 
-html:not([data-scrollbar="native"]) ::-webkit-scrollbar-track {
-  background-color: var(--noise-bg);
-  @include theme-transition(background-color);
-}
+  ::-webkit-scrollbar-track {
+    background-color: var(--noise-bg);
+    @include theme-transition(background-color);
+  }
 
-html:not([data-scrollbar="native"]) ::-webkit-scrollbar-thumb {
-  background: var(--scrollbar-thumb-color);
+  ::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb-color);
+  }
 }
 
 body {
   background: var(--bg-color);
+  color: var(--primary-color);
+  font-family: "Geist", system-ui, sans-serif;
+  font-size: 14px;
   overflow-x: hidden;
   -webkit-text-size-adjust: 100%;
+  @include theme-transition(background-color, color);
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+:where(button, a):focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 3px;
+}
+
+.button {
+  min-height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 4px 15px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--primary-color);
+  line-height: 1.5;
+  @include theme-transition(color, background-color, border-color);
+
+  &--primary {
+    background-color: var(--button-bg);
+    color: var(--bg-color);
+  }
+
+  &--circle {
+    width: 32px;
+    padding: 0;
+    border-radius: 50%;
+  }
+}
+
+h2 {
+  margin: 0 0 0.5em;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.3333333;
+  @include theme-transition(color);
+}
+
+:where(h1, h2, h3, h4, h5, h6) {
+  color: var(--primary-color);
 }
 
 ::selection {
-  color: var(--bg-color);
-  background: var(--primary-color);
-}
-
-::-moz-selection {
   color: var(--bg-color);
   background: var(--primary-color);
 }
@@ -106,7 +155,7 @@ body {
   position: fixed;
   z-index: 3000;
 
-  & div {
+  div {
     width: 100%;
     height: 100%;
     background-size: 110px;
@@ -117,24 +166,26 @@ body {
 }
 
 .layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
   padding: 130px 28px 0;
+  background: var(--bg-color);
   @include theme-transition(background-color);
-  gap: 0;
 
   .chapters {
+    display: flex;
+    flex-direction: column;
     gap: 56px;
   }
 }
 
-.layout .ant-divider {
-  @include theme-transition(border-block-start-color, border-color);
+[id] {
+  scroll-margin-top: 100px;
 }
 
-.layout .ant-typography,
-.error-fallback .ant-typography,
-.image-popover .ant-typography,
-.info-popover .ant-typography {
-  @include theme-transition(color);
+html:not([data-theme-ready]) * {
+  transition: none !important;
 }
 
 @include breakpoint(sm) {

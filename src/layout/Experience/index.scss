@@ -1,20 +1,51 @@
 @use "styles/mixins" as *;
 
 .experience-timeline {
-  margin-top: 16px;
+  margin: 9px 0 8px;
+  padding: 0;
+  list-style: none;
 
   svg {
     fill: var(--primary-color);
   }
 
-  li:last-child {
-    padding-bottom: 0;
+  &-item {
+    position: relative;
+    display: flex;
+    gap: 14px;
+    padding-bottom: 36px;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 14px;
+      bottom: 0;
+      left: 5px;
+      border-inline-start: 2px solid var(--primary-color);
+      opacity: 0.1;
+      @include theme-transition(border-inline-start-color);
+    }
   }
 
-  .ant-timeline-item-tail {
-    opacity: 0.1;
-    border-inline-start-color: var(--primary-color);
-    @include theme-transition(border-inline-start-color);
+  &-item:last-child {
+    padding-bottom: 0;
+
+    &::before {
+      display: none;
+    }
+  }
+
+  &-dot {
+    position: relative;
+    z-index: 1;
+    width: 12px;
+    height: 20px;
+    display: flex;
+    flex: 0 0 12px;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-color);
+    @include theme-transition(background-color);
   }
 }
 
@@ -24,6 +55,7 @@
 }
 
 .experience-current-dot {
+  font-size: 12px;
   opacity: 0.3;
   animation: experience-current-dot-spin 1s linear infinite;
   transform-box: fill-box;

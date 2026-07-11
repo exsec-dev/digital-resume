@@ -1,5 +1,11 @@
 @use "styles/mixins" as *;
 
+.project-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
 .project-image {
   position: relative;
   display: block;
@@ -10,7 +16,6 @@
 
   img {
     @include fill-image;
-    filter: grayscale(0);
     transition: filter 0.5s var(--bezier-animation);
   }
 
@@ -23,12 +28,10 @@
     color: var(--overlay-text-color);
     background: rgb(0 0 0 / 50%);
     opacity: 0;
-    cursor: pointer;
     transition: opacity 0.5s var(--bezier-animation);
   }
 
   .project-image-label {
-    color: var(--overlay-text-color);
     font-weight: 500;
     letter-spacing: 0.01rem;
   }
@@ -54,12 +57,20 @@
   }
 }
 
-.project-card-title.ant-typography {
+.project-card-description {
+  display: flex;
+  flex-direction: column;
+}
+
+.project-card-title {
   margin: 0;
+  font-weight: 600;
   font-size: 16px;
   line-height: 1.5;
+  @include theme-transition(color);
 }
 
 .project-card-text {
+  line-height: 22px;
   opacity: var(--light-opacity);
 }

@@ -6,16 +6,16 @@ const easeInOutCubic = (value: number) =>
 
 let cancelActiveScroll: (() => void) | null = null;
 
-export const scrollToElement = (element: HTMLElement) => {
+export const scrollToElement = (element: HTMLElement, offset = 0) => {
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    element.scrollIntoView();
+    window.scrollTo(0, window.scrollY + element.getBoundingClientRect().top - offset);
     return;
   }
 
   cancelActiveScroll?.();
 
   const startY = window.scrollY;
-  const distance = element.getBoundingClientRect().top;
+  const distance = element.getBoundingClientRect().top - offset;
   if (!distance) return;
 
   const duration = Math.min(

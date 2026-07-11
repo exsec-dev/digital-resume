@@ -1,10 +1,21 @@
-import { Layout, Anchor, Flex, Tooltip, Button } from "antd";
+import { useEffect, useState } from "react";
+import clsx from "clsx";
 import { useTranslation } from "react-i18next";
-import { Logo, ThemeSwitcher } from "components";
+import { Logo, Tooltip, ThemeSwitcher } from "components";
 import { DownloadRounded, PublicRounded } from "components/icons";
 import { CV_PATH } from "config/contacts";
 import { SECTION_ID } from "config/sections";
+import { scrollToElement } from "utils/scrollToElement";
 import "./index.scss";
+
+const NAVIGATION_IDS = [
+  SECTION_ID.home,
+  SECTION_ID.projects,
+  SECTION_ID.about,
+] as const;
+
+// checked bottom-up so the lowest section that reached the header wins
+const SCROLL_CHECK_IDS = [...NAVIGATION_IDS].reverse();
 
 export const Header = () => {
   const { t, i18n } = useTranslation();
@@ -15,66 +26,83 @@ export const Header = () => {
     i18n.changeLanguage(targetLanguage);
   };
 
-  const items = [
-    {
-      key: "home",
-      href: `#${SECTION_ID.home}`,
-      title: t("header.menu.home"),
-    },
-    {
-      key: "projects",
-      href: `#${SECTION_ID.projects}`,
-      title: t("header.menu.projects"),
-    },
-    {
-      key: "about",
-      href: `#${SECTION_ID.about}`,
-      title: t("header.menu.about"),
-    },
-  ];
+  const [activeSection, setActiveSection] = useState<string>(SECTION_ID.home);
+
+  useEffect(() => {
+    const updateActiveSection = () => {
+      const active = SCROLL_CHECK_IDS.find((id) => {
+        const section = document.getElementById(id);
+        return section && section.getBoundingClientRect().top <= 120;
+      });
+      setActiveSection(active ?? SECTION_ID.home);
+    };
+
+    updateActiveSection();
+    window.addEventListener("scroll", updateActiveSection, { passive: true });
+    window.addEventListener("resize", updateActiveSection);
+    return () => {
+      window.removeEventListener("scroll", updateActiveSection);
+      window.removeEventListener("resize", updateActiveSection);
+    };
+  }, []);
+
+  const navigate = (id: string) => {
+    const element = document.getElementById(id);
+    if (!element) return;
+    window.history.replaceState(null, "", `#${id}`);
+    scrollToElement(element, 100);
+  };
 
   return (
-    <Layout.Header className="header">
-      <Flex className="header-inner" justify="space-between" align="center">
+    <header className="header">
+      <div className="header-inner">
         <Logo />
-        <Flex gap={18}>
-          <Anchor
-            className="navigation"
-            items={items}
-            bounds={240}
-            targetOffset={100}
-            direction="horizontal"
-          />
-          <Flex className="button-container" gap={2}>
+        <div className="header-controls">
+          <nav className="navigation">
+            {NAVIGATION_IDS.map((id) => (
+              <a
+                key={id}
+                href={`#${id}`}
+                className={clsx(
+                  "navigation-link",
+                  activeSection === id && "navigation-link--active",
+                )}
+                onClick={(event) => {
+                  event.preventDefault();
+                  navigate(id);
+                }}
+              >
+                {t(`header.menu.${id}`)}
+              </a>
+            ))}
+          </nav>
+          <div className="button-container">
             <ThemeSwitcher />
             <Tooltip
-              title={t("header.tooltip.lang")}
+              content={t("header.tooltip.lang")}
               placement="bottom"
-              destroyOnHidden
+              variant="tooltip"
             >
-              <Button
-                variant="filled"
-                color="default"
-                shape="circle"
+              <button
+                type="button"
+                className="button button--circle header-icon-button"
                 aria-label={languageLabel}
                 onClick={changeLanguage}
               >
                 <PublicRounded />
-              </Button>
+              </button>
             </Tooltip>
-            <Button
-              className="download"
-              type="primary"
+            <a
+              className="button button--primary download"
               href={CV_PATH}
               download="Prozhirko_CV.pdf"
-              iconPosition="end"
-              icon={<DownloadRounded />}
             >
               {t("header.tooltip.pdf")}
-            </Button>
-          </Flex>
-        </Flex>
-      </Flex>
-    </Layout.Header>
+              <DownloadRounded />
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
   );
 };

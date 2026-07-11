@@ -1,4 +1,3 @@
-import { Typography, Flex, Space, Divider } from "antd";
 import { useTranslation } from "react-i18next";
 import { SECTION_ID } from "config/sections";
 import { getTranslationList } from "utils/i18n";
@@ -16,19 +15,13 @@ export const Expertise = () => {
   const { t } = useTranslation();
 
   return (
-    <Flex id={SECTION_ID.about} className="expertise" vertical gap={16}>
-      <Typography.Title level={2}>{t("expertise")}</Typography.Title>
-      <Space direction="vertical" size={42}>
+    <section id={SECTION_ID.about} className="expertise">
+      <h2>{t("expertise")}</h2>
+      <div className="expertise-sections">
         {EXPERTISE_SECTIONS.map((section) => (
-          <Space
-            className="expertise-section"
-            key={section.titleKey}
-            direction="vertical"
-          >
-            <Typography.Title level={3} className="expertise-chapter-title">
-              {t(section.titleKey)}
-            </Typography.Title>
-            <Divider className="expertise-divider" />
+          <section className="expertise-section" key={section.titleKey}>
+            <h3 className="expertise-chapter-title">{t(section.titleKey)}</h3>
+            <hr className="expertise-divider" />
             {"skillsKey" in section ? (
               <ul className="expertise-skills">
                 {getTranslationList(t, section.skillsKey).map((skill) => (
@@ -38,13 +31,11 @@ export const Expertise = () => {
                 ))}
               </ul>
             ) : (
-              <Typography.Text className="expertise-text">
-                {t(section.textKey)}
-              </Typography.Text>
+              <span className="expertise-text">{t(section.textKey)}</span>
             )}
-          </Space>
+          </section>
         ))}
-      </Space>
-    </Flex>
+      </div>
+    </section>
   );
 };

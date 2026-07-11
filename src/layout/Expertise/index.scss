@@ -1,16 +1,31 @@
 @use "styles/mixins" as *;
 
 .expertise {
-  .expertise-chapter-title.ant-typography {
-    margin: 0 0 8px;
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 1.4;
-  }
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.expertise-chapter-title {
+  margin: 0 0 8px;
+  color: var(--primary-color);
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.4;
+  @include theme-transition(color);
 }
 
 .expertise-section {
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.expertise-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 42px;
 }
 
 .expertise-divider {
@@ -28,6 +43,7 @@
 
 .expertise-text {
   letter-spacing: 0.02rem;
+  line-height: 22px;
 }
 
 .skill-container {
@@ -38,5 +54,6 @@
   padding: 8px 16px;
   font-size: 14px;
   border: 1px solid var(--secondary-color);
+  color: var(--primary-color);
   @include theme-transition(border-color, background-color, color);
 }

@@ -1,13 +1,13 @@
 @use "styles/mixins" as *;
 
 .icon-link {
+  display: inline-flex;
+  margin-left: 6px;
+
   .icon {
     fill: var(--primary-color);
     font-size: 22px;
     opacity: 0.5;
-    position: relative;
-    top: 4px;
-    left: 6px;
     @include theme-transition(fill);
   }
 }

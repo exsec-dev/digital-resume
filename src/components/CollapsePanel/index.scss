@@ -1,64 +1,127 @@
 @use "styles/mixins" as *;
 
 .collapse-panel {
-  &.ant-collapse,
-  .ant-collapse-content.ant-collapse-content-active,
-  .ant-collapse-content.ant-collapse-content-inactive {
-    border-color: var(--light-grey);
-    @include theme-transition(border-color);
-  }
+  --collapse-duration: 0.4s;
 
-  &.ant-collapse > .ant-collapse-item > .ant-collapse-header {
+  &-header {
+    position: relative;
+    width: 100%;
+    display: grid;
+    grid-template-columns: max-content max-content minmax(0, 1fr);
     align-items: center;
-    margin-bottom: 12px;
-
-    .collapse-panel-title {
-      width: fit-content;
-      margin: 0;
-    }
+    margin: 0 0 12px;
   }
 
-  &.ant-collapse .ant-collapse-expand-icon .ant-collapse-arrow {
-    font-size: 16px;
+  &-toggle {
+    grid-row: 1;
+    grid-column: 1 / -1;
+    align-self: stretch;
+    z-index: 0;
+    width: 100%;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--primary-color);
+    text-align: left;
+    @include theme-transition(color, background-color);
+  }
+
+  &-header-action {
+    grid-row: 1;
+    grid-column: 2;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  &-title {
+    grid-row: 1;
+    grid-column: 1;
+    z-index: 1;
+    width: fit-content;
+    margin: 0;
+    pointer-events: none;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1.3333333;
+  }
+
+  &-arrow {
+    position: relative;
+    width: 16px;
+    height: 16px;
+    flex: 0 0 auto;
     opacity: var(--light-opacity);
     transition:
       opacity 0.4s var(--bezier-animation),
-      color 0.4s var(--bezier-animation),
-      fill 0.4s var(--bezier-animation),
-      transform 0.4s var(--bezier-animation) !important;
+      transform var(--collapse-duration) var(--bezier-animation);
 
-    svg {
-      fill: var(--primary-color);
-      transition:
-        color 0.4s var(--bezier-animation),
-        fill 0.4s var(--bezier-animation),
-        transform 0.4s var(--bezier-animation) !important;
-
-      path {
-        fill: var(--primary-color);
-        transition:
-          color 0.4s var(--bezier-animation),
-          fill 0.4s var(--bezier-animation),
-          transform 0.4s var(--bezier-animation) !important;
-      }
+    &::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 9px;
+      height: 9px;
+      border-right: 1.5px solid currentColor;
+      border-bottom: 1.5px solid currentColor;
+      transform: translate(-50%, -50%) rotate(-45deg);
+      opacity: var(--light-opacity);
     }
   }
 
+  &-content {
+    display: grid;
+    grid-template-rows: 0fr;
+    visibility: hidden;
+    transition:
+      grid-template-rows var(--collapse-duration) var(--bezier-animation),
+      visibility 0s var(--collapse-duration),
+      border-top-color 0.4s var(--bezier-animation);
+  }
+
+  &-content-clip {
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  &-content-inner {
+    padding: 12px 0;
+  }
+
+  &--open &-content {
+    grid-template-rows: 1fr;
+    visibility: visible;
+    transition-delay: 0s;
+  }
+
+  &--open &-arrow {
+    transform: rotate(90deg);
+  }
+
   &--small {
-    &.ant-collapse > .ant-collapse-item > .ant-collapse-header {
-      align-items: center;
+    .collapse-panel-header {
+      min-height: 0;
+      margin: 0;
+    }
 
-      .ant-collapse-expand-icon {
-        margin-right: 12px;
-      }
+    .collapse-panel-content-inner {
+      padding: 12px;
+    }
 
-      .ant-collapse-arrow {
-        font-size: 14px;
-      }
+    .collapse-panel-arrow {
+      width: 14px;
+      height: 14px;
+      margin-right: 12px;
 
-      .ant-collapse-arrow svg {
-        font-size: 14px;
-        opacity: var(--light-opacity);
+      &::before {
+        width: 9px;
+        height: 9px;
       }
     }
   }

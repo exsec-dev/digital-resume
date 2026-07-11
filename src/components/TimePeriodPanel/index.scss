@@ -2,9 +2,16 @@
 
 .timeperiod {
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  line-height: 22px;
 
   &-data {
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
 
     &-title {
       font-weight: 500;
@@ -16,15 +23,9 @@
       letter-spacing: 0.01rem;
       line-height: 20px;
     }
-
-    svg {
-      opacity: 0.4;
-      font-size: 16px;
-      padding: 1px;
-    }
   }
 
-  .ant-divider-horizontal.ant-divider {
+  hr {
     @include subtle-divider;
   }
 
@@ -34,6 +35,12 @@
   }
 
   &--small {
+    gap: 6px;
+
+    .timeperiod-data {
+      gap: 0;
+    }
+
     .timeperiod-data-title {
       font-size: 15px;
     }
@@ -44,43 +51,96 @@
   }
 }
 
-.popover-container {
-  max-width: 275px;
+.timeperiod-details {
+  display: flex;
+  flex-direction: column;
 
-  h5 {
-    font-weight: 475;
-    font-size: 14px;
-    letter-spacing: 0.02rem;
+  &-toggle {
+    width: fit-content;
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    margin: 4px 0 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--primary-color);
+    font-size: 13px;
+    letter-spacing: 0.01rem;
+    line-height: 20px;
+    opacity: var(--light-opacity);
+    transition:
+      opacity 0.4s var(--bezier-animation),
+      color 0.4s var(--bezier-animation);
+
+    &:hover {
+      opacity: 1;
+    }
   }
 
-  span {
-    font-size: 12px;
-    letter-spacing: 0.02rem;
-    opacity: 0.7;
-    display: inline-block;
+  // rotation lasts exactly as long as the list expansion below;
+  // scoped under the toggle to win over the base .icon transition
+  &-toggle .timeperiod-details-caret {
+    font-size: 10px;
+    transition:
+      transform 0.2s var(--bezier-animation),
+      fill 0.4s var(--bezier-animation);
   }
-}
 
-@include breakpoint(sm) {
-  .popover-container {
-    max-width: 325px;
+  &-content {
+    display: grid;
+    grid-template-rows: 0fr;
+    visibility: hidden;
+    transition:
+      grid-template-rows 0.2s var(--bezier-animation),
+      visibility 0s 0.2s;
   }
-}
 
-@include breakpoint(md) {
-  .popover-container {
-    max-width: 350px;
+  &-clip {
+    min-height: 0;
+    overflow: hidden;
   }
-}
 
-@include breakpoint(lg) {
-  .popover-container {
-    max-width: 375px;
+  &-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin: 6px 0 2px;
+    padding: 0;
+    list-style: none;
+
+    li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 13px;
+      letter-spacing: 0.01rem;
+      line-height: 20px;
+
+      span {
+        opacity: 0.7;
+      }
+
+      .icon {
+        fill: var(--primary-color);
+        font-size: 16px;
+        opacity: 0.2;
+        position: relative;
+        top: 2px;
+        @include theme-transition(fill);
+      }
+    }
   }
-}
 
-@include breakpoint(xl) {
-  .popover-container {
-    max-width: 400px;
+  &--open {
+    .timeperiod-details-content {
+      grid-template-rows: 1fr;
+      visibility: visible;
+      transition-delay: 0s;
+    }
+
+    .timeperiod-details-caret {
+      transform: rotate(90deg);
+    }
   }
 }

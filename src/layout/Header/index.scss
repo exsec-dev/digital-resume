@@ -14,6 +14,9 @@
 
   .header-inner {
     height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 
   .logo {
@@ -23,59 +26,50 @@
   }
 
   .button-container {
+    display: flex;
     gap: 4px;
 
-    .ant-btn {
-      color: var(--bg-color);
-      @include theme-transition(background-color, color);
+    svg {
+      fill: var(--button-bg);
+      font-size: 22px;
+      @include theme-transition(fill);
+    }
 
-      &:not(.ant-btn-primary) {
-        background: transparent;
-      }
+    .download {
+      width: 120px;
+      margin-left: 8px;
+      border-radius: 8px;
 
       svg {
-        fill: var(--button-bg);
-        font-size: 22px;
-        @include theme-transition(fill);
-      }
-
-      &.download {
-        width: 120px;
-        margin-left: 8px;
-        border-radius: 8px;
-
-        svg {
-          position: relative;
-          fill: var(--bg-color);
-          font-size: 18px;
-          top: 1px;
-        }
+        fill: var(--bg-color);
+        font-size: 18px;
       }
     }
+  }
+
+  .header-controls {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+
+  .header-icon-button:hover {
+    background-color: rgb(from var(--primary-color) r g b / 6%);
   }
 
   .navigation {
     display: none;
 
-    &::before {
-      display: none;
-    }
-
-    .ant-anchor-ink {
-      display: none;
-    }
-
-    .ant-anchor-link {
+    &-link {
+      padding-left: 16px;
+      color: var(--primary-color);
       font-weight: var(--header-weight);
+      opacity: 0.4;
+      @include theme-transition(color, font-weight);
 
-      .ant-anchor-link-title {
-        opacity: 0.4;
-        @include theme-transition(color, font-weight);
+      &--active {
+        opacity: 1;
       }
-    }
-
-    .ant-anchor-link-active .ant-anchor-link-title {
-      opacity: 1;
     }
   }
 }
@@ -97,15 +91,7 @@
     background-color: var(--header-color);
 
     .navigation {
-      display: block;
-    }
-
-    .button-container {
-      gap: 0;
-
-      svg {
-        font-size: 20px;
-      }
+      display: flex;
     }
   }
 }

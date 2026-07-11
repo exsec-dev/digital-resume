@@ -32,6 +32,7 @@ $breakpoints: (
 @mixin subtle-divider {
   margin: 0;
   opacity: 0.2;
+  border: 0;
   border-block-start: 1px solid var(--primary-color);
   @include theme-transition(border-block-start-color);
 }

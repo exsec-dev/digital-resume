@@ -4,7 +4,7 @@ Bilingual single-page resume. Live at [exsec.dev](https://exsec.dev).
 
 ## Tech Stack
 
-`React 19` `TypeScript` `Vite` `Ant Design 5` `SCSS` `i18next`
+`React 19` `TypeScript` `Vite` `SCSS` `i18next`
 
 ## Features
 
@@ -17,7 +17,7 @@ Bilingual single-page resume. Live at [exsec.dev](https://exsec.dev).
 
 ## Architecture Notes
 
-- Ant Design provides the interactive primitives (collapse, popover, tooltip, anchor); its design tokens are mapped to CSS custom properties, so both themes share one stylesheet and switch without re-render
+- Small, accessible UI primitives are implemented locally; semantic HTML and CSS handle the rest without a component-library runtime
 - Resume data lives next to the components that render it; all user-facing copy lives in locale files
 - The build date in the footer is injected at build time as a compile-time constant
 

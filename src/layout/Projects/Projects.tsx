@@ -1,8 +1,6 @@
-import { useState } from "react";
-import { Typography, Flex, Col, Row, Collapse } from "antd";
 import { useTranslation } from "react-i18next";
 import images from "assets/images";
-import { ProjectCard } from "components";
+import { CollapsePanel, ProjectCard } from "components";
 import { FolderOpenFilled, FolderFilled } from "components/icons";
 import { SECTION_ID } from "config/sections";
 import "./index.scss";
@@ -55,64 +53,45 @@ const PROJECTS_ARCHIVE = [
   },
 ] as const;
 
-const PROJECT_CARD_COL_PROPS = {
-  xs: { flex: "100%" },
-  md: { flex: "46%" },
-  lg: { flex: "45%" },
-  xl: { flex: "30%" },
-} as const;
-
 export const Projects = () => {
   const { t } = useTranslation();
-  const [isArchiveOpened, setIsArchiveOpened] = useState(false);
 
   const renderProjectCards = (
     projects: typeof PROJECTS | typeof PROJECTS_ARCHIVE,
   ) =>
     projects.map(({ textKey, ...preview }) => (
-      <Col key={preview.title} {...PROJECT_CARD_COL_PROPS}>
+      <div className="project-column" key={preview.title}>
         <ProjectCard {...preview} text={t(textKey)} />
-      </Col>
+      </div>
     ));
 
   return (
-    <Flex id={SECTION_ID.projects} vertical gap={16}>
-      <Typography.Title level={2}>{t("projects")}</Typography.Title>
-      <Row gutter={[0, 40]} justify="space-between" wrap>
+    <section id={SECTION_ID.projects} className="projects">
+      <h2>{t("projects")}</h2>
+      <div className="projects-grid">
         {renderProjectCards(PROJECTS)}
-      </Row>
-      <Collapse
-        className="projects-archive collapse-panel collapse-panel--small"
-        activeKey={isArchiveOpened ? "archive" : undefined}
-        onChange={(keys) => setIsArchiveOpened(keys.includes("archive"))}
-        items={[
-          {
-            key: "archive",
-            label: (
-              <Typography.Title className="projects-archive-title" level={3}>
-                {isArchiveOpened ? (
-                  <FolderOpenFilled className="projects-archive-icon" />
-                ) : (
-                  <FolderFilled className="projects-archive-icon" />
-                )}
-                {t("projects.archive")}
-              </Typography.Title>
-            ),
-            children: (
-              <Row
-                className="projects-archive-grid"
-                gutter={[0, 40]}
-                justify="space-between"
-                wrap
-              >
-                {renderProjectCards(PROJECTS_ARCHIVE)}
-              </Row>
-            ),
-          },
-        ]}
-        size="small"
-        expandIconPosition="end"
+      </div>
+      <CollapsePanel
+        className="projects-archive"
+        small
+        defaultClosed
+        label={t("projects.archive")}
+        title={(isOpen) => (
+          <span className="projects-archive-title">
+            {isOpen ? (
+              <FolderOpenFilled className="projects-archive-icon" />
+            ) : (
+              <FolderFilled className="projects-archive-icon" />
+            )}
+            {t("projects.archive")}
+          </span>
+        )}
+        content={
+          <div className="projects-grid projects-archive-grid">
+            {renderProjectCards(PROJECTS_ARCHIVE)}
+          </div>
+        }
       />
-    </Flex>
+    </section>
   );
 };

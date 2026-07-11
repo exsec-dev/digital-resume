@@ -1,5 +1,23 @@
 @use "styles/mixins" as *;
 
+.projects {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.projects-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  row-gap: 40px;
+}
+
+.project-column {
+  flex: 0 0 100%;
+  min-width: 0;
+}
+
 .projects-archive {
   position: relative;
   margin-top: 32px;
@@ -9,41 +27,21 @@
   background-color: var(--pop-color);
   @include theme-transition(background-color, border-color);
 
-  &.ant-collapse,
-  .ant-collapse-content,
-  .ant-collapse-content.ant-collapse-content-active,
-  .ant-collapse-content.ant-collapse-content-inactive,
-  .ant-collapse-content > .ant-collapse-content-box {
-    border-color: var(--light-grey);
-    background-color: var(--pop-color);
-    @include theme-transition(background-color, border-color);
-  }
-
-  &.ant-collapse > .ant-collapse-item {
-    border-bottom: 0;
+  .collapse-panel-header {
     background-color: var(--pop-color);
     @include theme-transition(background-color);
   }
 
-  &.collapse-panel.ant-collapse > .ant-collapse-item > .ant-collapse-header {
-    min-height: 0;
-    margin-bottom: 0;
-    padding: 0;
-    background-color: var(--pop-color);
-    @include theme-transition(background-color);
+  .collapse-panel-content {
+    border-top: 1px solid transparent;
   }
 
-  &.collapse-panel.ant-collapse
-    > .ant-collapse-item
-    > .ant-collapse-header
-    .ant-collapse-expand-icon {
-    height: 100%;
-    align-items: center;
-    margin-right: 12px;
+  &.collapse-panel--open .collapse-panel-content {
+    border-top-color: var(--light-grey);
   }
 }
 
-.projects-archive .projects-archive-title.ant-typography {
+.projects-archive-title {
   display: inline-flex;
   align-items: center;
   width: fit-content;
@@ -56,7 +54,7 @@
   @include theme-transition(color);
 }
 
-.projects-archive .projects-archive-icon.icon {
+.projects-archive-icon {
   margin-right: 8px;
 }
 
@@ -64,4 +62,22 @@
   padding: 20px 28px 24px;
   background-color: var(--pop-color);
   @include theme-transition(background-color);
+}
+
+@include breakpoint(md) {
+  .project-column {
+    flex-basis: 46%;
+  }
+}
+
+@include breakpoint(lg) {
+  .project-column {
+    flex-basis: 45%;
+  }
+}
+
+@include breakpoint(xl) {
+  .project-column {
+    flex-basis: 30%;
+  }
 }

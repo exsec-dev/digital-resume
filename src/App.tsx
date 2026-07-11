@@ -1,5 +1,3 @@
-import { Layout, ConfigProvider, Flex } from "antd";
-import type { ThemeConfig } from "antd";
 import { useTranslation } from "react-i18next";
 import { RunningLine } from "components";
 import { SECTION_ID } from "config/sections";
@@ -13,72 +11,30 @@ import { Home } from "layout/Home";
 import { Projects } from "layout/Projects";
 import { ThemeProvider } from "providers/ThemeProvider";
 
-const themeConfig: ThemeConfig = {
-  token: {
-    colorPrimary: "var(--primary-color)",
-    fontSize: 14,
-    fontFamily: '"Geist", system-ui, sans-serif',
-    colorText: "var(--primary-color)",
-    fontSizeHeading2: 24,
-    lineHeightHeading2: 1.3333333,
-  },
-  components: {
-    Layout: {
-      bodyBg: "var(--bg-color)",
-      headerBg: "none",
-      footerBg: "none",
-    },
-    Anchor: {
-      colorPrimary: "var(--primary-color)",
-      colorText: "var(--primary-color)",
-      linkPaddingInlineStart: 16,
-    },
-    Button: {
-      primaryShadow: "none",
-      colorPrimary: "var(--button-bg)",
-    },
-    Timeline: {
-      itemPaddingBottom: 36,
-      dotBg: "none",
-      tailColor: "var(--primary-color)",
-    },
-    Collapse: {
-      contentPadding: 0,
-      headerPadding: 0,
-      contentBg: "transparent",
-    },
-    Popover: {
-      colorBgElevated: "var(--pop-color)",
-    },
-  },
-};
-
 function App() {
   const { t } = useTranslation();
 
   return (
-    <ConfigProvider theme={themeConfig}>
-      <ThemeProvider>
-        <Layout className="layout">
-          <a href={`#${SECTION_ID.home}`} className="skip-link">
-            {t("a11y.skipToContent")}
-          </a>
-          <Header />
-          <Layout.Content>
-            <Flex vertical className="chapters">
-              <Home />
-              <Projects />
-              <Expertise />
-              <Education />
-              <Experience />
-              <Certificates />
-              <RunningLine />
-            </Flex>
-          </Layout.Content>
-          <Contacts />
-        </Layout>
-      </ThemeProvider>
-    </ConfigProvider>
+    <ThemeProvider>
+      <div className="layout">
+        <a href={`#${SECTION_ID.home}`} className="skip-link">
+          {t("a11y.skipToContent")}
+        </a>
+        <Header />
+        <main>
+          <div className="chapters">
+            <Home />
+            <Projects />
+            <Expertise />
+            <Education />
+            <Experience />
+            <Certificates />
+            <RunningLine />
+          </div>
+        </main>
+        <Contacts />
+      </div>
+    </ThemeProvider>
   );
 }
 

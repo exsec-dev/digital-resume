@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Typography, Space } from "antd";
 import { useTranslation } from "react-i18next";
 import fallbackImage from "assets/images/project-fallback.svg";
 import { ArrowOutwardRounded } from "components/icons";
@@ -17,7 +16,7 @@ export const ProjectCard = ({ src, url, title, text }: ProjectCardProps) => {
   const [imgSrc, setImgSrc] = useState(src);
 
   return (
-    <Space className="project-card" direction="vertical" size={16}>
+    <article className="project-card">
       <a
         href={url}
         target="_blank"
@@ -32,19 +31,15 @@ export const ProjectCard = ({ src, url, title, text }: ProjectCardProps) => {
           height={868}
           onError={() => setImgSrc(fallbackImage)}
         />
-        <Space size={0} align="start" className="project-image-mask">
-          <Typography.Text className="project-image-label">
-            {t("projects.open")}
-          </Typography.Text>
+        <span className="project-image-mask">
+          <span className="project-image-label">{t("projects.open")}</span>
           <ArrowOutwardRounded className="project-image-icon" />
-        </Space>
+        </span>
       </a>
-      <Space direction="vertical" size={0}>
-        <Typography.Title className="project-card-title" level={3}>
-          {title}
-        </Typography.Title>
-        <Typography.Text className="project-card-text">{text}</Typography.Text>
-      </Space>
-    </Space>
+      <div className="project-card-description">
+        <h3 className="project-card-title">{title}</h3>
+        <span className="project-card-text">{text}</span>
+      </div>
+    </article>
   );
 };

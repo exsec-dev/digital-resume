@@ -1,5 +1,4 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
-import { Typography } from "antd";
 import "./index.scss";
 
 const FALLOFF_PX = 400;
@@ -112,7 +111,7 @@ export const KineticTitle = ({ text }: { text: string }) => {
   }, [prefersReducedMotion]);
 
   return (
-    <Typography.Title
+    <h1
       ref={rootRef}
       className="kinetic-title"
       aria-label={text.replaceAll("\n", " ")}
@@ -122,6 +121,6 @@ export const KineticTitle = ({ text }: { text: string }) => {
           {line}
         </span>
       ))}
-    </Typography.Title>
+    </h1>
   );
 };

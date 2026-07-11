@@ -49,14 +49,6 @@ export default defineConfig({
           ) {
             return "i18n";
           }
-
-          if (
-            id.includes("/node_modules/antd/") ||
-            id.includes("/node_modules/@ant-design/") ||
-            id.includes("/node_modules/rc-")
-          ) {
-            return "antd";
-          }
         },
       },
     },

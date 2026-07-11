@@ -1,7 +1,6 @@
-import { Typography, Flex, Button, Space, Popover } from "antd";
 import { useTranslation } from "react-i18next";
 import images from "assets/images";
-import { KineticTitle } from "components";
+import { KineticTitle, Tooltip } from "components";
 import { ArrowDownwardRounded, BadgeOutlined } from "components/icons";
 import { EMAIL } from "config/contacts";
 import { SECTION_ID } from "config/sections";
@@ -12,16 +11,12 @@ export const Home = () => {
   const { t } = useTranslation();
 
   return (
-    <Flex id={SECTION_ID.home} tabIndex={-1} vertical gap={48}>
-      <Flex className="title-container" justify="space-between">
+    <section id={SECTION_ID.home} tabIndex={-1} className="home">
+      <div className="title-container">
         <KineticTitle text={"DIGITAL\nRESUME"} />
-        <Button
-          className="scroll-button"
-          color="default"
-          variant="filled"
-          shape="round"
-          iconPosition="end"
-          icon={<ArrowDownwardRounded />}
+        <button
+          type="button"
+          className="button scroll-button"
           onClick={() => {
             const element = document.getElementById(SECTION_ID.contact);
             if (element) {
@@ -30,26 +25,18 @@ export const Home = () => {
           }}
         >
           {t("home.scroll")}
-        </Button>
-      </Flex>
-      <Flex className="description" justify="space-between" align="start">
-        <Space className="home-contact" direction="vertical" size={0}>
-          <Typography.Text strong className="home-label">
-            {t("home.contact")}
-          </Typography.Text>
-          <Typography.Text>
-            <Space size={4}>
+          <ArrowDownwardRounded />
+        </button>
+      </div>
+      <div className="description">
+        <div className="home-contact">
+          <strong className="home-label">{t("home.contact")}</strong>
+          <span>
+            <span className="home-name">
               {t("home.name")}
-              <Popover
-                placement="rightTop"
-                trigger={["hover", "focus"]}
-                destroyOnHidden
-                classNames={{
-                  body: "image-popover",
-                }}
-                styles={{
-                  body: { padding: 8 },
-                }}
+              <Tooltip
+                placement="right-top"
+                className="image-popover"
                 content={
                   <div className="avatar-container">
                     <img
@@ -62,27 +49,25 @@ export const Home = () => {
                   </div>
                 }
               >
-                <Button
+                <button
+                  type="button"
                   className="contact-badge-button"
-                  type="text"
                   aria-label={t("home.name")}
                 >
-                  <BadgeOutlined className="contact-badge-icon" />
-                </Button>
-              </Popover>
-            </Space>
-          </Typography.Text>
-          <Typography.Link className="home-email" href={`mailto:${EMAIL}`}>
+                  <BadgeOutlined />
+                </button>
+              </Tooltip>
+            </span>
+          </span>
+          <a className="home-email" href={`mailto:${EMAIL}`}>
             {EMAIL}
-          </Typography.Link>
-        </Space>
-        <Space className="about-column" direction="vertical" size={4}>
-          <Typography.Text strong className="home-label">
-            {t("home.about")}
-          </Typography.Text>
-          <Typography.Text>{t("home.description")}</Typography.Text>
-        </Space>
-      </Flex>
-    </Flex>
+          </a>
+        </div>
+        <div className="about-column">
+          <strong className="home-label">{t("home.about")}</strong>
+          <span>{t("home.description")}</span>
+        </div>
+      </div>
+    </section>
   );
 };

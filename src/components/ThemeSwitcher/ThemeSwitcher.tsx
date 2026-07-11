@@ -1,6 +1,6 @@
-import { Button, Tooltip } from "antd";
 import { useTranslation } from "react-i18next";
 import { DarkModeRounded } from "components/icons";
+import { Tooltip } from "components/Tooltip";
 import { useScheme } from "providers/ThemeContext";
 
 export const ThemeSwitcher = () => {
@@ -11,20 +11,19 @@ export const ThemeSwitcher = () => {
 
   return (
     <Tooltip
-      title={t("header.tooltip.theme")}
+      content={t("header.tooltip.theme")}
       placement="bottom"
-      destroyOnHidden
+      variant="tooltip"
     >
-      <Button
-        variant="filled"
-        color="default"
-        shape="circle"
+      <button
+        type="button"
+        className="button button--circle header-icon-button"
         aria-label={ariaLabel}
         aria-pressed={isDark}
         onClick={() => setScheme(isDark ? "light" : "dark")}
       >
         <DarkModeRounded />
-      </Button>
+      </button>
     </Tooltip>
   );
 };

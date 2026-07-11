@@ -1,22 +1,22 @@
-import { Timeline } from "antd";
 import { useTranslation } from "react-i18next";
 import { TimePeriodPanel, CollapsePanel } from "components";
 import { FiberManualRecord, LoadingOutlined } from "components/icons";
 import { getTranslationList } from "utils/i18n";
 import "./index.scss";
 
+// newest first, matching the timeline order on screen
 const EXPERIENCE_HISTORY = [
-  {
-    titleKey: "experience.first.title",
-    subtitleKey: "experience.first.subtitle",
-    periodKey: "experience.first.period",
-    tooltipKey: "experience.first.tooltip",
-  },
   {
     titleKey: "experience.second.title",
     subtitleKey: "experience.second.subtitle",
     periodKey: "experience.second.period",
     tooltipKey: "experience.second.tooltip",
+  },
+  {
+    titleKey: "experience.first.title",
+    subtitleKey: "experience.first.subtitle",
+    periodKey: "experience.first.period",
+    tooltipKey: "experience.first.tooltip",
   },
 ] as const;
 
@@ -33,22 +33,23 @@ export const Experience = () => {
     <CollapsePanel
       title={t("experience")}
       content={
-        <Timeline
-          className="experience-timeline"
-          pending={
+        <ol className="experience-timeline">
+          <li className="experience-timeline-item">
+            <span className="experience-timeline-dot">
+              <LoadingOutlined className="experience-current-dot" />
+            </span>
             <TimePeriodPanel
               title={t(EXPERIENCE_CURRENT.titleKey)}
               subtitle={t(EXPERIENCE_CURRENT.subtitleKey)}
               period={t(EXPERIENCE_CURRENT.periodKey)}
               isSmall
             />
-          }
-          pendingDot={<LoadingOutlined className="experience-current-dot" />}
-          reverse
-          items={EXPERIENCE_HISTORY.map((entry) => ({
-            dot: <FiberManualRecord className="experience-dot" />,
-            color: "var(--primary-color)",
-            children: (
+          </li>
+          {EXPERIENCE_HISTORY.map((entry) => (
+            <li className="experience-timeline-item" key={entry.titleKey}>
+              <span className="experience-timeline-dot">
+                <FiberManualRecord className="experience-dot" />
+              </span>
               <TimePeriodPanel
                 title={t(entry.titleKey)}
                 subtitle={t(entry.subtitleKey)}
@@ -59,9 +60,9 @@ export const Experience = () => {
                 }}
                 isSmall
               />
-            ),
-          }))}
-        />
+            </li>
+          ))}
+        </ol>
       }
     />
   );
