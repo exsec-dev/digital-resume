@@ -1,5 +1,3 @@
-@use "styles/mixins" as *;
-
 .footer .footer-content {
   display: flex;
   flex-direction: column;
@@ -30,7 +28,6 @@
 
   svg {
     display: block;
-    fill: var(--bg-color);
     font-size: 22px;
   }
 }

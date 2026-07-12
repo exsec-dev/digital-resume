@@ -28,14 +28,27 @@
   .scroll-button {
     height: 48px;
     padding: 16px 15px;
+    position: relative;
+    isolation: isolate;
     border: 1px solid var(--secondary-color);
     border-radius: 32px;
-    background-color: rgb(0 0 0 / 4%);
+    background-color: var(--skill-bg);
     font-weight: 500;
     text-transform: uppercase;
 
-    &:hover {
-      background-color: rgb(0 0 0 / 6%);
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      border-radius: inherit;
+      background-color: var(--skill-bg);
+      opacity: 0;
+      transition: opacity 0.4s var(--bezier-animation);
+    }
+
+    &:hover::after {
+      opacity: 0.5;
     }
 
     svg {
@@ -74,7 +87,6 @@
 .home-email {
   line-height: 22px;
   letter-spacing: 0.02rem;
-  color: var(--primary-color);
   opacity: var(--light-opacity);
 }
 
@@ -91,7 +103,6 @@
 }
 
 .contact-badge-button .icon {
-  color: var(--primary-color);
   font-size: 21px;
   opacity: var(--light-opacity);
 }

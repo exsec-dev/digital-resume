@@ -36,6 +36,9 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
     } else {
       document.documentElement.removeAttribute("data-theme");
     }
+    document
+      .querySelector('meta[name="theme-color"]')
+      ?.setAttribute("content", scheme === "dark" ? "#121212" : "#f8f6f0");
   }, [scheme]);
 
   useEffect(() => {

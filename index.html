@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="robots" content="noindex, nofollow" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f8f6f0" />
     <script>
       (function () {
         try {
@@ -28,6 +29,9 @@
 
           if (savedScheme === "dark" || (!hasSavedScheme && prefersDark)) {
             document.documentElement.setAttribute("data-theme", "dark");
+            document
+              .querySelector('meta[name="theme-color"]')
+              .setAttribute("content", "#121212");
           }
         } catch (e) {}
       })();
@@ -45,16 +49,6 @@
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="stylesheet" href="/reset.css" />
     <link rel="stylesheet" href="/fonts.css" />
-    <meta
-      name="theme-color"
-      content="#f8f6f0"
-      media="(prefers-color-scheme: light)"
-    />
-    <meta
-      name="theme-color"
-      content="#121212"
-      media="(prefers-color-scheme: dark)"
-    />
     <meta
       name="description"
       content="Showcasing my work and providing contact details for inquiries."
