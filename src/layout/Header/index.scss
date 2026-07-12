@@ -10,7 +10,6 @@
   padding: 10px 28px;
   backdrop-filter: blur(8px);
   background-color: var(--mobile-header-color);
-  @include theme-transition(background-color);
 
   .header-inner {
     height: 100%;
@@ -22,7 +21,6 @@
   .logo {
     width: 3.5rem;
     fill: var(--primary-color);
-    @include theme-transition(fill);
   }
 
   .button-container {
@@ -32,7 +30,6 @@
     svg {
       fill: var(--button-bg);
       font-size: 22px;
-      @include theme-transition(fill);
     }
 
     .download {
@@ -65,7 +62,6 @@
       color: var(--primary-color);
       font-weight: var(--header-weight);
       opacity: 0.4;
-      @include theme-transition(color, font-weight);
 
       &--active {
         opacity: 1;

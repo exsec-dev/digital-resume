@@ -24,19 +24,13 @@
   border: 1px solid var(--light-grey);
   border-radius: 8px;
   background-color: var(--pop-color);
-  @include theme-transition(background-color, border-color);
 
   .collapse-panel-header {
     background-color: var(--pop-color);
-    @include theme-transition(background-color);
   }
 
   .collapse-panel-content {
-    border-top: 1px solid transparent;
-  }
-
-  &.collapse-panel--open .collapse-panel-content {
-    border-top-color: var(--light-grey);
+    border-top: 1px solid var(--light-grey);
   }
 }
 
@@ -50,7 +44,6 @@
   font-size: 15px;
   line-height: 20px;
   opacity: 0.7;
-  @include theme-transition(color);
 }
 
 .projects-archive-icon {
@@ -60,7 +53,6 @@
 .projects-archive-grid {
   padding: 20px 28px 24px;
   background-color: var(--pop-color);
-  @include theme-transition(background-color);
 }
 
 @include breakpoint(md) {

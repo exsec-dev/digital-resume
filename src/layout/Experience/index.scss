@@ -23,7 +23,6 @@
       left: 5px;
       border-inline-start: 2px solid var(--primary-color);
       opacity: 0.1;
-      @include theme-transition(border-inline-start-color);
     }
   }
 
@@ -45,7 +44,6 @@
     align-items: center;
     justify-content: center;
     background: var(--bg-color);
-    @include theme-transition(background-color);
   }
 }
 

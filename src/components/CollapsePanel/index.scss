@@ -27,7 +27,6 @@
     background: transparent;
     color: var(--primary-color);
     text-align: left;
-    @include theme-transition(color);
   }
 
   &-header-action {
@@ -77,8 +76,7 @@
     visibility: hidden;
     transition:
       grid-template-rows var(--collapse-duration) var(--bezier-animation),
-      visibility 0s var(--collapse-duration),
-      border-top-color 0.4s var(--bezier-animation);
+      visibility 0s var(--collapse-duration);
   }
 
   &-content-clip {

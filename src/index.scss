@@ -1,38 +1,68 @@
+@use "sass:list";
+@use "sass:string";
 @use "styles/mixins" as *;
+
+// <light value> <dark value>
+$theme-colors: (
+  "primary-color": #181614 #f8f6f0,
+  "bg-color": #f8f6f0 #121212,
+  "header-color": rgb(239 237 233 / 80%) rgb(10 10 10 / 80%),
+  "noise-bg": #ebebeb #161616,
+  "mobile-header-color": rgb(248 246 240 / 65%) rgb(18 18 18 / 65%),
+  "button-bg": #1f1c19 #ebeae4,
+  "secondary-color": #e1e1e1 #2a2a2a,
+  "pop-color": #f8f7f4 #1b1b1b,
+  "light-grey": #dbdbdb #4e4e4e,
+  "skill-bg": rgb(0 0 0 / 4%) rgb(255 255 255 / 5%),
+  "scrollbar-thumb-color": #212121 #4e4e4e,
+);
+$theme-transition-props: string.unquote("--header-weight");
+
+@each $name, $values in $theme-colors {
+  $theme-transition-props: list.append(
+    $theme-transition-props,
+    string.unquote("--#{$name}"),
+    comma
+  );
+
+  @property --#{$name} {
+    syntax: "<color>";
+    inherits: true;
+    initial-value: #{list.nth($values, 1)};
+  }
+}
+
+@property --header-weight {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 525;
+}
 
 :root {
   color-scheme: light;
-  --primary-color: #181614;
-  --bg-color: #f8f6f0;
-  --header-color: rgb(239 237 233 / 80%);
-  --noise-bg: #ebebeb;
-  --mobile-header-color: rgb(248 246 240 / 65%);
+
+  @each $name, $values in $theme-colors {
+    --#{$name}: #{list.nth($values, 1)};
+  }
+
   --header-weight: 525;
-  --button-bg: #1f1c19;
-  --secondary-color: #e1e1e1;
-  --pop-color: #f8f7f4;
-  --light-grey: #dbdbdb;
-  --skill-bg: rgb(0 0 0 / 4%);
   --light-opacity: 0.6;
   --bezier-animation: cubic-bezier(0.645, 0.045, 0.355, 1);
-  --scrollbar-thumb-color: #212121;
   --overlay-text-color: #fffcfa;
+
+  transition-property: $theme-transition-props;
+  transition-duration: 0.4s;
+  transition-timing-function: var(--bezier-animation);
 }
 
 [data-theme="dark"] {
   color-scheme: dark;
-  --primary-color: #f8f6f0;
-  --bg-color: #121212;
-  --header-color: rgb(10 10 10 / 80%);
-  --noise-bg: #161616;
-  --mobile-header-color: rgb(18 18 18 / 65%);
+
+  @each $name, $values in $theme-colors {
+    --#{$name}: #{list.nth($values, 2)};
+  }
+
   --header-weight: 400;
-  --button-bg: #ebeae4;
-  --secondary-color: #2a2a2a;
-  --pop-color: #1b1b1b;
-  --light-grey: #4e4e4e;
-  --skill-bg: rgb(255 255 255 / 5%);
-  --scrollbar-thumb-color: #4e4e4e;
 }
 
 .skip-link {
@@ -66,7 +96,6 @@
   display: inline-block;
   flex-shrink: 0;
   fill: currentColor;
-  @include theme-transition(fill);
   user-select: none;
   -webkit-user-select: none;
 }
@@ -78,7 +107,6 @@ html:not([data-scrollbar="native"]) {
 
   ::-webkit-scrollbar-track {
     background-color: var(--noise-bg);
-    @include theme-transition(background-color);
   }
 
   ::-webkit-scrollbar-thumb {
@@ -93,7 +121,6 @@ body {
   font-size: 14px;
   overflow-x: hidden;
   -webkit-text-size-adjust: 100%;
-  @include theme-transition(background-color, color);
 }
 
 button,
@@ -118,7 +145,6 @@ a {
   background: transparent;
   color: var(--primary-color);
   line-height: 1.5;
-  @include theme-transition(color, background-color, border-color);
 
   &--primary {
     background-color: var(--button-bg);
@@ -137,7 +163,6 @@ h2 {
   font-size: 24px;
   font-weight: 600;
   line-height: 1.3333333;
-  @include theme-transition(color);
 }
 
 :where(h1, h2, h3, h4, h5, h6) {
@@ -174,7 +199,6 @@ h2 {
   flex-direction: column;
   padding: 130px 28px 0;
   background: var(--bg-color);
-  @include theme-transition(background-color);
 
   .chapters {
     display: flex;
@@ -187,8 +211,11 @@ h2 {
   scroll-margin-top: 100px;
 }
 
-html:not([data-theme-ready]) * {
-  transition: none !important;
+html:not([data-theme-ready]) {
+  &,
+  * {
+    transition: none !important;
+  }
 }
 
 @include breakpoint(sm) {

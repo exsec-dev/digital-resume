@@ -9,7 +9,6 @@
   position: absolute;
   z-index: 1000;
   color: var(--primary-color);
-  @include theme-transition(color, background-color);
 
   &::before {
     content: "";

@@ -12,7 +12,6 @@
   display: flex;
   align-items: center;
   overflow: hidden;
-  @include theme-transition(background-color);
   user-select: none;
   -webkit-user-select: none;
 
@@ -38,7 +37,6 @@
     font-weight: 600;
     line-height: 1.35;
     margin: 0 var(--line-gap) 0 0;
-    @include theme-transition(color);
   }
 }
 

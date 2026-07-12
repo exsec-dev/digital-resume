@@ -12,7 +12,6 @@
   overflow: hidden;
   border: 1px solid var(--secondary-color);
   border-radius: 26px;
-  @include theme-transition(border-color);
 
   img {
     @include fill-image;
@@ -67,7 +66,6 @@
   font-weight: 600;
   font-size: 16px;
   line-height: 1.5;
-  @include theme-transition(color);
 }
 
 .project-card-text {

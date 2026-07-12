@@ -12,7 +12,6 @@
   font-weight: 500;
   font-size: 20px;
   line-height: 1.4;
-  @include theme-transition(color);
 }
 
 .expertise-section {
@@ -55,5 +54,4 @@
   font-size: 14px;
   border: 1px solid var(--secondary-color);
   color: var(--primary-color);
-  @include theme-transition(border-color, background-color, color);
 }

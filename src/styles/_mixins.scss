@@ -1,4 +1,3 @@
-@use "sass:list";
 @use "sass:map";
 
 $breakpoints: (
@@ -15,26 +14,11 @@ $breakpoints: (
   }
 }
 
-@mixin theme-transition($properties...) {
-  $transitions: ();
-
-  @each $property in $properties {
-    $transitions: list.append(
-      $transitions,
-      #{$property} 0.4s var(--bezier-animation),
-      comma
-    );
-  }
-
-  transition: $transitions;
-}
-
 @mixin subtle-divider {
   margin: 0;
   opacity: 0.2;
   border: 0;
   border-block-start: 1px solid var(--primary-color);
-  @include theme-transition(border-block-start-color);
 }
 
 @mixin fill-image {
