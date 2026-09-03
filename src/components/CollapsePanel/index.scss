@@ -1,5 +1,6 @@
 .collapse-panel {
   --collapse-duration: 0.4s;
+  --arrow-optical-shift: 2.65px;
 
   &-header {
     position: relative;
@@ -93,7 +94,7 @@
   }
 
   &--open &-arrow {
-    transform: rotate(90deg);
+    transform: rotate(90deg) translateX(calc(-1 * var(--arrow-optical-shift)));
   }
 
   &--small {

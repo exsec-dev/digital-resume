@@ -50,8 +50,12 @@
     gap: 18px;
   }
 
-  .header-icon-button:hover {
-    background-color: rgb(from var(--primary-color) r g b / 6%);
+  .header-icon-button {
+    transition: background-color 0.4s var(--bezier-animation);
+
+    &:hover {
+      background-color: rgb(from var(--primary-color) r g b / 6%);
+    }
   }
 
   .navigation {
